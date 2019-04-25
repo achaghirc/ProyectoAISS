@@ -47,7 +47,7 @@
 			<c:forEach items="${requestScope.items}" var="item">
 			<iframe src="http://www.youtube.com/embed/${item.id.videoId}"></iframe>
 			</c:forEach>	
-	
+	</fieldset>
 	</div>
 	
 </body>
