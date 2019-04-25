@@ -46,7 +46,14 @@
 		<p>Trailer</p>
 			<c:forEach items="${requestScope.items}" var="item">
 			<iframe src="http://www.youtube.com/embed/${item.id.videoId}"></iframe>
-			</c:forEach>	
+			</c:forEach>
+		<fieldset id="SoundCloud">
+		<legend>Canción de la película <c:out value="${param.searchQuery}"/></legend>
+		<c:forEach items="${requestScope.Track}" var="track"/>
+		<form id="getTrackForm" action="/SoundCloudContoller" method="post">
+		<iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="http://soundcloud.com/oembed/<c:out value="{track.id}"/>&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+		</form>
+		
 	</fieldset>
 	</div>
 	
