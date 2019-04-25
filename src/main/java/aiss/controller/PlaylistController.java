@@ -58,7 +58,7 @@ public class PlaylistController extends HttpServlet {
 		request.setAttribute("plsongs", playlist.getSongs());
 		request.setAttribute("playlists", playlists);
 		request.setAttribute("playlistId", id);	// id of the selected playlist
-		request.getRequestDispatcher("/playlistView.jsp").forward(request, response);
+		request.getRequestDispatcher("/index.jsp").forward(request, response);
 		
 	}
 	

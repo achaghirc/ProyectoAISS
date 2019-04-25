@@ -1,0 +1,16 @@
+{	
+    "Spotify": {
+        "tokenUrl": "https://accounts.spotify.com/api/token",
+        "clientId": "5ce90d07931f4c9fab2d7d1546c6d604",
+        "clientSecret": "fcf9577c61104715b21369ecc622618d",
+        "authorizationFormUrl": "https://accounts.spotify.com/authorize",
+        "scopes": ["playlist-read-private","playlist-modify-private"]
+    },
+    "SoundCloud": {
+    	"tokenUrl": "https://api.soundcloud.com/oauth2/token",
+    	"clientId": "287adf40e30f73eb3cfe0af77f3a77d",
+    	"clientSecret":"80fc6746b2a92ea81b9d29455a5df35a",
+    	"authorizationFormUrl":"https://soundcloud.com/connect",
+    	"scopes": ["*"]
+    }
+}		

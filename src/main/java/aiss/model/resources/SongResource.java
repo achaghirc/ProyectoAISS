@@ -31,20 +31,46 @@ public class SongResource {
 	
 
 	public Song getSong(String songId) {
-		//TODO
-		return null;
+		ClientResource cr = null;
+		Song s = null;
+		try {
+			cr = new ClientResource(uri+"/"+songId);
+			s = cr.get(Song.class);
+		}catch (ResourceException e) {
+			System.err.println("Error al querer obtener la cancion"+cr.getResponse().getStatus());
+			throw e;
+		}
+		return s;
 	}
 	
 
 	public Song addSong(Song song) {
-		// TODO
-		return null;
+		ClientResource cr = null;
+		Song s= null;
+		try {
+			cr = new ClientResource(uri);
+			cr.setEntityBuffering(true);
+			s = cr.post(song,Song.class);
+		}catch (ResourceException e) {
+			System.err.println("Error al crear una cancion: "+cr.getResponse().getStatus());
+			throw e;
+		}
+		return s;
 
 	}
 	
 	public boolean updateSong(Song song) {
-		// TODO
-		return false;
+		ClientResource cr = null;
+		boolean success = true;
+		try {
+			cr = new ClientResource(uri);
+			cr.setEntityBuffering(true);
+			cr.put(song);
+		}catch (ResourceException e) {
+			System.err.println("Error al actualizar la cancion: "+cr.getResponse().getStatus());
+			success = false;
+		}
+		return success;
 	}
 	
 

@@ -1,62 +1,94 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
-  <servlet>
-    <servlet-name>PlaylistController</servlet-name>
-    <servlet-class>aiss.controller.PlaylistController</servlet-class>
+	<!-- SERVLET CONTROLADOR DE PELICULAS -->
+   <servlet>
+  	<description></description>
+  	<display-name>MovieController</display-name>
+  	<servlet-name>MovieController</servlet-name>
+  	<servlet-class>aiss.controller.MovieController</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>PlaylistController</servlet-name>
-    <url-pattern>/list</url-pattern>
+  	<servlet-name>MovieController</servlet-name>
+  	<url-pattern>/MovieController</url-pattern>
   </servlet-mapping>
+ 	<!-- SERVLET DE BUSQUEDA -->
   <servlet>
-    <servlet-name>SongUpdateController</servlet-name>
-    <servlet-class>aiss.controller.SongUpdateController</servlet-class>
+  	<description></description>
+  	<display-name>SearchController</display-name>
+  	<servlet-name>SearchController</servlet-name>
+  	<servlet-class>aiss.controller.SearchController</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>SongUpdateController</servlet-name>
-    <url-pattern>/songupdate</url-pattern>
+  	<servlet-name>SearchController</servlet-name>
+  	<url-pattern>/SearchController</url-pattern>	
   </servlet-mapping>
+  <!-- Servlet para el controlador que seleccion la pelicula -->
   <servlet>
-    <servlet-name>SongDeleteController</servlet-name>
-    <servlet-class>aiss.controller.SongDeleteController</servlet-class>
+  <description></description>
+  <display-name>SelectedMovieController</display-name>
+  <servlet-name>SelectedMovieController</servlet-name>
+  <servlet-class>aiss.controller.SelectedMovieController</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>SongDeleteController</servlet-name>
-    <url-pattern>/songdelete</url-pattern>
+  	<servlet-name>SelectedMovieController</servlet-name>
+  	<url-pattern>/SelectedMovieController</url-pattern>
   </servlet-mapping>
+  <!-- SERVLET DE SOUNDCLOUD -->
   <servlet>
-    <servlet-name>SongNewController</servlet-name>
-    <servlet-class>aiss.controller.SongNewController</servlet-class>
+  	<description></description>
+  	<display-name>SoundCloudController</display-name>
+  	<servlet-name>SoundCloudController</servlet-name>
+  	<servlet-class>aiss.controller.SoundCloudController</servlet-class>
+  </servlet>
+   <servlet-mapping>
+  	<servlet-name>SoundCloudController</servlet-name>
+  	<url-pattern>/SoundCloudController</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+  	<description></description>
+  	<display-name>YoutubeController</display-name>
+  	<servlet-name>YoutubeController</servlet-name>
+  	<servlet-class>aiss.controller.YoutubeController</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>SongNewController</servlet-name>
-    <url-pattern>/songnew</url-pattern>
+  	<servlet-name>YoutubeController</servlet-name>
+  	<url-pattern>/YoutubeController</url-pattern>
   </servlet-mapping>
+  
   <welcome-file-list>
-    <welcome-file>list</welcome-file>
+  	<welcome-file>index.html</welcome-file>
   </welcome-file-list>
+ 
   <error-page>
     <exception-type>java.lang.Throwable</exception-type>
     <location>/error.jsp</location>
   </error-page>
-  <servlet>
-    <description></description>
-    <display-name>PlaylistNewController</display-name>
-    <servlet-name>PlaylistNewController</servlet-name>
-    <servlet-class>aiss.controller.PlaylistNewController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>PlaylistNewController</servlet-name>
-    <url-pattern>/newplaylist</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>PlaylistAddSongController</display-name>
-    <servlet-name>PlaylistAddSongController</servlet-name>
-    <servlet-class>aiss.controller.PlaylistAddSongController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>PlaylistAddSongController</servlet-name>
-    <url-pattern>/addsong</url-pattern>
-  </servlet-mapping>
+  
+	<servlet>
+	<description/>
+		<servlet-name>SoundCloudAuthController</servlet-name>
+		<servlet-class>aiss.controller.oauth.GenericAuthController</servlet-class>
+	<init-param>
+		<param-name>provider</param-name>
+		<param-value>SoundCloud</param-value>
+	</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SoundCloudAuthController</servlet-name>
+		<url-pattern>/AuthController/SoundCloud</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<description/>
+		<servlet-name>SoundCloudOAuth2Callback</servlet-name>
+		<servlet-class>aiss.controller.oauth.OAuth2Callback</servlet-class>
+	<init-param>
+		<param-name>provider</param-name>
+		<param-value>SoundCloud</param-value>
+	</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SoundCloudOAuth2Callback</servlet-name>
+		<url-pattern>/oauth2callback/SoundCloud</url-pattern>
+	</servlet-mapping>
 </web-app>
