@@ -17,6 +17,7 @@ public class Wiki {
 
     @JsonProperty("parse")
     private Parse parse;
+    @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     @JsonProperty("parse")
