@@ -46,7 +46,7 @@ public class SelectedMovieController extends HttpServlet{
 			//Searching Trailer Youtube
 			log.log(Level.FINE, "Searching for Youtube videos with query ", query);
 			YoutubeResource ytr = new YoutubeResource();
-			VideoSearch youtubeResults = ytr.getVideo(id);
+			VideoSearch youtubeResults = ytr.getVideo(query);
 			
 			
 			if(tmdbResults != null && youtubeResults!= null && creditsResults!= null) {
