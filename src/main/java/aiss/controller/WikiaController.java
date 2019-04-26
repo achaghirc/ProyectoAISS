@@ -23,18 +23,18 @@ public class WikiaController extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String query = request.getParameter("searchQuery");
+		String name = request.getParameter("name");
 		RequestDispatcher rd = null;
 		
 		// Search for info in WikiPedia
-		log.log(Level.FINE, "Buscando información de la película " + query);
+		log.log(Level.FINE, "Buscando información de la película " + name);
 		WikiaResources wiki = new WikiaResources();
-		Wiki wikiResults = wiki.getWiki(query);
+		Wiki wikiResults = wiki.getWiki(name);
 		
 		if (wikiResults!=null){
 	
 			rd = request.getRequestDispatcher("/wikiView.jsp");
-			request.setAttribute("wikis", wikiResults.getParse().getWikitext());
+			request.setAttribute("wiki", wikiResults);
 			
 		} else {
 			log.log(Level.SEVERE, "Wiki objects: " + wikiResults);

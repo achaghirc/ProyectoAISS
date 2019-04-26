@@ -41,7 +41,10 @@
 		<c:forEach items="${requestScope.credits.cast}" var="casting"
 			begin="${param.first}"  end="${param.first + noOfRows -1}">
 			<img src="https://image.tmdb.org/t/p/w185/${casting.profilePath}"/>
-			<p>&nbsp; <c:out value="${casting.name}"/> interpretando a <c:out value="${casting.character}"/></p>
+			<form id="searchForm" method="post" class="listaForm" action="/WikiaController">
+			<input type='hidden' name='name' value="<c:out value="${casting.name}"/>"/>
+			<p>&nbsp; <input type="submit" class="tituloEnviar" name="titulo" value="<c:out value="${casting.name}"/>"/> interpretando a <c:out value="${casting.character}"/></p>
+			</form>
 		</c:forEach>
 		<p>Trailer</p>
 			<c:forEach items="${requestScope.items}" var="item">

@@ -45,14 +45,14 @@ public class SelectedMovieController extends HttpServlet{
 			
 			//Searching Trailer Youtube
 			log.log(Level.FINE, "Searching for Youtube videos with query ", query);
-			YoutubeResource ytr = new YoutubeResource();
-			VideoSearch youtubeResults = ytr.getVideo(query);
+//			YoutubeResource ytr = new YoutubeResource();
+//			VideoSearch youtubeResults = ytr.getVideo(query);
 			
 			
-			if(tmdbResults != null && youtubeResults!= null && creditsResults!= null) {
+			if(tmdbResults != null && creditsResults!= null) {
 				request.setAttribute("movies", tmdbResults);
 				request.setAttribute("credits", creditsResults);
-				request.setAttribute("items", youtubeResults.getItems());
+//				request.setAttribute("items", youtubeResults.getItems());
 				rd = request.getRequestDispatcher("/movie.jsp");
 			}else {
 				if(tmdbResults == null) {
