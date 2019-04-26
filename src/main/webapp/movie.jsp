@@ -47,7 +47,7 @@
 		</c:forEach>
 		<p>Trailer</p>
 			<c:forEach items="${requestScope.items}" var="item">
-			<iframe src="http://www.youtube.com/embed/${item.id.videoId}"></iframe>
+			<iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0"width="712" height="400" type="text/html" src="https://www.youtube.com/embed/${item.id.videoId}?autoplay=0&fs=1&iv_load_policy=3&showinfo=0&rel=0&cc_load_policy=0&start=0&end=0"></iframe>
 			</c:forEach>	
 	
 	</div>
