@@ -8,8 +8,10 @@
 <title><c:out value="${requestScope.wiki.parse.title}"/></title>
 </head>
 <body>
-	<pre style="white-space: pre;">
+<div style="display:inline-block;">
+	<pre style="white-space:-moz-pre-wrap;">
 	<span class="mw-translate-fuzzy"><c:out value="${requestScope.wiki.parse.wikitext.t}"/></span>
-	</pre>	
+	</pre>
+</div>
 </body>
 </html>
