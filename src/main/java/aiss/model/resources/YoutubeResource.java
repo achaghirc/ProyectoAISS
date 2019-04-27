@@ -6,6 +6,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.restlet.resource.ClientResource;
+import org.restlet.resource.ResourceException;
 
 import aiss.model.youtube.VideoSearch;
 
@@ -25,7 +26,7 @@ public class YoutubeResource {
 			cr = new ClientResource(URL_YOUTUBE.replace("%QUERY",query).replace("%APIKEY",api_key));
 			res = cr.get(VideoSearch.class);
 			log.log(Level.FINE, "Busqueda de videos de "+query+"realizada correctamente.");
-		}catch (Exception e) {
+		}catch (ResourceException e) {
 			log.log(Level.WARNING, "Error al obtener los videos", cr.getResponse().getStatus());
 			throw e;
 		}

@@ -1,9 +1,6 @@
-<%@page import="java.util.ArrayList"%>
 <%@page import="aiss.Movie.ProductionCompany"%>
-<%@page import="java.util.List"%>
 <%@page import="aiss.Movie.Movie"%>
 <%@page import="aiss.model.resources.MovieResources"%>
-<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -28,6 +25,7 @@
 	<div class="overview_pelicula">
 		<h3>OVERVIEW:</h3>
 		<p><c:out value="${requestScope.movies.overview}"/></p>
+		
 	</div>	
 	<div class="datos_pelicula">
 		<p>Adult:<c:out value="${requestScope.movies.adult}"/></p>
@@ -50,7 +48,7 @@
 		</c:forEach>
 		<p>Trailer</p>
 			<c:forEach items="${requestScope.items}" var="item">
-			<iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0"width="712" height="400" type="text/html" src="https://www.youtube.com/embed/${item.id.videoId}?autoplay=0&fs=1&iv_load_policy=3&showinfo=0&rel=0&cc_load_policy=0&start=0&end=0"></iframe>
+			<iframe src="https://www.youtube.com/embed/<c:out value="${item.id.videoId}"/>"></iframe>
 			</c:forEach>	
 	
 	</div>

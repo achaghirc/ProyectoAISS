@@ -10,6 +10,7 @@ import org.restlet.resource.ResourceException;
 import aiss.Movie.Cast;
 import aiss.Movie.Credits;
 import aiss.Movie.Movie;
+import aiss.Movie.Videos;
 
 public class MovieResources {
 	private static final String api_Key = "1cb3b67dfeb8452b822808e663f7b97c";
@@ -53,6 +54,19 @@ public class MovieResources {
 			System.err.println("Error al obtener el Cast de la pelicula: "+ cr.getResponse().getStatus());
 		}
 		return c;
+	}
+	public Videos getVideos(String movieId) {
+		/*https://api.themoviedb.org/3/movie/11/videos?api_key=1cb3b67dfeb8452b822808e663f7b97c&language=en-US*/
+		ClientResource cr = null;
+		Videos v = null;
+		
+		try {
+			cr = new ClientResource(URL_MOVIE+movieId+"/videos?api_key="+api_Key);
+			v = cr.get(Videos.class);
+		}catch (ResourceException e) {
+			System.err.println("Error al obtener el Cast de la pelicula: "+ cr.getResponse().getStatus());
+		}
+		return v;
 	}
 	
 }
