@@ -3,7 +3,7 @@ package aiss.model.resources;
 import java.io.UnsupportedEncodingException;
 import org.junit.Test;
 
-import aiss.model.resource.WikiaResource;
+import aiss.model.resources.WikiaResource;
 import aiss.model.wiki.Wiki;
 
 public class WikiResourceTest {

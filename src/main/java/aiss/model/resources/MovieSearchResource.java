@@ -1,4 +1,4 @@
-package aiss.model.resource;
+package aiss.model.resources;
 
 import java.util.Arrays;
 import java.util.Collection;

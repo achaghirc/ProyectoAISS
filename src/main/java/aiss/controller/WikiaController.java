@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import aiss.model.resource.WikiaResource;
+import aiss.model.resources.WikiaResource;
 import aiss.model.wiki.Wiki;
 
 public class WikiaController extends HttpServlet {

@@ -1,4 +1,4 @@
-package aiss.model.resource;
+package aiss.model.resources;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
@@ -10,7 +10,7 @@ import aiss.Movie.Movie;
 import aiss.Movie.Videos;
 import aiss.model.tmdb.TMDBRegistry;
 
-public class MovieResource {
+public class MovieResources {
 	private static final String api_Key = "1cb3b67dfeb8452b822808e663f7b97c";
 	private static final String URL_BASE = "https://api.themoviedb.org/3";
 	private static final String URL_MOVIE = URL_BASE+"/movie/";

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 import aiss.Movie.MovieSearch;
-import aiss.model.resource.MovieSearchResource;
+import aiss.model.resources.MovieSearchResource;
 
 
 public class SearchController extends HttpServlet {

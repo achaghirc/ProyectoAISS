@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import aiss.SoundCloud.Track;
-import aiss.model.resource.SoundCloudResource;
+import aiss.model.resources.SoundCloudResource;
 
 public class SoundCloudController extends HttpServlet {
 
