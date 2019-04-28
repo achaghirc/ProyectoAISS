@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import aiss.Movie.Movie;
-import aiss.model.resources.MovieResources;
+import aiss.model.resource.MovieResource;
 
 public class MovieController extends HttpServlet {
 	
@@ -25,7 +25,7 @@ public class MovieController extends HttpServlet {
 		RequestDispatcher rd = null;
 		
 		//View Movie
-		MovieResources mvr = new MovieResources();
+		MovieResource mvr = new MovieResource();
 		Movie datosMovie = mvr.getMovie(id);
 		
 		if(datosMovie!=null) {

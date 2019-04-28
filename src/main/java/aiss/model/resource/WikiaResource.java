@@ -1,4 +1,4 @@
-package aiss.model.resources;
+package aiss.model.resource;
 
 import java.io.UnsupportedEncodingException;
 import org.restlet.resource.ClientResource;
@@ -6,7 +6,8 @@ import org.restlet.resource.ResourceException;
 
 import aiss.model.wiki.Wiki;
 
-public class WikiaResources {
+public class WikiaResource {
+	
 	private static final String URL_WIKI =  "https://es.wikipedia.org/w/api.php?action=parse&format=json&page=";
 	private static final String URL_FIN =  "&prop=wikitext";
 	
@@ -21,4 +22,5 @@ public class WikiaResources {
 		}
 		return m;
 	}
+	
 }

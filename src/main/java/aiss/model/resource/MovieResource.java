@@ -1,18 +1,15 @@
-package aiss.model.resources;
+package aiss.model.resource;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 import java.util.Collection;
-
 import org.restlet.resource.ClientResource;
 import org.restlet.resource.ResourceException;
-
-import aiss.Movie.Cast;
 import aiss.Movie.Credits;
 import aiss.Movie.Movie;
 import aiss.Movie.Videos;
 
-public class MovieResources {
+public class MovieResource {
 	private static final String api_Key = "1cb3b67dfeb8452b822808e663f7b97c";
 	private static final String URL_BASE = "https://api.themoviedb.org/3";
 	private static final String URL_MOVIE = URL_BASE+"/movie/";

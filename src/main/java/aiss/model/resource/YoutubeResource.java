@@ -1,4 +1,4 @@
-package aiss.model.resources;
+package aiss.model.resource;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;

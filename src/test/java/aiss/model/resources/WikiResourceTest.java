@@ -3,12 +3,12 @@ package aiss.model.resources;
 import java.io.UnsupportedEncodingException;
 import org.junit.Test;
 
-import aiss.model.resources.WikiaResources;
+import aiss.model.resource.WikiaResource;
 import aiss.model.wiki.Wiki;
 
 public class WikiResourceTest {
 	static Wiki wiki;
-	static WikiaResources sr = new WikiaResources();
+	static WikiaResource sr = new WikiaResource();
 	
 	@Test
 	public void testGetWiki() throws UnsupportedEncodingException {

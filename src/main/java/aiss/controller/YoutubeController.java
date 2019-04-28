@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import aiss.model.resources.YoutubeResource;
+import aiss.model.resource.YoutubeResource;
 import aiss.model.youtube.VideoSearch;
 
 public class YoutubeController extends HttpServlet {

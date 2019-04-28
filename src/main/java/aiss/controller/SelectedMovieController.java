@@ -15,9 +15,9 @@ import javax.servlet.http.HttpServletResponse;
 import aiss.Movie.Credits;
 import aiss.Movie.Movie;
 import aiss.SoundCloud.Track;
-import aiss.model.resources.MovieResources;
-import aiss.model.resources.SoundCloudResource;
-import aiss.model.resources.YoutubeResource;
+import aiss.model.resource.MovieResource;
+import aiss.model.resource.SoundCloudResource;
+import aiss.model.resource.YoutubeResource;
 import aiss.model.youtube.Item;
 import aiss.model.youtube.VideoSearch;
 
@@ -41,7 +41,7 @@ public class SelectedMovieController extends HttpServlet{
 			
 			//Search for movie in TMDB
 			log.log(Level.FINE, "Searching for TMDB movies that contain"+id);
-			MovieResources tmdb = new MovieResources();
+			MovieResource tmdb = new MovieResource();
 			Movie tmdbResults = tmdb.getMovie(id);
 			Credits creditsResults = tmdb.getCasting(id);
 			String param = tmdbResults.getTitle();
