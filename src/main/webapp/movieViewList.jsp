@@ -26,5 +26,6 @@
 		</tr>
 		<c:forEach items="${requestScope.movieList}" var="movie">
 		</c:forEach>
+	</table>
 </body>
 </html>

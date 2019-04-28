@@ -8,8 +8,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import aiss.Wiki.Wiki;
+
 import aiss.model.resources.WikiaResources;
+import aiss.model.wiki.Wiki;
 
 public class WikiaController extends HttpServlet {
 

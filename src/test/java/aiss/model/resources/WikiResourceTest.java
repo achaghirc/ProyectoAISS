@@ -2,8 +2,9 @@ package aiss.model.resources;
 
 import java.io.UnsupportedEncodingException;
 import org.junit.Test;
-import aiss.Wiki.Wiki;
+
 import aiss.model.resources.WikiaResources;
+import aiss.model.wiki.Wiki;
 
 public class WikiResourceTest {
 	static Wiki wiki;

@@ -1,4 +1,4 @@
-package aiss.Wiki;
+package aiss.model.wiki;
 
 import java.util.HashMap;
 import java.util.Map;
