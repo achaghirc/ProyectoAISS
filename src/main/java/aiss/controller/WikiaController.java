@@ -21,22 +21,24 @@ public class WikiaController extends HttpServlet {
 		super();
 	}
 	
+	@SuppressWarnings("null")
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String name = request.getParameter("name");
 		RequestDispatcher rd = null;
 		
 		// Search for info in WikiPedia
-		log.log(Level.FINE, "Buscando información de la película " + name);
+		log.log(Level.FINE, "Buscando información del actor " + name);
 		WikiaResources wiki = new WikiaResources();
 		Wiki wikiResults = wiki.getWiki(name);
 		
-		if (wikiResults!=null){
-	
+		if (wikiResults.getParse()!=null){
 			rd = request.getRequestDispatcher("/wikiView.jsp");
 			request.setAttribute("wiki", wikiResults);
-			
-		} else {
+		}else if(wikiResults.getParse()==null){
+			log.log(Level.SEVERE, "Wiki objects: " + wikiResults);
+			rd = request.getRequestDispatcher("/wikiViewError.jsp");
+		}else {
 			log.log(Level.SEVERE, "Wiki objects: " + wikiResults);
 			rd = request.getRequestDispatcher("/error.jsp");
 		}

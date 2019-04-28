@@ -11,9 +11,10 @@ public class WikiResourceTest {
 	
 	@Test
 	public void testGetWiki() throws UnsupportedEncodingException {
-		wiki = sr.getWiki("Michael Papajohn");
+		wiki = sr.getWiki("Johnny Depp");
 		
 		//Show results
+		System.out.println(wiki);
 		System.out.println(wiki.getParse());
 		System.out.println(wiki.getParse().getWikitext());
 		System.out.println(wiki.getParse().getWikitext().getT());
