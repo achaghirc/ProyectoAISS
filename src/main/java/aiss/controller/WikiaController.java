@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import aiss.model.resources.WikiaResources;
+import aiss.model.resources.WikiaResource;
 import aiss.model.wiki.Wiki;
 
 public class WikiaController extends HttpServlet {
@@ -30,7 +30,7 @@ public class WikiaController extends HttpServlet {
 		
 		// Search for info in WikiPedia
 		log.log(Level.FINE, "Buscando información del actor " + name);
-		WikiaResources wiki = new WikiaResources();
+		WikiaResource wiki = new WikiaResource();
 		Wiki wikiResults = wiki.getWiki(name);
 		
 		if (wikiResults.getParse()!=null){

@@ -1,7 +1,6 @@
 package aiss.controller;
 
 import java.io.IOException;
-
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -11,15 +10,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 import aiss.Movie.Credits;
 import aiss.Movie.Movie;
 import aiss.SoundCloud.Track;
-import aiss.SoundCloud.User;
 import aiss.model.resources.MovieResources;
 import aiss.model.resources.SoundCloudResource;
 import aiss.model.resources.YoutubeResource;
-import aiss.model.youtube.Item;
 import aiss.model.youtube.VideoSearch;
 
 public class SelectedMovieController extends HttpServlet{
@@ -55,14 +51,21 @@ public class SelectedMovieController extends HttpServlet{
 			
 			//Searching a SoundTrack Youtube
 			log.log(Level.FINE,"Searching for Soundcloud tracks that contain "+ param);
-			VideoSearch soundtrackResults = ytr.getSoundTrack(param);
+
+/*			VideoSearch trackResults = ytr.getTrack(param);
+ */
+		
 			
-			if(tmdbResults != null && youtubeResults!= null && creditsResults!= null && soundtrackResults!= null) {
+			if(/*trackResults!= null &&*/ tmdbResults != null && youtubeResults!= null && creditsResults!= null ) {
+
 				
 				request.setAttribute("movies", tmdbResults);
 				request.setAttribute("credits", creditsResults);
 				request.setAttribute("items", youtubeResults.getItems());
-				request.setAttribute("tracks", soundtrackResults.getItems());
+
+			/*	request.setAttribute("tracks", trackResults.getItems());*/
+				
+
 				
 				rd = request.getRequestDispatcher("/movie.jsp");
 			

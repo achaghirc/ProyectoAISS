@@ -50,10 +50,7 @@
 			<c:forEach items="${requestScope.items}" var="item">
 			<iframe src="https://www.youtube.com/embed/<c:out value="${item.id.videoId}"/>"></iframe>
 			</c:forEach>	
-		<p>Banda Sonora</p>
-			<c:forEach items="${requestScope.items}" var="item">
-			<iframe src="https://www.youtube.com/embed/<c:out value="${item.id.videoId}"/>"></iframe>
-			</c:forEach>
+
 	</div>
 	
 </body>

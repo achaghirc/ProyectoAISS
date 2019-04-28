@@ -10,6 +10,7 @@ import org.junit.Test;
 
 
 import aiss.Movie.MovieSearch;
+import aiss.model.resources.MovieSearchResource;
 
 public class MovieResourceTest {
 	
