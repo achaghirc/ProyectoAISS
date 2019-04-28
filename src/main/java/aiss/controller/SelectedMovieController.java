@@ -72,8 +72,7 @@ public class SelectedMovieController extends HttpServlet{
 				if(tmdbResults == null) {
 					log.log(Level.SEVERE, "TMDB object: " + tmdbResults);
 					rd = request.getRequestDispatcher("/error.jsp");
-				}
-				if(youtubeResults == null) {
+				}else if(youtubeResults == null) {
 					log.log(Level.SEVERE, "Youtube Object: " + youtubeResults);
 					rd = request.getRequestDispatcher("/error.jsp");
 				}

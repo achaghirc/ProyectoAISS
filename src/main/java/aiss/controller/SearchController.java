@@ -1,7 +1,6 @@
 package aiss.controller;
 
 import java.io.IOException;
-import java.util.Collection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -33,30 +32,21 @@ public class SearchController extends HttpServlet {
 		String query = request.getParameter("searchQuery");
 		RequestDispatcher rd = null;
 		
-		// Search for movies in OMDb
-		log.log(Level.FINE, "Searching for OMDb movies that contain " + query);
+		// Search for movies in TMDb
+		log.log(Level.FINE, "Searching for TMDb movies that contain " + query);
 		MovieSearchResource tmdb = new MovieSearchResource();
 		MovieSearch tmdbResults = tmdb.getMovieSearch(query);
-		// Search for movies in Flickr
-		//log.log(Level.FINE, "Seraching for flickr photos that contain"+query);
-		//FlickrResource flickr = new FlickrResource();
-		//PhotoSearch flickrResults = flickr.getFlickrPhotos(query);
 		
 		
 		if (tmdbResults!=null){
 			request.setAttribute("movies", tmdbResults.getResults());
 			rd = request.getRequestDispatcher("/movieSearch.jsp");
-			//request.setAttribute("photos",flickrResults.getPhotos());
 			
 		} else {
 			log.log(Level.SEVERE, "OMDb object: " + tmdbResults);
-		//	log.log(Level.SEVERE, "Flickr object: " + omdbResults);
 			rd = request.getRequestDispatcher("/error.jsp");
 		}
 		rd.forward(request, response);
-		
-		//Foward to movieList view
-		//request.setAttribute("movies", omdb.getAll());
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

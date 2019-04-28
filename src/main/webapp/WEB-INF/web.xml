@@ -33,6 +33,17 @@
   	<servlet-name>SelectedMovieController</servlet-name>
   	<url-pattern>/SelectedMovieController</url-pattern>
   </servlet-mapping>
+  <!-- Servlet para la Wikipedia -->
+  <servlet>
+  	<description></description>
+  	<display-name>WikiaController</display-name>
+  	<servlet-name>WikiaController</servlet-name>
+  	<servlet-class>aiss.controller.WikiaController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>WikiaController</servlet-name>
+  	<url-pattern>/WikiaController</url-pattern>
+  </servlet-mapping>
   <!-- SERVLET DE SOUNDCLOUD -->
   <servlet>
   	<description></description>

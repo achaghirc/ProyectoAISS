@@ -5,10 +5,11 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title><c:out value="${requestScope.wiki.parse.title}"/></title>
+<title>Actor sin Información</title>
 </head>
 <body>
-	<pre><c:out value="${requestScope.wiki.parse.wikitext.t}"/></pre>
+	<div>
+	<h3>No existe información de este actor en la Wikipedia.</h3>
+	</div>
 </body>
 </html>
