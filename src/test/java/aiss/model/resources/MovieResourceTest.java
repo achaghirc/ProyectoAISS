@@ -22,7 +22,7 @@ public class MovieResourceTest {
 		
 		assertNotNull("The Search returned null",tmdbResults);
 		assertNotNull("The search returned null",tmdbResults.getResults());
-		assertFalse("La busqueda de albums para "+movieId+"is zero",tmdbResults.getResults().size()==0);
+		assertFalse("La busqueda de albums para "+movieId+" is ",tmdbResults.getResults().size()==0);
 		
 		System.out.println("El numero de resultados para el id " + movieId + "is zero" + tmdbResults.getResults().size() + "movies.");
 		//Show results
