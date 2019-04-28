@@ -11,6 +11,7 @@ import aiss.Movie.Cast;
 import aiss.Movie.Credits;
 import aiss.Movie.Movie;
 import aiss.Movie.Videos;
+import aiss.model.tmdb.TMDBRegistry;
 
 public class MovieResources {
 	private static final String api_Key = "1cb3b67dfeb8452b822808e663f7b97c";
@@ -68,5 +69,19 @@ public class MovieResources {
 		}
 		return v;
 	}
+	public TMDBRegistry getToken() {
+		ClientResource cr = null;
+		TMDBRegistry token = null;
+		
+		try {
+			cr = new ClientResource("https://api.themoviedb.org/3/authentication/token/new?api_key="+api_Key);
+			token = cr.get(TMDBRegistry.class);
+		}catch (ResourceException e){
+			System.err.println("Error al obtener el token "+cr.getResponse().getStatus());
+			throw e;
+		}
+		return token;
+		}
+	}
 	
-}
+

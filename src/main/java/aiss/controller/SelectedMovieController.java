@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import aiss.Movie.Credits;
 import aiss.Movie.Movie;
 import aiss.SoundCloud.Track;
+import aiss.SoundCloud.User;
 import aiss.model.resources.MovieResources;
 import aiss.model.resources.SoundCloudResource;
 import aiss.model.resources.YoutubeResource;
@@ -51,6 +52,12 @@ public class SelectedMovieController extends HttpServlet{
 			log.log(Level.FINE, "Searching for Youtube videos with query ", query);
 			YoutubeResource ytr = new YoutubeResource();
 			VideoSearch youtubeResults = ytr.getVideo(param);
+			
+			//Searching for Track on SoundCloud
+			log.log(Level.FINE,"Searching for Soundcloud tracks that contain "+ param);
+			String accessToken = (String) request.getSession().getAttribute("SoundCloud-token");
+			SoundCloudResource scr = new SoundCloudResource(accessToken);
+			Track SCP = scr.getBusqueda(param);
 		
 			
 			if(tmdbResults != null && youtubeResults!= null && creditsResults!= null) {
