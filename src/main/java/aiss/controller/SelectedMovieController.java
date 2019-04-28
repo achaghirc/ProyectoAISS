@@ -51,16 +51,17 @@ public class SelectedMovieController extends HttpServlet{
 			
 			//Searching for Track on SoundCloud
 			log.log(Level.FINE,"Searching for Soundcloud tracks that contain "+ param);
-			String accessToken = (String) request.getSession().getAttribute("SoundCloud-token");
-			SoundCloudResource scr = new SoundCloudResource(accessToken);
-			Track SCP = scr.getBusqueda(param);
+/*			VideoSearch trackResults = ytr.getTrack(param);
+ */
 		
 			
-			if(tmdbResults != null && youtubeResults!= null && creditsResults!= null) {
+			if(/*trackResults!= null &&*/ tmdbResults != null && youtubeResults!= null && creditsResults!= null ) {
 				
 				request.setAttribute("movies", tmdbResults);
 				request.setAttribute("credits", creditsResults);
 				request.setAttribute("items", youtubeResults.getItems());
+			/*	request.setAttribute("tracks", trackResults.getItems());*/
+				
 				
 				rd = request.getRequestDispatcher("/movie.jsp");
 			
