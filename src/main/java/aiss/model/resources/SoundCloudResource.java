@@ -12,6 +12,7 @@ import org.restlet.resource.ClientResource;
 import org.restlet.resource.ResourceException;
 
 import aiss.SoundCloud.Track;
+import aiss.SoundCloud.User;
 
 public class SoundCloudResource {
 
