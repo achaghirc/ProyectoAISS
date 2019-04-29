@@ -290,4 +290,4 @@ public class WikifilmRepositoryImpl implements WikifilmRepository {
 		return res;
 	}
 }
-}
+
