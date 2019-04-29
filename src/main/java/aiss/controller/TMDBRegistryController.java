@@ -6,14 +6,16 @@ import java.util.logging.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import aiss.Movie.Movie;
 import aiss.model.resources.MovieResources;
+import aiss.model.tmdb.Session;
 import aiss.model.tmdb.TMDBRegistry;
 
-public class TMDBRegistryController {
+public class TMDBRegistryController extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	private static final Logger log = Logger.getLogger(MovieController.class.getName());
 
@@ -25,13 +27,14 @@ public class TMDBRegistryController {
 		
 		//View Movie
 		MovieResources mvr = new MovieResources();
-	
+		TMDBRegistry t = mvr.getToken();
+		String token  = t.getRequestToken();
 		
-		TMDBRegistry token = mvr.getToken();
 		
-		if(token!=null) {
+		if(token!=null && ""!=token) {	
 			rd = request.getRequestDispatcher("/inicio.jsp");
 			request.setAttribute("token",token);
+			
 			log.log(Level.FINE, "La peli con id="+token,"ha sido mostrada" );
 		}else {
 			request.setAttribute("movie", "La pelicula no se ha podido mostrar");

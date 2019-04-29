@@ -8,6 +8,7 @@ import org.restlet.resource.ResourceException;
 import aiss.Movie.Credits;
 import aiss.Movie.Movie;
 import aiss.Movie.Videos;
+import aiss.model.tmdb.Session;
 import aiss.model.tmdb.TMDBRegistry;
 
 public class MovieResources {
@@ -79,6 +80,19 @@ public class MovieResources {
 		}
 		return token;
 		}
+
+	public Session getSession(String token) {
+		ClientResource cr = null;
+		Session s = null;
+		
+		try {
+			cr = new ClientResource("https://api.themoviedb.org/3/authentication/session/new?api_key="+api_Key);
+			s = cr.get(Session.class);
+		}catch (ResourceException e) {
+			System.err.println("Error al obtener la sesion "+cr.getResponse().getStatus());
+			throw e;
+		}
+		return s;
 	}
 	
-
+	}
