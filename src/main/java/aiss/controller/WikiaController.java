@@ -38,7 +38,7 @@ public class WikiaController extends HttpServlet {
 		RequestDispatcher rd = null;
 		
 		// Search for info in WikiPedia
-		log.log(Level.FINE, "Buscando información de la película " + name);
+		log.log(Level.FINE, "Buscando información del actor " + name);
 		WikiaResources wiki = new WikiaResources();
 		Wiki wikiResults = wiki.getWiki(name);
 		String s = "";
@@ -46,19 +46,23 @@ public class WikiaController extends HttpServlet {
 		try {
 			s = convertWikiText(wikiResults.getParse().getTitle(),wikiResults.getParse().getWikitext().getT(),185);
 		} catch (LinkTargetException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (EngineException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		if (wikiResults!=null){
+		if (wikiResults.getParse()!=null){
 	
 			rd = request.getRequestDispatcher("/wikiView.jsp");
 			request.setAttribute("s", s);
 			request.setAttribute("wiki", wikiResults);
 			
+		}else if(wikiResults.getParse()== null){
+			log.log(Level.SEVERE,"WikiTexto object: "+ s);
+			rd = request.getRequestDispatcher("/wikiViewError.jsp");
+		}else {
+			log.log(Level.SEVERE,"WikiTexto object: "+ s);
+			rd = request.getRequestDispatcher("/error.jsp");
 		}
 		
 		rd.forward(request, response);

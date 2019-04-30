@@ -7,7 +7,6 @@ import java.util.Collection;
 import org.restlet.resource.ClientResource;
 import org.restlet.resource.ResourceException;
 
-import aiss.Movie.Cast;
 import aiss.Movie.Credits;
 import aiss.Movie.Movie;
 
