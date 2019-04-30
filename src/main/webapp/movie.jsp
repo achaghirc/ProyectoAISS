@@ -38,7 +38,7 @@
 		<p>Status:<c:out value="${requestScope.movies.status}"/></p>
 		<p>Actores:</p>
 		<c:set var="noOfRows" value="10"/>
-		<c:forEach items="${requestScope.credits.cast}" var="casting">
+		<c:forEach items="${requestScope.credits.cast}" var="casting"
 			begin="${param.first}"  end="${param.first + noOfRows -1}">
 			<img src="https://image.tmdb.org/t/p/w185/${casting.profilePath}"/>
 			<form id="searchForm" method="post" class="listaForm" action="/WikiaController">
