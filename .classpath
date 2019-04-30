@@ -19,11 +19,71 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="com.google.appengine.eclipse.core.GAE_CONTAINER"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk-11.0.2">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="C:/Users/Anton/.m2/repository/org/mortbay/jasper/apache-jsp/8.5.35.1/apache-jsp-8.5.35.1.jar" sourcepath="C:/Users/Anton/.m2/repository/org/mortbay/jasper/apache-jsp/8.5.35.1/apache-jsp-8.5.35.1-sources.jar">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="org.eclipse.jst.component.archivename" value="apache-jsp-8.5.35.1.jar"/>
+			<attribute name="maven.groupId" value="org.mortbay.jasper"/>
+			<attribute name="maven.artifactId" value="apache-jsp"/>
+			<attribute name="maven.version" value="8.5.35.1"/>
+			<attribute name="maven.scope" value="compile"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/Anton/.m2/repository/org/apache/commons/commons-lang3/3.4/commons-lang3-3.4.jar" sourcepath="C:/Users/Anton/.m2/repository/org/apache/commons/commons-lang3/3.4/commons-lang3-3.4-sources.jar">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="org.eclipse.jst.component.archivename" value="commons-lang3-3.4.jar"/>
+			<attribute name="maven.groupId" value="org.apache.commons"/>
+			<attribute name="maven.artifactId" value="commons-lang3"/>
+			<attribute name="maven.version" value="3.4"/>
+			<attribute name="maven.scope" value="compile"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/Anton/.m2/repository/com/google/appengine/appengine-api-1.0-sdk/1.9.71/appengine-api-1.0-sdk-1.9.71.jar">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="org.eclipse.jst.component.archivename" value="appengine-api-1.0-sdk-1.9.71.jar"/>
+			<attribute name="maven.groupId" value="com.google.appengine"/>
+			<attribute name="maven.artifactId" value="appengine-api-1.0-sdk"/>
+			<attribute name="maven.version" value="1.9.71"/>
+			<attribute name="maven.scope" value="compile"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/Anton/.m2/repository/commons-codec/commons-codec/1.6/commons-codec-1.6.jar" sourcepath="C:/Users/Anton/.m2/repository/commons-codec/commons-codec/1.6/commons-codec-1.6-sources.jar">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="org.eclipse.jst.component.archivename" value="commons-codec-1.6.jar"/>
+			<attribute name="maven.groupId" value="commons-codec"/>
+			<attribute name="maven.artifactId" value="commons-codec"/>
+			<attribute name="maven.version" value="1.6"/>
+			<attribute name="maven.scope" value="compile"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/Anton/.m2/repository/com/google/http-client/google-http-client/1.20.0/google-http-client-1.20.0.jar" sourcepath="C:/Users/Anton/.m2/repository/com/google/http-client/google-http-client/1.20.0/google-http-client-1.20.0-sources.jar">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="org.eclipse.jst.component.archivename" value="google-http-client-1.20.0.jar"/>
+			<attribute name="maven.groupId" value="com.google.http-client"/>
+			<attribute name="maven.artifactId" value="google-http-client"/>
+			<attribute name="maven.version" value="1.20.0"/>
+			<attribute name="maven.scope" value="compile"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/Anton/.m2/repository/org/restlet/jse/org.restlet/2.3.7/org.restlet-2.3.7.jar" sourcepath="C:/Users/Anton/.m2/repository/org/restlet/jse/org.restlet/2.3.7/org.restlet-2.3.7-sources.jar">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="org.eclipse.jst.component.archivename" value="org.restlet-2.3.7.jar"/>
+			<attribute name="maven.groupId" value="org.restlet.jse"/>
+			<attribute name="maven.artifactId" value="org.restlet"/>
+			<attribute name="maven.version" value="2.3.7"/>
+			<attribute name="maven.scope" value="compile"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="target/lab6-mashup-sol-0.0.1-SNAPSHOT/WEB-INF/classes"/>
 </classpath>

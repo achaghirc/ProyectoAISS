@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import aiss.Movie.Cast;
 import aiss.Movie.Credits;
 import aiss.Movie.Movie;
 import aiss.SoundCloud.Track;
@@ -41,44 +42,23 @@ public class SelectedMovieController extends HttpServlet{
 			MovieResources tmdb = new MovieResources();
 			Movie tmdbResults = tmdb.getMovie(id);
 			Credits creditsResults = tmdb.getCasting(id);
-			String param = tmdbResults.getTitle();
-						
 			
 			//Searching Trailer Youtube
 			log.log(Level.FINE, "Searching for Youtube videos with query ", query);
-			YoutubeResource ytr = new YoutubeResource();
-			VideoSearch youtubeResults = ytr.getVideo(param);
+//			YoutubeResource ytr = new YoutubeResource();
+//			VideoSearch youtubeResults = ytr.getVideo(query);
 			
-			//Searching a SoundTrack Youtube
-			log.log(Level.FINE,"Searching for Soundcloud tracks that contain "+ param);
-
-/*			VideoSearch trackResults = ytr.getTrack(param);
- */
-		
 			
-			if(/*trackResults!= null &&*/ tmdbResults != null && youtubeResults!= null && creditsResults!= null ) {
-
-				
+			if(tmdbResults != null && creditsResults!= null) {
 				request.setAttribute("movies", tmdbResults);
 				request.setAttribute("credits", creditsResults);
-				request.setAttribute("items", youtubeResults.getItems());
-
-			/*	request.setAttribute("tracks", trackResults.getItems());*/
-				
-
-				
+//				request.setAttribute("items", youtubeResults.getItems());
 				rd = request.getRequestDispatcher("/movie.jsp");
-			
 			}else {
 				if(tmdbResults == null) {
-					log.log(Level.SEVERE, "TMDB object: " + tmdbResults);
-					rd = request.getRequestDispatcher("/error.jsp");
-				}else if(youtubeResults == null) {
-					log.log(Level.SEVERE, "Youtube Object: " + youtubeResults);
+					log.log(Level.SEVERE, "TMDB Object: "+tmdbResults);
 					rd = request.getRequestDispatcher("/error.jsp");
 				}
-			
-				
 			}
 			rd.forward(request, response);
 		}

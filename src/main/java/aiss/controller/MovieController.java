@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import aiss.Movie.Movie;
 import aiss.model.resources.MovieResources;
-import aiss.model.tmdb.TMDBRegistry;
 
 public class MovieController extends HttpServlet {
 	
@@ -29,13 +28,10 @@ public class MovieController extends HttpServlet {
 		MovieResources mvr = new MovieResources();
 		Movie datosMovie = mvr.getMovie(id);
 		
-		TMDBRegistry token = mvr.getToken();
-		
 		if(datosMovie!=null) {
 			rd = request.getRequestDispatcher("/movie.jsp");
 			request.setAttribute("title", datosMovie.getTitle());
 			request.setAttribute("movieById", datosMovie.getId());
-			
 			log.log(Level.FINE, "La peli con id="+id,"ha sido mostrada" );
 		}else {
 			request.setAttribute("movie", "La pelicula no se ha podido mostrar");

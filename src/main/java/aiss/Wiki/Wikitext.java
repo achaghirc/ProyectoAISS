@@ -1,5 +1,5 @@
 
-package aiss.model.wiki;
+package aiss.Wiki;
 
 import java.util.HashMap;
 import java.util.Map;

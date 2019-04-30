@@ -1,3 +1,4 @@
+
 <%@page import="aiss.Movie.ProductionCompany"%>
 <%@page import="aiss.Movie.Movie"%>
 <%@page import="aiss.model.resources.MovieResources"%>
@@ -16,6 +17,7 @@
 		
 	<div class="titulo_peli">
 		<h1><c:out value="${requestScope.movies.title}"/></h1>
+		
 	</div>
 	<div class="poster_pelicula">
 		<h3>Poster:</h3>
@@ -25,9 +27,6 @@
 		<h3>OVERVIEW:</h3>
 		<p><c:out value="${requestScope.movies.overview}"/></p>
 	</div>	
-	<div class="">
-		<h3><input type="submit" name="añadir" title="Añadir a Favoritos" value="Añadir a Favoritos"/></h3>
-	</div>
 	<div class="datos_pelicula">
 		<p>Adult:<c:out value="${requestScope.movies.adult}"/></p>
 		<p>Production Companies:</p> 
@@ -49,9 +48,16 @@
 		</c:forEach>
 		<p>Trailer</p>
 			<c:forEach items="${requestScope.items}" var="item">
-			<iframe src="https://www.youtube.com/embed/<c:out value="${item.id.videoId}"/>"></iframe>
-			</c:forEach>	
-
+			<iframe src="http://www.youtube.com/embed/${item.id.videoId}"></iframe>
+			</c:forEach>
+		<fieldset id="SoundCloud">
+		<legend>Canción de la película <c:out value="${param.searchQuery}"/></legend>
+		<c:forEach items="${requestScope.Track}" var="track"/>
+		<form id="getTrackForm" action="/SoundCloudContoller" method="post">
+		<iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="http://soundcloud.com/oembed/<c:out value="{track.id}"/>&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+		</form>
+		
+	</fieldset>
 	</div>
 	
 </body>
