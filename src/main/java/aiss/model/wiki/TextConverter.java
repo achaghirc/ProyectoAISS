@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package aiss.Wiki;
+package aiss.model.wiki;
 
 import java.util.LinkedList;
 import java.util.regex.Pattern;

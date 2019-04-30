@@ -18,8 +18,8 @@ import org.sweble.wikitext.engine.nodes.EngProcessedPage;
 import org.sweble.wikitext.engine.utils.DefaultConfigEnWp;
 import org.sweble.wikitext.parser.parser.LinkTargetException;
 
-import aiss.Wiki.TextConverter;
-import aiss.Wiki.Wiki;
+import aiss.model.wiki.TextConverter;
+import aiss.model.wiki.Wiki;
 import aiss.model.resources.WikiaResources;
 
 public class WikiaController extends HttpServlet {
