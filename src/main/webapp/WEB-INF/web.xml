@@ -78,8 +78,19 @@
   	<url-pattern>/TMDBRegistryController</url-pattern>
   </servlet-mapping>
   
+    <servlet>
+  	<description></description>
+  	<display-name>ServletCreaSesion</display-name>
+  	<servlet-name>ServletCreaSesion</servlet-name>
+  	<servlet-class>aiss.controller.ServletCreaSesion</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ServletCreaSesion</servlet-name>
+  	<url-pattern>/ServletCreaSesion</url-pattern>
+  </servlet-mapping>
+  
   <welcome-file-list>
-  	<welcome-file>index.html</welcome-file>
+  	<welcome-file>index2.jsp</welcome-file>
   </welcome-file-list>
  
   <error-page>

@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 
 
 import aiss.Movie.MovieSearch;
+import aiss.model.resources.MovieResources;
 import aiss.model.resources.MovieSearchResource;
+import aiss.model.tmdb.Sesion;
 
 
 public class SearchController extends HttpServlet {
@@ -36,10 +38,14 @@ public class SearchController extends HttpServlet {
 		log.log(Level.FINE, "Searching for TMDb movies that contain " + query);
 		MovieSearchResource tmdb = new MovieSearchResource();
 		MovieSearch tmdbResults = tmdb.getMovieSearch(query);
+		MovieResources mvr = new MovieResources();
+		String t = request.getParameter("request_token");
+		Sesion s = mvr.getSession(t);
 		
 		
 		if (tmdbResults!=null){
 			request.setAttribute("movies", tmdbResults.getResults());
+			request.setAttribute("sesionId", s);
 			rd = request.getRequestDispatcher("/movieSearch.jsp");
 			
 		} else {

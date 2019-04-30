@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html> 
 <html>
 <head>
@@ -18,12 +21,16 @@
             <div class="searchDiv">
 			    <form id="searchForm" action="SearchController" method="post">
 				    <input type="text" name="searchQuery" required/> 
+				    <input type="hidden" name="sesionId" value="${requestScope.sessionId}"/>
 				    <input type="submit" name="searchBtn" title="search" value="search">
+				    
 			    </form>
 			    
 			   <form id="searchForm" method="post" class="listaForm" action="/TMDBRegistryController">
 				<input type='submit' name='Logueate en TMDB' title="Logueate en TMDB" value="logeate"/>
 				</form>
+				<p><c:out value="${requestScope.sessionId}"/></p>
+				
             </div>
         </div>
         </center>
