@@ -53,7 +53,6 @@ public class WikiaController extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		
 		if (wikiResults!=null){
 	
 			rd = request.getRequestDispatcher("/wikiView.jsp");
