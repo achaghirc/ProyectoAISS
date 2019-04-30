@@ -28,7 +28,7 @@ public class ServletCreaSesion extends HttpServlet{
 		if(sesion!=null) {
 			request.setAttribute("sessionId",sesion.getSessionId());
 			
-			rd = request.getRequestDispatcher("/index2.jsp");
+			rd = request.getRequestDispatcher("/index1.jsp");
 			
 		}else {
 			

@@ -24,8 +24,10 @@
 	<div class="overview_pelicula">
 		<h3>OVERVIEW:</h3>
 		<p><c:out value="${requestScope.movies.overview}"/></p>
-		
 	</div>	
+	<div class="">
+		<h3><input type="submit" name="añadir" title="Añadir a Favoritos" value="Añadir a Favoritos"/></h3>
+	</div>
 	<div class="datos_pelicula">
 		<p>Adult:<c:out value="${requestScope.movies.adult}"/></p>
 		<p>Production Companies:</p> 
