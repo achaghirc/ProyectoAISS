@@ -29,17 +29,16 @@ public class TMDBRegistryController extends HttpServlet{
 		//View Movie
 		MovieResources mvr = new MovieResources();
 		TMDBRegistry t = mvr.getToken();
-		String token  = t.getRequestToken();
-		Sesion s = new Sesion();
-		String sesionId=s.getSessionId();
-		
+		String token = t.getRequestToken();
+
+	
 		
 		if(token!=null && ""!=token) {	
+			
 			rd = request.getRequestDispatcher("/inicio.jsp");
 			request.setAttribute("token",token);
-			request.setAttribute("sesionId", sesionId);
+			
 			log.log(Level.FINE, "El token es= "+token );
-			log.log(Level.FINE, "El id de sesion es= "+sesionId);
 			
 		}else {
 			request.setAttribute("movie", "La pelicula no se ha podido mostrar");
