@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<p>Este actor no tiene una pagina personalizada en WikiPedia.</p>
+	<div>
+		<h3>No existe informaci�n de este actor en la Wikipedia.</h3>
+	</div>
 </body>
 </html>
