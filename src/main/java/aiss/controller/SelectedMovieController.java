@@ -45,18 +45,29 @@ public class SelectedMovieController extends HttpServlet{
 			
 			//Searching Trailer Youtube
 			log.log(Level.FINE, "Searching for Youtube videos with query ", query);
-//			YoutubeResource ytr = new YoutubeResource();
-//			VideoSearch youtubeResults = ytr.getVideo(query);
+			YoutubeResource ytr = new YoutubeResource();
+			VideoSearch youtubeResults = ytr.getVideo(query);
 			
-			
-			if(tmdbResults != null && creditsResults!= null) {
+
+			//Searching a SoundTrack Youtube
+//			log.log(Level.FINE,"Searching for Youtube tracks that contain "+ param);
+//			VideoSearch trackResults = ytr.getTrack(param);
+ 
+			if(trackResults!= null && tmdbResults != null && youtubeResults!= null && creditsResults!= null ) {
+				
 				request.setAttribute("movies", tmdbResults);
 				request.setAttribute("credits", creditsResults);
-//				request.setAttribute("items", youtubeResults.getItems());
+				request.setAttribute("items", youtubeResults.getItems());
+				request.setAttribute("track", trackResults.getItems());
+
+
 				rd = request.getRequestDispatcher("/movie.jsp");
 			}else {
 				if(tmdbResults == null) {
 					log.log(Level.SEVERE, "TMDB Object: "+tmdbResults);
+					rd = request.getRequestDispatcher("/error.jsp");
+				}else if(trackResults == null) {
+					log.log(Level.SEVERE, "Youtube Object: " + trackResults);
 					rd = request.getRequestDispatcher("/error.jsp");
 				}
 			}
