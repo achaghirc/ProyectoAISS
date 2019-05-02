@@ -1,4 +1,4 @@
-package resources;
+package aiss.model.resources;
 
 import java.io.UnsupportedEncodingException;
 import org.junit.Test;
