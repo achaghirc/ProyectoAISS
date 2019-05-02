@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import aiss.Movie.Credits;
 import aiss.Movie.Movie;
-import aiss.SoundCloud.Track;
 import aiss.model.aliexpress.AliExpress;
 import aiss.model.resources.AliExpressResource;
 import aiss.model.resources.MovieResources;
@@ -64,6 +63,7 @@ public class SelectedMovieController extends HttpServlet{
 				request.setAttribute("credits", creditsResults);
 				request.setAttribute("items", youtubeResults.getItems());
 				request.setAttribute("track", trackResults.getItems());
+				request.setAttribute("products", aliResults.getResult().getProducts());
 
 				rd = request.getRequestDispatcher("/movie.jsp");
 			
