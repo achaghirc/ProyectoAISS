@@ -35,7 +35,12 @@ body{
     color:  black;
     
 }
-/*.searchDiv{
-    margin-top: 300px; 
+
+.searchDiv {
+    margin-top: 20px;
+    background: #f4f4f4;
+	height: 100%;
+	position: absolute;
+	text-align: center;
+	width: 100%;
 }
-*/

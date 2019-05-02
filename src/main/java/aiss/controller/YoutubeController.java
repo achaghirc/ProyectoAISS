@@ -9,9 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import aiss.Movie.Credits;
-import aiss.Movie.Movie;
-import aiss.model.resources.MovieResources;
 import aiss.model.resources.YoutubeResource;
 import aiss.model.youtube.VideoSearch;
 
@@ -39,12 +36,9 @@ public class YoutubeController extends HttpServlet {
 		YoutubeResource ytr = new YoutubeResource();
 		VideoSearch youtubeResults = ytr.getVideo(query);
 		
-		VideoSearch trackResuts = ytr.getTrack(query);
-		
-		if(youtubeResults!= null && trackResuts!=null){
+		if(youtubeResults!= null){
 			rd = request.getRequestDispatcher("/movie.jsp");
 			request.setAttribute("items", youtubeResults.getItems());
-			request.setAttribute("track", trackResuts.getItems());
 		}else {
 			log.log(Level.SEVERE,"Youtube object: "+youtubeResults);
 			rd = request.getRequestDispatcher("/error.jsp");
