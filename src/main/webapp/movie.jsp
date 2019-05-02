@@ -51,7 +51,11 @@
 			<c:forEach items="${requestScope.items}" var="item">
 			<iframe src="https://www.youtube.com/embed/<c:out value="${item.id.videoId}"/>"></iframe>
 			</c:forEach>	
-
+		
+		<p>Banda Sonora de la pelicula <c:out value="${requestScope.movies.title}"/></p>
+		<c:forEach items="${requestScope.track}" var="track">
+			<iframe src="https://www.youtube.com/embed/<c:out value="${track.id.videoId}"/>"></iframe>
+			</c:forEach>	
 	</div>
 	
 </body>

@@ -50,23 +50,16 @@ public class SelectedMovieController extends HttpServlet{
 			VideoSearch youtubeResults = ytr.getVideo(param);
 			
 			//Searching a SoundTrack Youtube
-			log.log(Level.FINE,"Searching for Soundcloud tracks that contain "+ param);
-
-/*			VideoSearch trackResults = ytr.getTrack(param);
- */
-		
-			
-			if(/*trackResults!= null &&*/ tmdbResults != null && youtubeResults!= null && creditsResults!= null ) {
-
+			log.log(Level.FINE,"Searching for Youtube tracks that contain "+ param);
+			VideoSearch trackResults = ytr.getTrack(param);
+ 
+			if(trackResults!= null && tmdbResults != null && youtubeResults!= null && creditsResults!= null ) {
 				
 				request.setAttribute("movies", tmdbResults);
 				request.setAttribute("credits", creditsResults);
 				request.setAttribute("items", youtubeResults.getItems());
+				request.setAttribute("track", trackResults.getItems());
 
-			/*	request.setAttribute("tracks", trackResults.getItems());*/
-				
-
-				
 				rd = request.getRequestDispatcher("/movie.jsp");
 			
 			}else {
@@ -76,8 +69,10 @@ public class SelectedMovieController extends HttpServlet{
 				}else if(youtubeResults == null) {
 					log.log(Level.SEVERE, "Youtube Object: " + youtubeResults);
 					rd = request.getRequestDispatcher("/error.jsp");
+				}else if(trackResults == null) {
+					log.log(Level.SEVERE, "Youtube Object: " + trackResults);
+					rd = request.getRequestDispatcher("/error.jsp");
 				}
-			
 				
 			}
 			rd.forward(request, response);
