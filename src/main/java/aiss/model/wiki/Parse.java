@@ -1,3 +1,4 @@
+
 package aiss.model.wiki;
 
 import java.util.HashMap;

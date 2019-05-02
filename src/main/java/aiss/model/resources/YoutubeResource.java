@@ -29,13 +29,14 @@ public class YoutubeResource {
 
 			cr = new ClientResource(URL_TRAILER.replace("%QUERY",query).replace("%APIKEY",api_key));
 			res = cr.get(VideoSearch.class);
-			log.log(Level.FINE, "Busqueda de videos de "+query+" realizada correctamente.");
+			log.log(Level.FINE, "Busqueda de videos de "+query+"realizada correctamente.");
 		}catch (ResourceException e) {
 			log.log(Level.WARNING, "Error al obtener los videos", cr.getResponse().getStatus());
 			throw e;
 		}
 		return res;
 	}
+
 	
 	public VideoSearch getTrack(String param) throws UnsupportedEncodingException{
 		String query = URLEncoder.encode(param, "UTF-8");
@@ -45,7 +46,7 @@ public class YoutubeResource {
 		try {
 			cr = new ClientResource(URL_YOUTUBE.replace("%QUERY",query).replace("%APIKEY",api_key));
 			res = cr.get(VideoSearch.class);
-			log.log(Level.FINE, "Busqueda de canciones de "+query+" realizada correctamente.");
+			log.log(Level.FINE, "Busqueda de canciones de "+query+"realizada correctamente.");
 		}catch (ResourceException e) {
 			log.log(Level.WARNING, "Error al obtener las canciones", cr.getResponse().getStatus());
 			throw e;

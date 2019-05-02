@@ -5,12 +5,11 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-
 <title>Actor sin Información</title>
 </head>
 <body>
 	<div>
 	<h3>No existe información de este actor en la Wikipedia.</h3>
 	</div>
-</body>"src/main/webapp/wikiView.jsp"
+</body>
 </html>
