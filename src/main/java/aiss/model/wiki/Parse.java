@@ -1,5 +1,5 @@
 
-package aiss.model.aliexpress;
+package aiss.model.wiki;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,36 +12,49 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "result",
-    "errorCode"
+    "title",
+    "pageid",
+    "wikitext"
 })
-public class AliExpress {
+public class Parse {
 
-    @JsonProperty("result")
-    private Result result;
-    @JsonProperty("errorCode")
-    private Integer errorCode;
+    @JsonProperty("title")
+    private String title;
+    @JsonProperty("pageid")
+    private Integer pageid;
+    @JsonProperty("wikitext")
+    private Wikitext wikitext;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("result")
-    public Result getResult() {
-        return result;
+    @JsonProperty("title")
+    public String getTitle() {
+        return title;
     }
 
-    @JsonProperty("result")
-    public void setResult(Result result) {
-        this.result = result;
+    @JsonProperty("title")
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    @JsonProperty("errorCode")
-    public Integer getErrorCode() {
-        return errorCode;
+    @JsonProperty("pageid")
+    public Integer getPageid() {
+        return pageid;
     }
 
-    @JsonProperty("errorCode")
-    public void setErrorCode(Integer errorCode) {
-        this.errorCode = errorCode;
+    @JsonProperty("pageid")
+    public void setPageid(Integer pageid) {
+        this.pageid = pageid;
+    }
+
+    @JsonProperty("wikitext")
+    public Wikitext getWikitext() {
+        return wikitext;
+    }
+
+    @JsonProperty("wikitext")
+    public void setWikitext(Wikitext wikitext) {
+        this.wikitext = wikitext;
     }
 
     @JsonAnyGetter

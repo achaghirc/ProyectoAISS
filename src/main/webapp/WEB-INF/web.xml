@@ -33,6 +33,17 @@
   	<servlet-name>SelectedMovieController</servlet-name>
   	<url-pattern>/SelectedMovieController</url-pattern>
   </servlet-mapping>
+  <!-- Servlet para la Wikipedia -->
+  <servlet>
+  	<description></description>
+  	<display-name>WikiaController</display-name>
+  	<servlet-name>WikiaController</servlet-name>
+  	<servlet-class>aiss.controller.WikiaController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>WikiaController</servlet-name>
+  	<url-pattern>/WikiaController</url-pattern>
+  </servlet-mapping>
   <!-- SERVLET DE SOUNDCLOUD -->
   <servlet>
   	<description></description>
@@ -44,7 +55,7 @@
   	<servlet-name>SoundCloudController</servlet-name>
   	<url-pattern>/SoundCloudController</url-pattern>
   </servlet-mapping>
-  
+
    <servlet>
   	<description></description>
   	<display-name>YoutubeController</display-name>
@@ -54,6 +65,17 @@
   <servlet-mapping>
   	<servlet-name>YoutubeController</servlet-name>
   	<url-pattern>/YoutubeController</url-pattern>
+  </servlet-mapping>
+    
+   <servlet>
+  	<description></description>
+  	<display-name>TMDBRegistryController</display-name>
+  	<servlet-name>TMDBRegistryController</servlet-name>
+  	<servlet-class>aiss.controller.TMDBRegistryController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>TMDBRegistryController</servlet-name>
+  	<url-pattern>/TMDBRegistryController</url-pattern>
   </servlet-mapping>
   
   <welcome-file-list>

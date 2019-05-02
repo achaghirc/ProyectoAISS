@@ -1,5 +1,5 @@
 
-package aiss.model.aliexpress;
+package aiss.model.wiki;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,36 +12,23 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "result",
-    "errorCode"
+    "*"
 })
-public class AliExpress {
+public class Wikitext {
 
-    @JsonProperty("result")
-    private Result result;
-    @JsonProperty("errorCode")
-    private Integer errorCode;
+    @JsonProperty("*")
+    private String t;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("result")
-    public Result getResult() {
-        return result;
+    @JsonProperty("*")
+    public String getT() {
+        return t;
     }
 
-    @JsonProperty("result")
-    public void setResult(Result result) {
-        this.result = result;
-    }
-
-    @JsonProperty("errorCode")
-    public Integer getErrorCode() {
-        return errorCode;
-    }
-
-    @JsonProperty("errorCode")
-    public void setErrorCode(Integer errorCode) {
-        this.errorCode = errorCode;
+    @JsonProperty("*")
+    public void setT(String t) {
+        this.t = t;
     }
 
     @JsonAnyGetter

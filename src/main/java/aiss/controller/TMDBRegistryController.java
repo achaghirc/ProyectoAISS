@@ -12,34 +12,33 @@ import javax.servlet.http.HttpServletResponse;
 
 import aiss.Movie.Movie;
 import aiss.model.resources.MovieResources;
+import aiss.model.tmdb.Session;
 import aiss.model.tmdb.TMDBRegistry;
 
-public class MovieController extends HttpServlet {
-	
+public class TMDBRegistryController extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	private static final Logger log = Logger.getLogger(MovieController.class.getName());
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//Request Data
 	
-		String id = request.getParameter("id");
+		
 		RequestDispatcher rd = null;
 		
 		//View Movie
 		MovieResources mvr = new MovieResources();
-		Movie datosMovie = mvr.getMovie(id);
+		TMDBRegistry t = mvr.getToken();
+		String token  = t.getRequestToken();
 		
-		TMDBRegistry token = mvr.getToken();
 		
-		if(datosMovie!=null) {
-			rd = request.getRequestDispatcher("/movie.jsp");
-			request.setAttribute("title", datosMovie.getTitle());
-			request.setAttribute("movieById", datosMovie.getId());
+		if(token!=null && ""!=token) {	
+			rd = request.getRequestDispatcher("/inicio.jsp");
+			request.setAttribute("token",token);
 			
-			log.log(Level.FINE, "La peli con id="+id,"ha sido mostrada" );
+			log.log(Level.FINE, "La peli con id="+token,"ha sido mostrada" );
 		}else {
 			request.setAttribute("movie", "La pelicula no se ha podido mostrar");
-			log.log(Level.FINE, "La peli con id="+id,"no ha sido mostrada" );
+			log.log(Level.FINE, "La peli con id="+token,"no ha sido mostrada" );
 			rd = request.getRequestDispatcher("error.jsp");
 		}
 		rd.forward(request, response);

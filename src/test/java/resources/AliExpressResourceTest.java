@@ -1,4 +1,4 @@
-package aiss.model.resources;
+package resources;
 
 import static org.junit.Assert.*;
 
@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import aiss.model.aliexpress.AliExpress;
 import aiss.model.aliexpress.Product;
+import aiss.model.resources.AliExpressResource;
 
 public class AliExpressResourceTest {
 
@@ -15,7 +16,7 @@ public class AliExpressResourceTest {
 	static AliExpress a1,a2;
 	@Test
 	public void testGetProducts() throws UnsupportedEncodingException {
-		a1=AR.getProducts("Black Panther");
+		a1=AR.getProducts("batman");
 		a2=AR.getProducts("El Padrino");
 		assertNotNull("No se ha podido realizar la busqueda",a1);
 		assertNotNull("No se ha podido realizar la busqueda",a2);

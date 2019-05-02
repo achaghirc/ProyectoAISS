@@ -4,41 +4,29 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Wikifilm</title>
-<link rel="stylesheet" type="text/css" href="/css/header.css">
+<link rel="stylesheet" type="text/css" href="css/header.css">
+
 </head>
 <body>
-
- <div class = "main">
-            <div class="header">
-                <div class="border_top">
-                    <img src="images/header.png">
-                </div>
-                <div class="header_box">
-                    <div class="logo">
-                        <a href="">WikiFilm</a>
-                    </div>
-                    <div class="cnt_detail">
-                            <div class="icon_club">
-                                <p style="font-size: 29px;">WikifilmClub</p>
-                            </div>
-                        <div class="social_icon">
-                            <div class="login">
-                                <a href="" target="blank">Log In</a>
-                            </div>
-                            <div class="register">
-                                <a href="" target="blank">Register</a>
-                            </div>
-                        </div>
-                    </div>
+    <div class = "main">
+        <center>
+        <div class="header">
+            <div class="header_box">
+                <div class="title">
+                    <a href=""><b>WikiFilm</b><img src="images/Logo3.png" width="100" height="100"></a>
                 </div>
             </div>
-				<div id="searchDiv">
-					<form id="searchForm" action="SearchController" method="post">
-						<input type="text" name="searchQuery" required/> 
-						<input type="submit" name="searchBtn" title="search" value="search">
-					</form>
-				</div>
-		</div>
-
+            <div class="searchDiv">
+			    <form id="searchForm" action="SearchController" method="post">
+				    <input type="text" name="searchQuery" required/> 
+				    <input type="submit" name="searchBtn" title="search" value="search">
+			    </form>
+			   <form id="searchForm" method="post" class="listaForm" action="/TMDBRegistryController">
+				<input type='submit' name='Logueate en TMDB' title="Logueate en TMDB" value="logeate"/>
+				</form>
+            </div>
+        </div>
+        </center>
+    </div>
 </body>
 </html>
