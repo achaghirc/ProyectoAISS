@@ -28,12 +28,11 @@
 			    
 			   <form id="searchForm" method="post" class="listaForm" action="/TMDBRegistryController">
 				<input type='submit' name='Logueate en TMDB' title="Logueate en TMDB" value="logeate"/>
-				</form>
-				<p><c:out value="${requestScope.sessionId}"/></p>
-				
+				</form>	
             </div>
         </div>
         </center>
+       
     </div>
 </body>
 </html>

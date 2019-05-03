@@ -50,23 +50,17 @@ public class SelectedMovieController extends HttpServlet{
 			VideoSearch youtubeResults = ytr.getVideo(param);
 			
 			//Searching a SoundTrack Youtube
-			log.log(Level.FINE,"Searching for Soundcloud tracks that contain "+ param);
-
-/*			VideoSearch trackResults = ytr.getTrack(param);
- */
-		
+			log.log(Level.FINE,"Searching for Soundtracks that contain "+ param);
+			VideoSearch trackResults = ytr.getTrack(param);
 			
-			if(/*trackResults!= null &&*/ tmdbResults != null && youtubeResults!= null && creditsResults!= null ) {
+			if(trackResults!= null && tmdbResults != null && youtubeResults!= null && creditsResults!= null ) {
 
 				
 				request.setAttribute("movies", tmdbResults);
 				request.setAttribute("credits", creditsResults);
 				request.setAttribute("items", youtubeResults.getItems());
+				request.setAttribute("tracks", trackResults.getItems());
 
-			/*	request.setAttribute("tracks", trackResults.getItems());*/
-				
-
-				
 				rd = request.getRequestDispatcher("/movie.jsp");
 			
 			}else {

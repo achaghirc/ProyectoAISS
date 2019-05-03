@@ -17,7 +17,7 @@ public class YoutubeResource {
 	private static final String api_key = "AIzaSyDmWMh1bHMPVY8IO_GVekB729r9X6e4ihc";
 
 	private static final String URL_TRAILER = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=%QUERY+trailer&maxResults=1&order=relevance&key=%APIKEY";
-	private static final String URL_YOUTUBE = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=%QUERY+soundtrack&maxResults=1&order=relevance&key=%APIKEY";
+	private static final String URL_YOUTUBE = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=%QUERY+SoundTrack+Full+Album&maxResults=1&order=relevance&type=video&key=%APIKEY";
 
 	
 	public VideoSearch getVideo(String param) throws UnsupportedEncodingException{
@@ -46,7 +46,7 @@ public class YoutubeResource {
 		try {
 			cr = new ClientResource(URL_YOUTUBE.replace("%QUERY",query).replace("%APIKEY",api_key));
 			res = cr.get(VideoSearch.class);
-			log.log(Level.FINE, "Busqueda de canciones de "+query+"realizada correctamente.");
+			log.log(Level.FINE, "Busqueda de canciones de "+query+" realizada correctamente.");
 		}catch (ResourceException e) {
 			log.log(Level.WARNING, "Error al obtener las canciones", cr.getResponse().getStatus());
 			throw e;

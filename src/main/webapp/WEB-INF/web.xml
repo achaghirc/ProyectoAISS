@@ -88,7 +88,17 @@
   	<servlet-name>ServletCreaSesion</servlet-name>
   	<url-pattern>/ServletCreaSesion</url-pattern>
   </servlet-mapping>
-  
+   <servlet>
+  	<description></description>
+  	<display-name>InicioController</display-name>
+  	<servlet-name>InicioController</servlet-name>
+  	<servlet-class>aiss.controller.InicioController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>InicioController</servlet-name>
+  	<url-pattern>/InicioController</url-pattern>
+  </servlet-mapping>
+  <!-- Ruta mas famosa -->
   <welcome-file-list>
   	<welcome-file>index2.jsp</welcome-file>
   </welcome-file-list>

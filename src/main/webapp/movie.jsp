@@ -49,10 +49,18 @@
 		</c:forEach>
 		<p>Trailer</p>
 			<c:forEach items="${requestScope.items}" var="item">
-			<iframe src="https://www.youtube.com/embed/<c:out value="${item.id.videoId}"/>"></iframe>
+			<iframe id="ytplayer" type="text/html" width="420" height="205"
+				src="https://www.youtube.com/embed/${item.id.videoId}"
+					frameborder="0" allowfullscreen></iframe>
 			</c:forEach>	
-
+		
+		<p>Banda Sonora de la pelicula <c:out value="${requestScope.movies.title}"/></p>
+		<c:forEach items="${requestScope.tracks}" var="track">
+			<iframe id="ytplayer" type="text/html" width="420" height="205"
+				src="https://www.youtube.com/embed/${track.id.videoId}"
+					frameborder="0" allowfullscreen></iframe>
+		
+			</c:forEach>	
 	</div>
-	
 </body>
 </html>

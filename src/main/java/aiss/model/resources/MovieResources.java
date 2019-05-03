@@ -3,6 +3,7 @@ package aiss.model.resources;
 import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 
 import javax.ws.rs.core.MediaType;
 
@@ -17,6 +18,7 @@ import com.sun.tools.javac.util.Context;
 
 import aiss.Movie.Credits;
 import aiss.Movie.Movie;
+import aiss.Movie.MovieSearch;
 import aiss.Movie.Videos;
 import aiss.model.tmdb.Sesion;
 import aiss.model.tmdb.Session;
@@ -105,5 +107,19 @@ public class MovieResources {
 		}
 		return s;
 	}
-	
+	public MovieSearch getPopular() {
+		//https://api.themoviedb.org/3/movie/popular?api_key=1cb3b67dfeb8452b822808e663f7b97c&language=en-US&page=1
+		ClientResource cr = null; 
+		MovieSearch v = null;
+		
+		try { 
+			cr = new ClientResource(URL_MOVIE+"popular?api_key="+api_Key);
+			v = cr.get(MovieSearch.class);
+		}catch (ResourceException e) {
+			System.err.println("Error al obtener la pelicula mas vista: "+cr.getResponse().getStatus());
+			throw e;
+		}
+		return v;
 	}
+	
+}
