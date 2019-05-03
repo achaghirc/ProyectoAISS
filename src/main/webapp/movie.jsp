@@ -16,6 +16,7 @@
 		
 	<div class="titulo_peli">
 		<h1><c:out value="${requestScope.movies.title}"/></h1>
+		
 	</div>
 	<div class="poster_pelicula">
 		<h3>Poster:</h3>
@@ -24,10 +25,8 @@
 	<div class="overview_pelicula">
 		<h3>OVERVIEW:</h3>
 		<p><c:out value="${requestScope.movies.overview}"/></p>
+		
 	</div>	
-	<div class="">
-		<h3><input type="submit" name="añadir" title="Añadir a Favoritos" value="Añadir a Favoritos"/></h3>
-	</div>
 	<div class="datos_pelicula">
 		<p>Adult:<c:out value="${requestScope.movies.adult}"/></p>
 		<p>Production Companies:</p> 
@@ -53,7 +52,6 @@
 				src="https://www.youtube.com/embed/${item.id.videoId}"
 					frameborder="0" allowfullscreen></iframe>
 			</c:forEach>	
-		
 		<p>Banda Sonora de la pelicula <c:out value="${requestScope.movies.title}"/></p>
 		<c:forEach items="${requestScope.tracks}" var="track">
 			<iframe id="ytplayer" type="text/html" width="420" height="205"
@@ -62,5 +60,22 @@
 		
 			</c:forEach>	
 	</div>
+	<fieldset id="aliexpress">
+		<legend>
+			Productos de  
+			<c:out value="${param.searchQuery}" />
+		</legend>
+		<c:forEach items="${requestScope.products}" var="producto" begin="1" end="5">
+			<a target="_blank" href="<c:out value="${producto.productUrl}"/>">${producto.productTitle}</a>
+			<img src="<c:out value = "${producto.imageUrl}"/>" height="314"
+				width="350" />
+			<br><br>
+			<div style="text-align: center;">
+			<span style="font-size: 24px; font-family: arial; color:#f60; font-weight: 700; align: center; "><c:out value="${producto.localPrice}"/></span>
+			</div>
+			<br>
+			<br>
+		</c:forEach>
+	</fieldset>
 </body>
 </html>

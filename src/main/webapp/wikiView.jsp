@@ -5,10 +5,9 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title><c:out value="${requestScope.wiki.parse.title}"/></title>
 </head>
 <body>
-	<pre><c:out value="${requestScope.wiki.parse.wikitext.t}"/></pre>
+	<pre> <c:out value="${requestScope.s}"/></pre>
 </body>
 </html>

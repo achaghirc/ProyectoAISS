@@ -5,11 +5,12 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Actor sin Información</title>
+
+<title>Actor sin Informaciï¿½n</title>
 </head>
 <body>
 	<div>
-	<h3>No existe información de este actor en la Wikipedia.</h3>
+		<h3>No existe informaciï¿½n de este actor en la Wikipedia.</h3>
 	</div>
 </body>
 </html>

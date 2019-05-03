@@ -3,18 +3,16 @@ package aiss.controller;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import aiss.Movie.Credits;
 import aiss.Movie.Movie;
-import aiss.SoundCloud.Track;
+import aiss.model.aliexpress.AliExpress;
+import aiss.model.resources.AliExpressResource;
 import aiss.model.resources.MovieResources;
-import aiss.model.resources.SoundCloudResource;
 import aiss.model.resources.YoutubeResource;
 import aiss.model.youtube.VideoSearch;
 
@@ -42,10 +40,14 @@ public class SelectedMovieController extends HttpServlet{
 			Movie tmdbResults = tmdb.getMovie(id);
 			Credits creditsResults = tmdb.getCasting(id);
 			String param = tmdbResults.getTitle();
-						
 			
+			// Search for products in Aliexpress
+			log.log(Level.FINE,"Buscado productos de AliExpress que contengan " + param);
+			AliExpressResource ali = new AliExpressResource();
+			AliExpress aliResults = ali.getProducts(param);
+				
 			//Searching Trailer Youtube
-			log.log(Level.FINE, "Searching for Youtube videos with query ", query);
+			log.log(Level.FINE, "Searching for Youtube videos with query ", param);
 			YoutubeResource ytr = new YoutubeResource();
 			VideoSearch youtubeResults = ytr.getVideo(param);
 			
@@ -60,6 +62,7 @@ public class SelectedMovieController extends HttpServlet{
 				request.setAttribute("credits", creditsResults);
 				request.setAttribute("items", youtubeResults.getItems());
 				request.setAttribute("tracks", trackResults.getItems());
+				request.setAttribute("products", aliResults.getResult().getProducts());
 
 				rd = request.getRequestDispatcher("/movie.jsp");
 			
@@ -70,9 +73,14 @@ public class SelectedMovieController extends HttpServlet{
 				}else if(youtubeResults == null) {
 					log.log(Level.SEVERE, "Youtube Object: " + youtubeResults);
 					rd = request.getRequestDispatcher("/error.jsp");
+				}else if(trackResults == null) {
+					log.log(Level.SEVERE, "Youtube Object: " + trackResults);
+					rd = request.getRequestDispatcher("/error.jsp");
+				}else if(aliResults == null) {
+					log.log(Level.SEVERE, "AliExpress Object: " + aliResults);
+					rd = request.getRequestDispatcher("/error.jsp");
 				}
-			
-				
+
 			}
 			rd.forward(request, response);
 		}

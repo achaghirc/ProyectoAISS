@@ -8,9 +8,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<p>Token:<c:out value="${requestScope.token}"/></p>
-	
-		<p><a href="https://www.themoviedb.org/authenticate/${requestScope.token}?redirect_to=http://localhost:8090/ServletCreaSesion?"${requestScope.token}>
+	Token:<c:out value="${requestScope.token}"/>
+	<p><c:out value="${requestScope.token}"/></p>
+		<p><a href="https://www.themoviedb.org/authenticate/${requestScope.token}?redirect_to=https://appwikifilm.appspot.com">
 		Logueate en TMDB </a></p>
 	
 	

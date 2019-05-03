@@ -44,18 +44,8 @@
   	<servlet-name>WikiaController</servlet-name>
   	<url-pattern>/WikiaController</url-pattern>
   </servlet-mapping>
-  <!-- SERVLET DE SOUNDCLOUD -->
-  <servlet>
-  	<description></description>
-  	<display-name>SoundCloudController</display-name>
-  	<servlet-name>SoundCloudController</servlet-name>
-  	<servlet-class>aiss.controller.SoundCloudController</servlet-class>
-  </servlet>
-   <servlet-mapping>
-  	<servlet-name>SoundCloudController</servlet-name>
-  	<url-pattern>/SoundCloudController</url-pattern>
-  </servlet-mapping>
-
+  
+	<!-- Servlet para YouTube -->
    <servlet>
   	<description></description>
   	<display-name>YoutubeController</display-name>
@@ -76,8 +66,7 @@
   <servlet-mapping>
   	<servlet-name>TMDBRegistryController</servlet-name>
   	<url-pattern>/TMDBRegistryController</url-pattern>
-  </servlet-mapping>
-  
+  </servlet-mapping> 
     <servlet>
   	<description></description>
   	<display-name>ServletCreaSesion</display-name>
@@ -100,7 +89,7 @@
   </servlet-mapping>
   <!-- Ruta mas famosa -->
   <welcome-file-list>
-  	<welcome-file>index2.jsp</welcome-file>
+  	<welcome-file>index.html</welcome-file>
   </welcome-file-list>
  
   <error-page>
@@ -108,30 +97,4 @@
     <location>/error.jsp</location>
   </error-page>
   
-	<servlet>
-	<description/>
-		<servlet-name>SoundCloudAuthController</servlet-name>
-		<servlet-class>aiss.controller.oauth.GenericAuthController</servlet-class>
-	<init-param>
-		<param-name>provider</param-name>
-		<param-value>SoundCloud</param-value>
-	</init-param>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>SoundCloudAuthController</servlet-name>
-		<url-pattern>/AuthController/SoundCloud</url-pattern>
-	</servlet-mapping>
-	<servlet>
-		<description/>
-		<servlet-name>SoundCloudOAuth2Callback</servlet-name>
-		<servlet-class>aiss.controller.oauth.OAuth2Callback</servlet-class>
-	<init-param>
-		<param-name>provider</param-name>
-		<param-value>SoundCloud</param-value>
-	</init-param>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>SoundCloudOAuth2Callback</servlet-name>
-		<url-pattern>/oauth2callback/SoundCloud</url-pattern>
-	</servlet-mapping>
 </web-app>

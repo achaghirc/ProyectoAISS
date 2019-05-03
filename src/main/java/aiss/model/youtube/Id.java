@@ -1,7 +1,8 @@
 package aiss.model.youtube;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+
+
 
 public class Id {
 

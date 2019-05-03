@@ -12,7 +12,6 @@
 <body>
 
 	<h1>Pelicula: <c:out value="${param.searchQuery}"/></h1>
-	
 	<fieldset id="tmdb">
 	<c:forEach items="${requestScope.movies}" var="movie">
 		<form id="searchForm" method="post" class="listaForm" action="/SelectedMovieController">

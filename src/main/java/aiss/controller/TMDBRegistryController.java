@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import aiss.Movie.Movie;
 import aiss.model.resources.MovieResources;
-import aiss.model.tmdb.Sesion;
 import aiss.model.tmdb.Session;
 import aiss.model.tmdb.TMDBRegistry;
 
@@ -29,17 +28,14 @@ public class TMDBRegistryController extends HttpServlet{
 		//View Movie
 		MovieResources mvr = new MovieResources();
 		TMDBRegistry t = mvr.getToken();
-		String token = t.getRequestToken();
-
-	
+		String token  = t.getRequestToken();
+		
 		
 		if(token!=null && ""!=token) {	
-			
 			rd = request.getRequestDispatcher("/inicio.jsp");
 			request.setAttribute("token",token);
 			
-			log.log(Level.FINE, "El token es= "+token );
-			
+			log.log(Level.FINE, "La peli con id="+token,"ha sido mostrada" );
 		}else {
 			request.setAttribute("movie", "La pelicula no se ha podido mostrar");
 			log.log(Level.FINE, "La peli con id="+token,"no ha sido mostrada" );

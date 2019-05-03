@@ -36,7 +36,6 @@ public class YoutubeResource {
 		}
 		return res;
 	}
-
 	
 	public VideoSearch getTrack(String param) throws UnsupportedEncodingException{
 		String query = URLEncoder.encode(param, "UTF-8");

@@ -3,24 +3,13 @@ package aiss.model.resources;
 import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
 
-import javax.ws.rs.core.MediaType;
-
-import org.jboss.resteasy.logging.Logger;
-import org.jboss.resteasy.logging.Logger.LoggerType;
-import org.restlet.Request;
 import org.restlet.resource.ClientResource;
 import org.restlet.resource.ResourceException;
-
-import com.google.api.client.http.HttpResponse;
-import com.sun.tools.javac.util.Context;
-
 import aiss.Movie.Credits;
 import aiss.Movie.Movie;
 import aiss.Movie.MovieSearch;
 import aiss.Movie.Videos;
-import aiss.model.tmdb.Sesion;
 import aiss.model.tmdb.Session;
 import aiss.model.tmdb.TMDBRegistry;
 
@@ -93,14 +82,14 @@ public class MovieResources {
 		}
 		return token;
 		}
-	
-	public Sesion getSession(String token) {
+
+	public Session getSession(String token) {
 		ClientResource cr = null;
-		Sesion s = null;
+		Session s = null;
 		
 		try {
 			cr = new ClientResource("https://api.themoviedb.org/3/authentication/session/new?api_key="+api_Key);
-			s = cr.get(Sesion.class);
+			s = cr.get(Session.class);
 		}catch (ResourceException e) {
 			System.err.println("Error al obtener la sesion "+cr.getResponse().getStatus());
 			throw e;
