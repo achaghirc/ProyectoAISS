@@ -62,8 +62,7 @@
 	</div>
 	<fieldset id="aliexpress">
 		<legend>
-			Productos de  
-			<c:out value="${param.searchQuery}" />
+			Productos de <c:out value="${param.searchQuery}" />
 		</legend>
 		<c:forEach items="${requestScope.products}" var="producto" begin="1" end="5">
 			<a target="_blank" href="<c:out value="${producto.productUrl}"/>">${producto.productTitle}</a>
