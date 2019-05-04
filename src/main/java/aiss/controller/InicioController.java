@@ -36,24 +36,35 @@ private static final long serialVersionUID = 1L;
 			log.log(Level.FINE, "Searching for TMDB movies most Popular");
 			
 			MovieResources tmdb = new MovieResources();
-			MovieSearch tmdbResults = tmdb.getPopular();
+			MovieSearch popularResults = tmdb.getPopular();
+			MovieSearch upcomingResults = tmdb.getUpcoming();
+			MovieSearch trendingResults = tmdb.getTrending();
 						
 			
 			
 			
  
-			if(tmdbResults != null) {
+			if(popularResults != null && upcomingResults!=null && trendingResults!=null) {
 				
-				request.setAttribute("movie", tmdbResults.getResults());
+				request.setAttribute("movie", popularResults.getResults());
+				request.setAttribute("upcoming", upcomingResults.getResults());
+				request.setAttribute("trending", trendingResults.getResults());
 
-				rd = request.getRequestDispatcher("index1.jsp");
+				rd = request.getRequestDispatcher("index2.jsp");
 			
 			}else {
-				if(tmdbResults == null) {
-					log.log(Level.SEVERE, "TMDB object: " + tmdbResults);
+				if(popularResults == null) {
+					log.log(Level.SEVERE, "TMDB object: " + popularResults);
 					rd = request.getRequestDispatcher("/error.jsp");
 				}
-				
+				if(upcomingResults == null) {
+					log.log(Level.SEVERE, "TMDB object: " + upcomingResults);
+					rd = request.getRequestDispatcher("/error.jsp");
+				}
+				if(trendingResults == null) {
+					log.log(Level.SEVERE, "TMDB object: " + trendingResults);
+					rd = request.getRequestDispatcher("/error.jsp");
+				}
 			}
 			rd.forward(request, response);
 		}
