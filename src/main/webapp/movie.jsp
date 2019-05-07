@@ -22,6 +22,12 @@
 		<h3>Poster:</h3>
 		<img src="https://image.tmdb.org/t/p/w185/${requestScope.movies.posterPath}"/>
 	</div>
+	<div class="card-footer">
+		<form id="searchForm" method="post" class="listaForm" action="/AliController">
+		<input type='hidden' name='title' value="<c:out value="${requestScope.movies.title}"/>"/>
+		<p>&nbsp; <input type="submit" class="btn btn-primary" name="tituloEnviar" value="<c:out value="Productos"/>"/></p>
+		</form>
+	</div>
 	<div class="overview_pelicula">
 		<h3>OVERVIEW:</h3>
 		<p><c:out value="${requestScope.movies.overview}"/></p>
@@ -60,21 +66,5 @@
 		
 			</c:forEach>	
 	</div>
-	<fieldset id="aliexpress">
-		<legend>
-			Productos de <c:out value="${param.searchQuery}" />
-		</legend>
-		<c:forEach items="${requestScope.products}" var="producto" begin="1" end="5">
-			<a target="_blank" href="<c:out value="${producto.productUrl}"/>">${producto.productTitle}</a>
-			<img src="<c:out value = "${producto.imageUrl}"/>" height="314"
-				width="350" />
-			<br><br>
-			<div style="text-align: center;">
-			<span style="font-size: 24px; font-family: arial; color:#f60; font-weight: 700; align: center; "><c:out value="${producto.localPrice}"/></span>
-			</div>
-			<br>
-			<br>
-		</c:forEach>
-	</fieldset>
 </body>
 </html>

@@ -44,7 +44,17 @@
   	<servlet-name>WikiaController</servlet-name>
   	<url-pattern>/WikiaController</url-pattern>
   </servlet-mapping>
-  
+  <!-- Servlet para AliExpress -->
+  <servlet>
+  	<description></description>
+  	<display-name>AliController</display-name>
+  	<servlet-name>AliController</servlet-name>
+  	<servlet-class>aiss.controller.AliController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>AliController</servlet-name>
+  	<url-pattern>/AliController</url-pattern>
+  </servlet-mapping>
 	<!-- Servlet para YouTube -->
    <servlet>
   	<description></description>

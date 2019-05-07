@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import aiss.Movie.Credits;
 import aiss.Movie.Movie;
-import aiss.model.aliexpress.AliExpress;
-import aiss.model.resources.AliExpressResource;
 import aiss.model.resources.MovieResources;
 import aiss.model.resources.YoutubeResource;
 import aiss.model.youtube.VideoSearch;
@@ -30,7 +28,6 @@ public class SelectedMovieController extends HttpServlet{
 		}
 	
 		protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			String query = request.getParameter("searchQuery");
 			String id = request.getParameter("id");
 			RequestDispatcher rd = null;
 			
@@ -40,11 +37,6 @@ public class SelectedMovieController extends HttpServlet{
 			Movie tmdbResults = tmdb.getMovie(id);
 			Credits creditsResults = tmdb.getCasting(id);
 			String param = tmdbResults.getTitle();
-			
-			// Search for products in Aliexpress
-			log.log(Level.FINE,"Buscado productos de AliExpress que contengan " + param);
-			AliExpressResource ali = new AliExpressResource();
-			AliExpress aliResults = ali.getProducts(param);
 				
 			//Searching Trailer Youtube
 			log.log(Level.FINE, "Searching for Youtube videos with query ", param);
@@ -62,7 +54,6 @@ public class SelectedMovieController extends HttpServlet{
 				request.setAttribute("credits", creditsResults);
 				request.setAttribute("items", youtubeResults.getItems());
 				request.setAttribute("tracks", trackResults.getItems());
-				request.setAttribute("products", aliResults.getResult().getProducts());
 
 				rd = request.getRequestDispatcher("/movie.jsp");
 			
@@ -75,9 +66,6 @@ public class SelectedMovieController extends HttpServlet{
 					rd = request.getRequestDispatcher("/error.jsp");
 				}else if(trackResults == null) {
 					log.log(Level.SEVERE, "Youtube Object: " + trackResults);
-					rd = request.getRequestDispatcher("/error.jsp");
-				}else if(aliResults == null) {
-					log.log(Level.SEVERE, "AliExpress Object: " + aliResults);
 					rd = request.getRequestDispatcher("/error.jsp");
 				}
 
