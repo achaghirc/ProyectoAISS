@@ -3,7 +3,6 @@ package aiss.model.resources;
 import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 import java.util.Collection;
-
 import org.restlet.resource.ClientResource;
 import org.restlet.resource.ResourceException;
 import aiss.Movie.Credits;
@@ -36,7 +35,7 @@ public class MovieResources {
 		ClientResource cr = null;
 		Movie m = null;
 		try {
-			cr = new ClientResource(URL_MOVIE+movieId+"?api_key="+api_Key);
+			cr = new ClientResource(URL_MOVIE+movieId+"?api_key="+api_Key+"&language=es-ES");
 			m = cr.get(Movie.class);
 		}catch (ResourceException e) {
 			System.err.println("Error al querer obtener la pelicula: "+cr.getResponse().getStatus());
@@ -102,7 +101,7 @@ public class MovieResources {
 		MovieSearch v = null;
 		
 		try { 
-			cr = new ClientResource(URL_MOVIE+"popular?api_key="+api_Key);
+			cr = new ClientResource(URL_MOVIE+"popular?api_key="+api_Key+"&language=es-ES");
 			v = cr.get(MovieSearch.class);
 		}catch (ResourceException e) {
 			System.err.println("Error al obtener la pelicula mas vista: "+cr.getResponse().getStatus());
@@ -110,5 +109,32 @@ public class MovieResources {
 		}
 		return v;
 	}
-	
+	public MovieSearch getUpcoming() {
+		//https://api.themoviedb.org/3/movie/upcoming?api_key=1cb3b67dfeb8452b822808e663f7b97c&language=es-ES&page=1
+		ClientResource cr = null; 
+		MovieSearch v = null;
+		
+		try { 
+			cr = new ClientResource(URL_MOVIE+"upcoming?api_key="+api_Key+"&language=es-ES");
+			v = cr.get(MovieSearch.class);
+		}catch (ResourceException e) {
+			System.err.println("Error al obtener la pelicula mas a estrenar: "+cr.getResponse().getStatus());
+			throw e;
+		}
+		return v;
+	}
+	public MovieSearch getTrending() {
+		//https://api.themoviedb.org/3/trending/movie/day?api_key=1cb3b67dfeb8452b822808e663f7b97c
+		ClientResource cr = null; 
+		MovieSearch v = null;
+		
+		try { 
+			cr = new ClientResource(URL_BASE+"/trending/movie/day?api_key="+api_Key);
+			v = cr.get(MovieSearch.class);
+		}catch (ResourceException e) {
+			System.err.println("Error al obtener la pelicula mas vista: "+cr.getResponse().getStatus());
+			throw e;
+		}
+		return v;
+	}
 }
