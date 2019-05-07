@@ -1,9 +1,5 @@
 package aiss.model.youtube;
 
-
-
-
-
 public class Id {
 
     private String kind;
