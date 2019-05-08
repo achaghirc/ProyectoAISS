@@ -12,6 +12,8 @@ import org.sweble.wikitext.engine.utils.DefaultConfigEnWp;
 import org.sweble.wikitext.parser.parser.LinkTargetException;
 import aiss.model.wiki.TextConverter;
 import aiss.model.wiki.Wiki;
+import info.bliki.wiki.model.WikiModel;
+import net.htmlparser.jericho.Source;
 import aiss.model.resources.WikiaResources;
 
 public class WikiaReosurceTest {
@@ -33,6 +35,9 @@ public class WikiaReosurceTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+//		String htmlText = WikiModel.toHtml(wiki.getParse().getWikitext().getT());
+//		String plainText = new Source(htmlText).getRenderer().toString();
+//		System.out.println(plainText);
 	}
 	
 	public String convertWikiText(String title, String wikiText, int maxLineLength) throws LinkTargetException, EngineException {
