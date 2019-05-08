@@ -81,7 +81,7 @@ public class WikiaController extends HttpServlet {
 	    PageTitle pageTitle = PageTitle.make(config, title);
 	    PageId pageId = new PageId(pageTitle, -1);
 	    // Compile the retrieved page
-	    EngProcessedPage cp = engine.parse(pageId, wikiText, null);
+	    EngProcessedPage cp = engine.postprocess(pageId, wikiText, null);
 	    TextConverter p = new TextConverter(config, maxLineLength);
 	    return (String)p.go(cp.getPage());
 	}

@@ -41,7 +41,7 @@
 	</prerequisites>
 
 	<dependencies>
-	
+		
 		<!-- WikiText dependency -->
 	    <dependency>
 		    <groupId>org.sweble.wikitext</groupId>
