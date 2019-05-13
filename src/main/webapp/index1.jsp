@@ -37,7 +37,7 @@
         </center>
        <fieldset>
         <legend>Mas Popular:</legend>
-        	<c:set var="noOfRows" value="1"/>
+        	
         	<c:forEach items="${requestScope.movie}" var="popular"
         	begin="${param.first}"  end="${param.first + noOfRows -1}">
 			<h3><c:out value="${popular.title}"/></h3>

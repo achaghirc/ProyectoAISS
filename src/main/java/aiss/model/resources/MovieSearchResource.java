@@ -1,5 +1,7 @@
 package aiss.model.resources;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.Arrays;
 import java.util.Collection;
 
@@ -26,12 +28,13 @@ public class MovieSearchResource {
 		return Arrays.asList(mv);
 	}
 	
-	public MovieSearch getMovieSearch(String movieId) {
+	public MovieSearch getMovieSearch(String movieId) throws UnsupportedEncodingException {
+		String param = URLEncoder.encode(movieId,"UTF-8");
 		MovieSearch mv =null;
 		ClientResource cr = null;
 		
 		try {
-			cr = new ClientResource(URL_MOVIE_SEARCH+"?api_key="+api_Key+"&query="+movieId);
+			cr = new ClientResource(URL_MOVIE_SEARCH+"?api_key="+api_Key+"&query="+param+"&language=es-ES");
 			mv = cr.get(MovieSearch.class);
 		}catch (ResourceException e) {
 			System.err.println("Error when retrieving the movie: " + cr.getResponse().getStatus());
