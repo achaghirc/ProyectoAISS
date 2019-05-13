@@ -10,19 +10,20 @@ import org.sweble.wikitext.engine.config.WikiConfig;
 import org.sweble.wikitext.engine.nodes.EngProcessedPage;
 import org.sweble.wikitext.engine.utils.DefaultConfigEnWp;
 import org.sweble.wikitext.parser.parser.LinkTargetException;
-
 import aiss.model.wiki.TextConverter;
 import aiss.model.wiki.Wiki;
+import info.bliki.wiki.model.WikiModel;
+import net.htmlparser.jericho.Source;
 import aiss.model.resources.WikiaResources;
 
-public class WikiResourceTest {
+public class WikiaReosurceTest {
 	static Wiki wiki;
 	static WikiaResources sr = new WikiaResources();
 	
 	@Test
 	public void testGetWiki() throws UnsupportedEncodingException {
 		
-		wiki = sr.getWiki("Johnny Depp");
+		wiki = sr.getWiki("Tobey Maguire");
 		
 		//Show results
 		try {
@@ -34,6 +35,9 @@ public class WikiResourceTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+//		String htmlText = WikiModel.toHtml(wiki.getParse().getWikitext().getT());
+//		String plainText = new Source(htmlText).getRenderer().toString();
+//		System.out.println(plainText);
 	}
 	
 	public String convertWikiText(String title, String wikiText, int maxLineLength) throws LinkTargetException, EngineException {

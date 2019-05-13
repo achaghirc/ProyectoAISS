@@ -1,9 +1,9 @@
 package aiss.model.youtube;
 
-
 public class Id {
 
     private String kind;
+    private String playlistId;
     private String videoId;
 
     public String getKind() {
@@ -13,7 +13,13 @@ public class Id {
     public void setKind(String kind) {
         this.kind = kind;
     }
+    public String getPlaylistId() {
+        return playlistId;
+    }
 
+    public void setPlaylistId(String playlistId) {
+        this.kind = playlistId;
+    }
     public String getVideoId() {
         return videoId;
     }
