@@ -1,7 +1,6 @@
 package aiss.controller;
 
 import java.io.IOException;
-import java.net.URLEncoder;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -32,13 +31,11 @@ public class SearchController extends HttpServlet {
 		
 		String query = request.getParameter("searchQuery");
 		RequestDispatcher rd = null;
-		String paramEncoder = URLEncoder.encode(query, "UTF-8");
+		
 		// Search for movies in TMDb
-		log.log(Level.FINE, "Searching for TMDb movies that contain " + paramEncoder);
+		log.log(Level.FINE, "Searching for TMDb movies that contain " + query);
 		MovieSearchResource tmdb = new MovieSearchResource();
-
 		MovieSearch tmdbResults = tmdb.getMovieSearch(query);
-
 		
 		
 		if (tmdbResults!=null){
