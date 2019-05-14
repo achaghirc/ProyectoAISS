@@ -1,8 +1,6 @@
 package resources;
 
-import java.io.File;
 import java.io.UnsupportedEncodingException;
-
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.junit.Test;
@@ -19,7 +17,6 @@ import org.sweble.wikitext.engine.utils.DefaultConfigEnWp;
 import org.sweble.wikitext.engine.utils.UrlEncoding;
 import org.sweble.wikitext.parser.nodes.WtUrl;
 import org.sweble.wikitext.parser.parser.LinkTargetException;
-
 import aiss.model.wiki.App;
 import aiss.model.wiki.TextConverter;
 import aiss.model.wiki.Wiki;
@@ -34,13 +31,12 @@ public class WikiaReosurceTest {
 	public void testGetWiki() throws UnsupportedEncodingException {
 		
 		wiki = sr.getWiki("Tobey Maguire");
-		String s = "";
+//		String s = "";
 		
 		String x = "";
-		String fileTitle = "x";
 		
 		try {
-			x = run(new File(fileTitle + ".wikitext"), wiki.getParse().getTitle(), true);
+			x = run(wiki.getParse().getWikitext().getT(), wiki.getParse().getTitle(), true);
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -49,36 +45,36 @@ public class WikiaReosurceTest {
 		System.out.println(x);
 		
 		//Show results
-		try {
-			s = convertWikiText(wiki.getParse().getTitle(),wiki.getParse().getWikitext().getT(),140);
-		} catch (LinkTargetException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (EngineException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		s = s.replaceAll("//", " ");
+//		try {
+//			s = convertWikiText(wiki.getParse().getTitle(),wiki.getParse().getWikitext().getT(),140);
+//		} catch (LinkTargetException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (EngineException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		s = s.replaceAll("//", " ");
 //		System.out.println(s);
 //		System.out.println(wiki.getParse());
 
 	}
 	
-	public String convertWikiText(String title, String wikiText, int maxLineLength) throws LinkTargetException, EngineException {
-	    // Set-up a simple wiki configuration
-	    WikiConfig config = DefaultConfigEnWp.generate();
-	    // Instantiate a compiler for wiki pages
-	    WtEngineImpl engine = new WtEngineImpl(config);
-	    // Retrieve a page
-	    PageTitle pageTitle = PageTitle.make(config, title);
-	    PageId pageId = new PageId(pageTitle, -1);
-	    // Compile the retrieved page
-	    EngProcessedPage cp = engine.postprocess(pageId, wikiText, null);
-	    TextConverter p = new TextConverter(config, maxLineLength);
-	    return (String)p.go(cp.getPage());
-	}
+//	public String convertWikiText(String title, String wikiText, int maxLineLength) throws LinkTargetException, EngineException {
+//	    // Set-up a simple wiki configuration
+//	    WikiConfig config = DefaultConfigEnWp.generate();
+//	    // Instantiate a compiler for wiki pages
+//	    WtEngineImpl engine = new WtEngineImpl(config);
+//	    // Retrieve a page
+//	    PageTitle pageTitle = PageTitle.make(config, title);
+//	    PageId pageId = new PageId(pageTitle, -1);
+//	    // Compile the retrieved page
+//	    EngProcessedPage cp = engine.postprocess(pageId, wikiText, null);
+//	    TextConverter p = new TextConverter(config, maxLineLength);
+//	    return (String)p.go(cp.getPage());
+//	}
 	
-	static String run(File file, String fileTitle, boolean renderHtml) throws Exception
+	static String run(String wikitext, String fileTitle, boolean renderHtml) throws Exception
 	{
 		// Set-up a simple wiki configuration
 		WikiConfig config = DefaultConfigEnWp.generate();
@@ -93,8 +89,6 @@ public class WikiaReosurceTest {
 		
 		PageId pageId = new PageId(pageTitle, -1);
 		
-		String wikitext = FileUtils.readFileToString(file);
-		
 		// Compile the retrieved page
 		EngProcessedPage cp = engine.postprocess(pageId, wikitext, null);
 		
@@ -102,13 +96,13 @@ public class WikiaReosurceTest {
 		{
 			String ourHtml = HtmlRenderer.print(new MyRendererCallback(), config, pageTitle, cp.getPage());
 			
-			String template = IOUtils.toString(App.class.getResourceAsStream("/render-template.html"), "UTF8");
-			
-			String html = template;
-			html = html.replace("{$TITLE}", StringUtils.escHtml(pageTitle.getDenormalizedFullTitle()));
-			html = html.replace("{$CONTENT}", ourHtml);
-			
-			return html;
+//			String template = IOUtils.toString(App.class.getResourceAsStream("/render-template.html"), "UTF8");
+//			
+//			String html = template;
+//			html = html.replace("{$TITLE}", StringUtils.escHtml(pageTitle.getDenormalizedFullTitle()));
+//			html = html.replace("{$CONTENT}", ourHtml);
+//			
+			return ourHtml;
 		}
 		else
 		{
