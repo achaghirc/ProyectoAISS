@@ -43,6 +43,28 @@
 	<dependencies>
 		
 		<!-- WikiText dependency -->
+		<dependency>
+            <groupId>info.bliki.wiki</groupId>
+            <artifactId>bliki-core</artifactId>
+            <version>3.1.0</version>
+        </dependency>   
+        <dependency>
+            <groupId>info.bliki.wiki</groupId>
+            <artifactId>bliki-pdf</artifactId>
+            <version>3.1.0</version>
+        </dependency>
+        <dependency>
+        	<groupId>info.bliki.wiki</groupId>
+            <artifactId>bliki-addons</artifactId>
+            <version>3.1.0</version>
+        </dependency>
+        
+		<dependency>
+		    <groupId>net.htmlparser.jericho</groupId>
+		    <artifactId>jericho-html</artifactId>
+		    <version>3.3</version>
+		</dependency>
+		
 	    <dependency>
 		    <groupId>org.sweble.wikitext</groupId>
 		    <artifactId>swc-engine</artifactId>
