@@ -16,11 +16,8 @@ import org.sweble.wikitext.engine.config.WikiConfig;
 import org.sweble.wikitext.engine.nodes.EngProcessedPage;
 import org.sweble.wikitext.engine.utils.DefaultConfigEnWp;
 import org.sweble.wikitext.parser.parser.LinkTargetException;
-
 import aiss.model.wiki.TextConverter;
 import aiss.model.wiki.Wiki;
-import info.bliki.wiki.model.WikiModel;
-import net.htmlparser.jericho.Source;
 import aiss.model.resources.WikiaResources;
 
 public class WikiaController extends HttpServlet {
@@ -43,18 +40,14 @@ public class WikiaController extends HttpServlet {
 		WikiaResources wiki = new WikiaResources();
 		Wiki wikiResults = wiki.getWiki(name);
 		String s = "";
-		String aux = "";
 		
-		aux = WikiModel.toHtml(wikiResults.getParse().getWikitext().getT());
-		s = new Source(aux).getRenderer().toString();
-		
-//		try {
-//			s = convertWikiText(wikiResults.getParse().getTitle(),wikiResults.getParse().getWikitext().getT(),185);
-//		} catch (LinkTargetException e) {
-//			e.printStackTrace();
-//		} catch (EngineException e) {
-//			e.printStackTrace();
-//		}
+		try {
+			s = convertWikiText(wikiResults.getParse().getTitle(),wikiResults.getParse().getWikitext().getT(),185);
+		} catch (LinkTargetException e) {
+			e.printStackTrace();
+		} catch (EngineException e) {
+			e.printStackTrace();
+		}
 		
 		if (wikiResults.getParse()!=null){
 	
@@ -78,18 +71,18 @@ public class WikiaController extends HttpServlet {
 		doGet(request, response);
 	}
 
-//	public String convertWikiText(String title, String wikiText, int maxLineLength) throws LinkTargetException, EngineException {
-//	    // Set-up a simple wiki configuration
-//	    WikiConfig config = DefaultConfigEnWp.generate();
-//	    // Instantiate a compiler for wiki pages
-//	    WtEngineImpl engine = new WtEngineImpl(config);
-//	    // Retrieve a page
-//	    PageTitle pageTitle = PageTitle.make(config, title);
-//	    PageId pageId = new PageId(pageTitle, -1);
-//	    // Compile the retrieved page
-//	    EngProcessedPage cp = engine.postprocess(pageId, wikiText, null);
-//	    TextConverter p = new TextConverter(config, maxLineLength);
-//	    return (String)p.go(cp.getPage());
-//	}
+	public String convertWikiText(String title, String wikiText, int maxLineLength) throws LinkTargetException, EngineException {
+	    // Set-up a simple wiki configuration
+	    WikiConfig config = DefaultConfigEnWp.generate();
+	    // Instantiate a compiler for wiki pages
+	    WtEngineImpl engine = new WtEngineImpl(config);
+	    // Retrieve a page
+	    PageTitle pageTitle = PageTitle.make(config, title);
+	    PageId pageId = new PageId(pageTitle, -1);
+	    // Compile the retrieved page
+	    EngProcessedPage cp = engine.postprocess(pageId, wikiText, null);
+	    TextConverter p = new TextConverter(config, maxLineLength);
+	    return (String)p.go(cp.getPage());
+	}
 	
 }
