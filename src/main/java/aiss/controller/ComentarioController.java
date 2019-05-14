@@ -14,7 +14,8 @@ import aiss.model.youtube.Comment;
 
 
 public class ComentarioController extends HttpServlet {
-	 private static final Logger log = Logger.getLogger(ComentarioController.class.getName());
+	private static final long serialVersionUID = 1L;
+	private static final Logger log = Logger.getLogger(ComentarioController.class.getName());
 
 	    @Override
 	    public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
