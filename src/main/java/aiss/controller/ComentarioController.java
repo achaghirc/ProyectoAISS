@@ -18,9 +18,9 @@ public class ComentarioController extends HttpServlet {
 
 	    @Override
 	    public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-	        String accessToken = (String) req.getSession().getAttribute("Youtube-token");
+	        String accessToken = (String) req.getSession().getAttribute("YouTube-token");
 	        String videoId = req.getParameter("id");
-	        String content = req.getParameter("textOriginal");
+	        String content = req.getParameter("content");
 	        if (accessToken != null && !"".equals(accessToken)) {
 	            if (videoId != null && !"".equals(videoId)) {
 	                YoutubeResource ytResource = new YoutubeResource(accessToken);
@@ -29,7 +29,7 @@ public class ComentarioController extends HttpServlet {
 	                comment.getSnippet().getTopLevelComment().getSnippet_().setTextOriginal(content);
 	                ytResource.insertComment(comment, content);
 	                req.setAttribute("message", "Comment '" + videoId + "' added to the video!");
-	                req.getRequestDispatcher("/googleDriveFileList").forward(req, resp);
+	                req.getRequestDispatcher("/SelectedMovieController").forward(req, resp);
 	            } else {
 	                req.setAttribute("message", "You must provide a valid videoId for coment");
 	                req.setAttribute("content", content);
@@ -37,7 +37,7 @@ public class ComentarioController extends HttpServlet {
 	            }
 	        } else {
 	            log.info("Trying to access Youtube without an access token, redirecting to OAuth servlet");
-	            req.getRequestDispatcher("/AuthController/Youtube").forward(req, resp);
+	            req.getRequestDispatcher("/AuthController/YouTube").forward(req, resp);
 	        }
 	    }
 

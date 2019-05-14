@@ -61,6 +61,7 @@
             <input type='hidden' name='seachQuery' value="<c:out value="${popular.title}"/>"/>
 			<input type='hidden' name='id' value="<c:out value="${popular.id}"/>"/>
             <input type="submit"  class="btn btn-primary" name="tituloEnviar" value="<c:out value="${popular.title}"/>"/>
+            <p> ${popular.title} ${popular.id}</p>
             </form>
           </div>
         </div>
@@ -92,7 +93,7 @@
           <!--  <img class="card-img-top" src="https://image.tmdb.org/t/p/w185/${trend.posterPath}" alt="">-->
           <div class="card-body">
           <h4>Trending Movies:</h4>
-          	<c:forEach items="${requestScope.trending}" var="trend" begin="${param.first}"  end="${param.first + noOfRows2 -1}">
+          	<c:forEach items="${requestScope.trending}" var="trend" begin="0"  end="5">
             <form id="searchForm" method="post" class="listaForm" action="/SelectedMovieController">
             <input type='hidden' name='seachQuery' value="<c:out value="${trend.title}"/>"/>
 			<input type='hidden' name='id' value="<c:out value="${trend.id}"/>"/>

@@ -81,7 +81,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>YouTubeAuthController</servlet-name>
-        <url-pattern>/AuthController/Youtube</url-pattern>
+        <url-pattern>/AuthController/YouTube</url-pattern>
     </servlet-mapping>
        <!--GoogleDriveOAuth2Callback-->
     <servlet>

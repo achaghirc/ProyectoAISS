@@ -44,7 +44,7 @@ public class YoutubeResource {
 		try {
 			cr = new ClientResource(URL_COMMENT+api_key);
 			CommentResponse newComment = cr.post(comentario,CommentResponse.class);
-			newId = newComment.getSnippet().getChannelId();
+			newId = newComment.getSnippet().getVideoId();
 			Map<String,Object> headers = cr.getRequestAttributes();
 			headers.put("Content-Type", "text/plain");
 			cr.put(contenido);

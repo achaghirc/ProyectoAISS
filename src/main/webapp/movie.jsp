@@ -51,6 +51,13 @@
 			<iframe id="ytplayer" type="text/html" width="420" height="205"
 				src="https://www.youtube.com/embed/${item.id.videoId}"
 					frameborder="0" allowfullscreen></iframe>
+			
+		
+			<form  method="post" action="/ComentarioController">
+            <input type='hidden' name='seachQuery' value="<c:out value="${item.id.videoId}"/>"/>
+			<textarea name="comentarios" rows="10" cols="40">${content}</textarea>
+            <button type="submit" class="button">Submit</button>
+            </form>
 			</c:forEach>	
 		<p>Banda Sonora de la pelicula <c:out value="${requestScope.movies.title}"/></p>
 		<c:forEach items="${requestScope.tracks}" var="track">
