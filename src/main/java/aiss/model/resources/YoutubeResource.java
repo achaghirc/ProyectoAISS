@@ -9,7 +9,8 @@ import java.util.logging.Logger;
 import org.restlet.resource.ClientResource;
 import org.restlet.resource.ResourceException;
 
-import aiss.model.youtube.Comment;
+
+import aiss.model.youtube.CommentResponse;
 import aiss.model.youtube.VideoSearch;
 
 public class YoutubeResource {
@@ -36,13 +37,13 @@ public class YoutubeResource {
 	 * @throws UnsupportedEncodingException
 	 */
 	
-	public String insertComment(Comment comentario, String contenido) {
+	public String insertComment(CommentResponse comentario, String contenido) {
 		ClientResource cr = null;
 		String newId = null;
 		
 		try {
 			cr = new ClientResource(URL_COMMENT+api_key);
-			Comment newComment = cr.post(comentario,Comment.class);
+			CommentResponse newComment = cr.post(comentario,CommentResponse.class);
 			newId = newComment.getSnippet().getChannelId();
 			Map<String,Object> headers = cr.getRequestAttributes();
 			headers.put("Content-Type", "text/plain");
@@ -53,6 +54,8 @@ public class YoutubeResource {
 		}
 		return newId;
 	}
+	
+	
 	
 	public VideoSearch getVideo(String param) throws UnsupportedEncodingException{
 		String query = URLEncoder.encode(param, "UTF-8");

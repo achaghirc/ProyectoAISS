@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import aiss.model.resources.YoutubeResource;
-import aiss.model.youtube.Comment;
+import aiss.model.youtube.CommentResponse;
 
 
 
@@ -19,24 +19,24 @@ public class ComentarioController extends HttpServlet {
 	    @Override
 	    public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 	        String accessToken = (String) req.getSession().getAttribute("Youtube-token");
-	        String videoId = req.getParameter("videoId");
+	        String videoId = req.getParameter("id");
 	        String content = req.getParameter("textOriginal");
 	        if (accessToken != null && !"".equals(accessToken)) {
 	            if (videoId != null && !"".equals(videoId)) {
 	                YoutubeResource ytResource = new YoutubeResource(accessToken);
-	                Comment comment = new Comment();
+	                CommentResponse comment = new CommentResponse();
 	                comment.getSnippet().setVideoId(videoId);;
-	                comment.getSnippet().getTopLevelComment().getSnippet().getTextOriginal();
+	                comment.getSnippet().getTopLevelComment().getSnippet_().setTextOriginal(content);
 	                ytResource.insertComment(comment, content);
 	                req.setAttribute("message", "Comment '" + videoId + "' added to the video!");
 	                req.getRequestDispatcher("/googleDriveFileList").forward(req, resp);
 	            } else {
-	                req.setAttribute("message", "You must provide a valid title for file");
+	                req.setAttribute("message", "You must provide a valid videoId for coment");
 	                req.setAttribute("content", content);
 	                req.getRequestDispatcher("movie.jsp").forward(req, resp);
 	            }
 	        } else {
-	            log.info("Trying to access Google Drive without an access token, redirecting to OAuth servlet");
+	            log.info("Trying to access Youtube without an access token, redirecting to OAuth servlet");
 	            req.getRequestDispatcher("/AuthController/Youtube").forward(req, resp);
 	        }
 	    }

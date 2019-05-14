@@ -56,18 +56,53 @@
   	<servlet-name>YoutubeController</servlet-name>
   	<url-pattern>/YoutubeController</url-pattern>
   </servlet-mapping>
+    <!-- Servlet Comentario en Youtube -->
     
    <servlet>
   	<description></description>
-  	<display-name>TMDBRegistryController</display-name>
-  	<servlet-name>TMDBRegistryController</servlet-name>
-  	<servlet-class>aiss.controller.TMDBRegistryController</servlet-class>
+  	<display-name>ComentarioController</display-name>
+  	<servlet-name>ComentarioController</servlet-name>
+  	<servlet-class>aiss.controller.ComentarioController</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>TMDBRegistryController</servlet-name>
-  	<url-pattern>/TMDBRegistryController</url-pattern>
+  	<servlet-name>ComentarioController</servlet-name>
+  	<url-pattern>/ComentarioController</url-pattern>
   </servlet-mapping> 
- 
+   <!--   GoogleDrive oAuth2 servlets    -->
+    <!-- GoogleDriveAuthController-->
+    <servlet>
+        <description/>
+        <servlet-name>YouTubeAuthController</servlet-name>
+        <servlet-class>aiss.controller.oauth.GenericAuthController</servlet-class>
+        <init-param>
+            <param-name>provider</param-name>
+            <param-value>YouTube</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>YouTubeAuthController</servlet-name>
+        <url-pattern>/AuthController/Youtube</url-pattern>
+    </servlet-mapping>
+       <!--GoogleDriveOAuth2Callback-->
+    <servlet>
+        <description/>
+        <servlet-name>YouTubeOAuth2Callback</servlet-name>
+        <servlet-class>aiss.controller.oauth.OAuth2Callback</servlet-class>
+        <init-param>
+            <param-name>provider</param-name>
+            <param-value>YouTube</param-value>
+        </init-param>
+        <init-param>
+            <param-name>onSuccess</param-name>
+            <param-value>redirect:/SelectedMovieController</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>YouTubeOAuth2Callback</servlet-name>
+        <url-pattern>/oauth2callback/GoogleDrive</url-pattern> 
+    </servlet-mapping>
+  
+  <!-- Inicio Controller -->
    <servlet>
   	<description></description>
   	<display-name>InicioController</display-name>
@@ -81,7 +116,7 @@
   </servlet-mapping>
   <!-- Ruta mas famosa -->
   <welcome-file-list>
-  	<welcome-file>index2.jsp</welcome-file>
+  	<welcome-file>InicioController</welcome-file>
   </welcome-file-list>
  
   <error-page>
