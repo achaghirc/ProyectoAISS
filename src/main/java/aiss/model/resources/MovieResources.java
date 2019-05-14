@@ -1,15 +1,26 @@
 package aiss.model.resources;
 
 import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.Arrays;
 import java.util.Collection;
 import org.restlet.resource.ClientResource;
 import org.restlet.resource.ResourceException;
+
+
+
+import org.restlet.resource.ClientResource;
+import org.restlet.resource.ResourceException;
+
+
+
+
 import aiss.Movie.Credits;
 import aiss.Movie.Movie;
 import aiss.Movie.MovieSearch;
 import aiss.Movie.Videos;
 import aiss.model.tmdb.Session;
+
 import aiss.model.tmdb.TMDBRegistry;
 
 public class MovieResources {
@@ -32,10 +43,11 @@ public class MovieResources {
 	
 	public Movie getMovie(String movieId) throws UnsupportedEncodingException {
 		//https://api.themoviedb.org/3/movie/{movie_id}?api_key=<<api_key>>&language=en-US
+		String param = URLEncoder.encode(movieId, "UTF-8");
 		ClientResource cr = null;
 		Movie m = null;
 		try {
-			cr = new ClientResource(URL_MOVIE+movieId+"?api_key="+api_Key+"&language=es-ES");
+			cr = new ClientResource(URL_MOVIE+param+"?api_key="+api_Key+"&language=es-ES");
 			m = cr.get(Movie.class);
 		}catch (ResourceException e) {
 			System.err.println("Error al querer obtener la pelicula: "+cr.getResponse().getStatus());
@@ -129,7 +141,7 @@ public class MovieResources {
 		MovieSearch v = null;
 		
 		try { 
-			cr = new ClientResource(URL_BASE+"/trending/movie/day?api_key="+api_Key);
+			cr = new ClientResource(URL_BASE+"/trending/movie/day?api_key="+api_Key+"&language=es-ES");
 			v = cr.get(MovieSearch.class);
 		}catch (ResourceException e) {
 			System.err.println("Error al obtener la pelicula mas vista: "+cr.getResponse().getStatus());

@@ -1,9 +1,18 @@
 {	
+
     "Spotify": {
         "tokenUrl": "https://accounts.spotify.com/api/token",
         "clientId": "5ce90d07931f4c9fab2d7d1546c6d604",
         "clientSecret": "fcf9577c61104715b21369ecc622618d",
         "authorizationFormUrl": "https://accounts.spotify.com/authorize",
         "scopes": ["playlist-read-private","playlist-modify-private"]
+
+  	"Youtube": { 
+        "tokenUrl": "https://accounts.google.com/o/oauth2/auth",
+        "clientId":  "84167400535-mqv5ikj8mnpfb24c3do0568so8njpi08.apps.googleusercontent.com",
+        "clientSecret": "LKU_ey7fRnUTO9vb6MzdvbJ5",
+        "authorizationFormUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+        "scopes": ["https://www.googleapis.com/auth/youtube.force-ssl"]
+
     }
 }		
