@@ -8,8 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import aiss.model.resources.YoutubeResource;
-import aiss.model.youtube.Comment;
 
 
 
@@ -24,11 +22,6 @@ public class ComentarioController extends HttpServlet {
 	        String content = req.getParameter("textOriginal");
 	        if (accessToken != null && !"".equals(accessToken)) {
 	            if (videoId != null && !"".equals(videoId)) {
-	                YoutubeResource ytResource = new YoutubeResource(accessToken);
-	                Comment comment = new Comment();
-	                comment.getSnippet().setVideoId(videoId);;
-	                comment.getSnippet().getTopLevelComment().getSnippet().getTextOriginal();
-	                ytResource.insertComment(comment, content);
 	                req.setAttribute("message", "Comment '" + videoId + "' added to the video!");
 	                req.getRequestDispatcher("/googleDriveFileList").forward(req, resp);
 	            } else {

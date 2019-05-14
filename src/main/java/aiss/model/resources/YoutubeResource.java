@@ -2,14 +2,12 @@ package aiss.model.resources;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.restlet.resource.ClientResource;
 import org.restlet.resource.ResourceException;
 
-import aiss.model.youtube.Comment;
 import aiss.model.youtube.VideoSearch;
 
 public class YoutubeResource {
@@ -17,42 +15,10 @@ public class YoutubeResource {
 	private static final Logger log = Logger.getLogger(YoutubeResource.class.getName());
 	
 	private static final String api_key = "AIzaSyDmWMh1bHMPVY8IO_GVekB729r9X6e4ihc";
-	private final String access_token;
-	private final String URL_TRAILER = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=%QUERY+trailer&maxResults=1&order=relevance&key=%APIKEY";
-	private final String URL_YOUTUBE = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=%QUERY+SoundTrack+Full+Album&maxResults=1&order=relevance&type=video&key=%APIKEY";
-	private final String URL_COMMENT = "https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&key=";
-	
-	public YoutubeResource(String access_token) {
-		this.access_token = access_token;
-	}
-	
-	public YoutubeResource() {
-		this.access_token=null;
-	}
-	/**
-	 * 
-	 * @param param
-	 * @return comments
-	 * @throws UnsupportedEncodingException
-	 */
-	
-	public String insertComment(Comment comentario, String contenido) {
-		ClientResource cr = null;
-		String newId = null;
-		
-		try {
-			cr = new ClientResource(URL_COMMENT+api_key);
-			Comment newComment = cr.post(comentario,Comment.class);
-			newId = newComment.getSnippet().getChannelId();
-			Map<String,Object> headers = cr.getRequestAttributes();
-			headers.put("Content-Type", "text/plain");
-			cr.put(contenido);
-		}catch (ResourceException e) {
-			log.warning("Error when inserting file: "+cr.getResponse().getStatus());
-			// TODO: handle exception
-		}
-		return newId;
-	}
+
+	private static final String URL_TRAILER = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=%QUERY+trailer&maxResults=1&order=relevance&key=%APIKEY";
+	private static final String URL_YOUTUBE = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=%QUERY+SoundTrack+Full+Album&maxResults=1&order=relevance&type=video&key=%APIKEY";
+
 	
 	public VideoSearch getVideo(String param) throws UnsupportedEncodingException{
 		String query = URLEncoder.encode(param, "UTF-8");

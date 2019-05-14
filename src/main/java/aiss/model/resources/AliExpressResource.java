@@ -4,15 +4,10 @@ import java.io.UnsupportedEncodingException;
 
 
 import java.net.URLEncoder;
-import java.util.logging.Logger;
-
 import org.restlet.resource.ClientResource;
-
 import aiss.model.aliexpress.AliExpress;
 
 public class AliExpressResource {
-
-	private static final Logger log = Logger.getLogger(AliExpressResource.class.getName());
 
 	private static final String APIKEY = "33503";
 

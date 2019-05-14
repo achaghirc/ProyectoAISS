@@ -96,7 +96,7 @@
             <form id="searchForm" method="post" class="listaForm" action="/SelectedMovieController">
             <input type='hidden' name='seachQuery' value="<c:out value="${trend.title}"/>"/>
 			<input type='hidden' name='id' value="<c:out value="${trend.id}"/>"/>
-            <h6><input type="submit"  class="btn btn-primary" name="tituloEnviar" value="<c:out value="${trend.title}"/>"/></h6><br><br>
+            <h4>Title:<input type="submit"  class="btn btn-primary" name="tituloEnviar" value="<c:out value="${trend.title}"/>"/></h4><br><br>
             </form>
             </c:forEach>
           </div>

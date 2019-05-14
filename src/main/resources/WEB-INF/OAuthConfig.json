@@ -7,6 +7,7 @@
         "authorizationFormUrl": "https://accounts.spotify.com/authorize",
         "scopes": ["playlist-read-private","playlist-modify-private"]
 
+
   	"Youtube": { 
         "tokenUrl": "https://accounts.google.com/o/oauth2/auth",
         "clientId":  "84167400535-mqv5ikj8mnpfb24c3do0568so8njpi08.apps.googleusercontent.com",
@@ -14,5 +15,13 @@
         "authorizationFormUrl": "https://accounts.google.com/o/oauth2/v2/auth",
         "scopes": ["https://www.googleapis.com/auth/youtube.force-ssl"]
 
+
+    },
+    "SoundCloud": {
+    	"tokenUrl": "https://api.soundcloud.com/oauth2/token",
+    	"clientId": "287adf40e30f73eb3cfe0af77f3a77d",
+    	"clientSecret":"80fc6746b2a92ea81b9d29455a5df35a",
+    	"authorizationFormUrl":"https://soundcloud.com/connect",
+    	"scopes": ["*"]
     }
 }		
