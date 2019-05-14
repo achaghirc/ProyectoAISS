@@ -42,7 +42,9 @@ public class WikiaController extends HttpServlet {
 		String s = "";
 		
 		try {
-			s = convertWikiText(wikiResults.getParse().getTitle(),wikiResults.getParse().getWikitext().getT(),185);
+			s = convertWikiText(wikiResults.getParse().getTitle(),wikiResults.getParse().getWikitext().getT(),175);
+			s = s.replaceAll("//", "");
+			s = s.replaceAll("-", " ");
 		} catch (LinkTargetException e) {
 			e.printStackTrace();
 		} catch (EngineException e) {

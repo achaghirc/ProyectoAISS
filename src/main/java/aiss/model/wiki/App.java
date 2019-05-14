@@ -1,12 +1,26 @@
-package resources;
+/**
+ * Copyright 2011 The Open Source Research Group,
+ *                University of Erlangen-Nürnberg
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package aiss.model.wiki;
 
 import java.io.File;
-import java.io.UnsupportedEncodingException;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
-import org.junit.Test;
-import org.sweble.wikitext.engine.EngineException;
 import org.sweble.wikitext.engine.PageId;
 import org.sweble.wikitext.engine.PageTitle;
 import org.sweble.wikitext.engine.WtEngineImpl;
@@ -18,64 +32,46 @@ import org.sweble.wikitext.engine.output.MediaInfo;
 import org.sweble.wikitext.engine.utils.DefaultConfigEnWp;
 import org.sweble.wikitext.engine.utils.UrlEncoding;
 import org.sweble.wikitext.parser.nodes.WtUrl;
-import org.sweble.wikitext.parser.parser.LinkTargetException;
 
-import aiss.model.wiki.App;
-import aiss.model.wiki.TextConverter;
-import aiss.model.wiki.Wiki;
 import de.fau.cs.osr.utils.StringUtils;
-import aiss.model.resources.WikiaResources;
 
-public class WikiaReosurceTest {
-	static Wiki wiki;
-	static WikiaResources sr = new WikiaResources();
-	
-	@Test
-	public void testGetWiki() throws UnsupportedEncodingException {
-		
-		wiki = sr.getWiki("Tobey Maguire");
-		String s = "";
-		
-		String x = "";
-		String fileTitle = "x";
-		
-		try {
-			x = run(new File(fileTitle + ".wikitext"), wiki.getParse().getTitle(), true);
-		} catch (Exception e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+public class App
+{
+	public static void main(String[] args) throws Exception
+	{
+		if (args.length < 1)
+		{
+			System.err.println("Usage: java -jar swc-example-basic-VERSION.jar [--html|--text] TITLE");
+			System.err.println();
+			System.err.println("  The program will look for a file called `TITLE.wikitext',");
+			System.err.println("  parse the file and write an HTML version to `TITLE.html'.");
+			return;
 		}
 		
-		System.out.println(x);
+		boolean renderHtml = true;
 		
-		//Show results
-		try {
-			s = convertWikiText(wiki.getParse().getTitle(),wiki.getParse().getWikitext().getT(),140);
-		} catch (LinkTargetException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (EngineException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		int i = 0;
+		if (args[i].equalsIgnoreCase("--html"))
+		{
+			renderHtml = true;
+			++i;
 		}
-		s = s.replaceAll("//", " ");
-//		System.out.println(s);
-//		System.out.println(wiki.getParse());
-
-	}
-	
-	public String convertWikiText(String title, String wikiText, int maxLineLength) throws LinkTargetException, EngineException {
-	    // Set-up a simple wiki configuration
-	    WikiConfig config = DefaultConfigEnWp.generate();
-	    // Instantiate a compiler for wiki pages
-	    WtEngineImpl engine = new WtEngineImpl(config);
-	    // Retrieve a page
-	    PageTitle pageTitle = PageTitle.make(config, title);
-	    PageId pageId = new PageId(pageTitle, -1);
-	    // Compile the retrieved page
-	    EngProcessedPage cp = engine.postprocess(pageId, wikiText, null);
-	    TextConverter p = new TextConverter(config, maxLineLength);
-	    return (String)p.go(cp.getPage());
+		else if (args[i].equalsIgnoreCase("--text"))
+		{
+			renderHtml = false;
+			++i;
+		}
+		
+		String fileTitle = args[i];
+		
+		String html = run(
+				new File(fileTitle + ".wikitext"),
+				fileTitle,
+				renderHtml);
+		
+		FileUtils.writeStringToFile(
+				new File(fileTitle + (renderHtml ? ".html" : ".text")),
+				html);
 	}
 	
 	static String run(File file, String fileTitle, boolean renderHtml) throws Exception
@@ -118,8 +114,8 @@ public class WikiaReosurceTest {
 	}
 	
 	private static final class MyRendererCallback
-	implements
-		HtmlRendererCallback
+			implements
+				HtmlRendererCallback
 	{
 		protected static final String LOCAL_URL = "";
 		
@@ -163,5 +159,4 @@ public class WikiaReosurceTest {
 			
 		}
 	}
-	
 }
