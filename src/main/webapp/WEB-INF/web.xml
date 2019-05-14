@@ -81,7 +81,7 @@
   </servlet-mapping>
   <!-- Ruta mas famosa -->
   <welcome-file-list>
-  	<welcome-file>http://localhost:8090/InicioController</welcome-file>
+  	<welcome-file>index2.jsp</welcome-file>
   </welcome-file-list>
  
   <error-page>

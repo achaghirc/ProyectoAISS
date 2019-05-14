@@ -1,15 +1,15 @@
 <%@page import="aiss.Movie.Movie"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html" charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
@@ -32,7 +32,7 @@
 					<input type='hidden' name='seachQuery' value="<c:out value="${movie.title}"/>"/>
 					<input type='hidden' name='id' value="<c:out value="${movie.id}"/>"/>
 					<span class="d-md-block p-1 bg-dark text-white">
-					<input type="submit" class="btn btn-dark" name="titulo" value="<c:out value="${movie.title}"/>"/>(<c:out value="${movie.voteAverage}"/>)
+					<input type="submit" class="btn btn-dark" name="titulo" value="<c:out value="${movie.title}"/>"/>(<c:out value="${movie.releaseDate}"/>)
 					</span><br/>
 					</form>
 				</div>

@@ -1,12 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html> 
 <html lang="es" >
 
 <head>
-
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/jsp; accept-charset=utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
@@ -35,7 +35,7 @@
           <form id="searchForm" action="SearchController" method="post">
             <div class="form-row">
               <div class="col-12 col-md-9 mb-2 mb-md-0">
-                <input type="text" name="searchQuery" class="form-control form-control-lg" placeholder="Introduce el nombre de la película...">
+                <input type="text" name="searchQuery" class="form-control form-control-lg" placeholder="Introduce el nombre de la pelÃ­cula...">
               </div>
               <div class="col-12 col-md-3">
                 <button type="submit" name="searchBtn" title="search" value="search" class="btn btn-block btn-lg btn-primary">Search</button>

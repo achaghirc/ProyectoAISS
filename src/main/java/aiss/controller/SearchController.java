@@ -31,13 +31,13 @@ public class SearchController extends HttpServlet {
 				
 		
 		String query = request.getParameter("searchQuery");
+		String param = URLEncoder.encode(query, "UTF-8");
 		RequestDispatcher rd = null;
-		String paramEncoder = URLEncoder.encode(query, "UTF-8");
 		// Search for movies in TMDb
-		log.log(Level.FINE, "Searching for TMDb movies that contain " + paramEncoder);
+		log.log(Level.FINE, "Searching for TMDb movies that contain " + param);
 		MovieSearchResource tmdb = new MovieSearchResource();
 
-		MovieSearch tmdbResults = tmdb.getMovieSearch(query);
+		MovieSearch tmdbResults = tmdb.getMovieSearch(param);
 
 		
 		

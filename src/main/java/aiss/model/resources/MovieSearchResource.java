@@ -29,12 +29,13 @@ public class MovieSearchResource {
 	}
 	
 	public MovieSearch getMovieSearch(String movieId) throws UnsupportedEncodingException {
-		String param = URLEncoder.encode(movieId,"UTF-8");
+		
 		MovieSearch mv =null;
 		ClientResource cr = null;
 		
 		try {
-			cr = new ClientResource(URL_MOVIE_SEARCH+"?api_key="+api_Key+"&query="+param+"&language=es-ES");
+			String param = URLEncoder.encode(movieId, "UTF-8");
+			cr = new ClientResource(URL_MOVIE_SEARCH+"?api_key="+api_Key+"&query="+movieId);
 			mv = cr.get(MovieSearch.class);
 		}catch (ResourceException e) {
 			System.err.println("Error when retrieving the movie: " + cr.getResponse().getStatus());
