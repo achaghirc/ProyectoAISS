@@ -90,8 +90,7 @@ public class WikiaController extends HttpServlet {
 		EngProcessedPage cp = engine.postprocess(pageId, wikitext, null);
 		
 		if (renderHtml) {
-			String ourHtml = HtmlRenderer.print(new MyRendererCallback(), config, pageTitle, cp.getPage());
-			return ourHtml;
+			return HtmlRenderer.print(new MyRendererCallback(), config, pageTitle, cp.getPage());
 		} else {
 			TextConverter p = new TextConverter(config, wrapCol);
 			return (String) p.go(cp.getPage());
