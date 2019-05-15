@@ -1,72 +1,100 @@
-
 package aiss.model.youtube;
 
+import java.util.HashMap;
+import java.util.Map;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({ "channelId", "videoId", "topLevelComment", "canReply", "totalReplyCount", "isPublic" })
 public class Snippet {
+	@JsonProperty("channelId")
+	private String channelId;
+	@JsonProperty("videoId")
+	private String videoId;
+	@JsonProperty("topLevelComment")
+	private TopLevelComment topLevelComment;
+	@JsonProperty("canReply")
+	private Boolean canReply;
+	@JsonProperty("totalReplyCount")
+	private Integer totalReplyCount;
+	@JsonProperty("isPublic")
+	private Boolean isPublic;
+	@JsonIgnore
+	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    private String publishedAt;
-    private String channelId;
-    private String title;
-    private String description;
-    private Thumbnails thumbnails;
-    private String channelTitle;
-    private String liveBroadcastContent;
+	@JsonProperty("channelId")
+	public String getChannelId() {
+		return channelId;
+	}
 
-    public String getPublishedAt() {
-        return publishedAt;
-    }
+	@JsonProperty("channelId")
+	public void setChannelId(String channelId) {
+		this.channelId = channelId;
+	}
 
-    public void setPublishedAt(String publishedAt) {
-        this.publishedAt = publishedAt;
-    }
+	@JsonProperty("videoId")
+	public String getVideoId() {
+		return videoId;
+	}
 
-    public String getChannelId() {
-        return channelId;
-    }
+	@JsonProperty("videoId")
+	public void setVideoId(String videoId) {
+		this.videoId = videoId;
+	}
 
-    public void setChannelId(String channelId) {
-        this.channelId = channelId;
-    }
+	@JsonProperty("topLevelComment")
+	public TopLevelComment getTopLevelComment() {
+		return topLevelComment;
+	}
 
-    public String getTitle() {
-        return title;
-    }
+	@JsonProperty("topLevelComment")
+	public void setTopLevelComment(TopLevelComment topLevelComment) {
+		this.topLevelComment = topLevelComment;
+	}
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+	@JsonProperty("canReply")
+	public Boolean getCanReply() {
+		return canReply;
+	}
 
-    public String getDescription() {
-        return description;
-    }
+	@JsonProperty("canReply")
+	public void setCanReply(Boolean canReply) {
+		this.canReply = canReply;
+	}
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+	@JsonProperty("totalReplyCount")
+	public Integer getTotalReplyCount() {
+		return totalReplyCount;
+	}
 
-    public Thumbnails getThumbnails() {
-        return thumbnails;
-    }
+	@JsonProperty("totalReplyCount")
+	public void setTotalReplyCount(Integer totalReplyCount) {
+		this.totalReplyCount = totalReplyCount;
+	}
 
-    public void setThumbnails(Thumbnails thumbnails) {
-        this.thumbnails = thumbnails;
-    }
+	@JsonProperty("isPublic")
+	public Boolean getIsPublic() {
+		return isPublic;
+	}
 
-    public String getChannelTitle() {
-        return channelTitle;
-    }
+	@JsonProperty("isPublic")
+	public void setIsPublic(Boolean isPublic) {
+		this.isPublic = isPublic;
+	}
 
-    public void setChannelTitle(String channelTitle) {
-        this.channelTitle = channelTitle;
-    }
+	@JsonAnyGetter
+	public Map<String, Object> getAdditionalProperties() {
+		return this.additionalProperties;
+	}
 
-    public String getLiveBroadcastContent() {
-        return liveBroadcastContent;
-    }
-
-    public void setLiveBroadcastContent(String liveBroadcastContent) {
-        this.liveBroadcastContent = liveBroadcastContent;
-    }
+	@JsonAnySetter
+	public void setAdditionalProperty(String name, Object value) {
+		this.additionalProperties.put(name, value);
+	}
 
 }
-

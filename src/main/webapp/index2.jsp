@@ -1,12 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html> 
 <html lang="es" >
 
 <head>
-
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/jsp; accept-charset=utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
@@ -35,7 +35,7 @@
           <form id="searchForm" action="SearchController" method="post">
             <div class="form-row">
               <div class="col-12 col-md-9 mb-2 mb-md-0">
-                <input type="text" name="searchQuery" class="form-control form-control-lg" placeholder="Introduce el nombre de la película...">
+                <input type="text" name="searchQuery" class="form-control form-control-lg" placeholder="Introduce el nombre de la pelÃ­cula...">
               </div>
               <div class="col-12 col-md-3">
                 <button type="submit" name="searchBtn" title="search" value="search" class="btn btn-block btn-lg btn-primary">Search</button>
@@ -61,6 +61,7 @@
             <input type='hidden' name='seachQuery' value="<c:out value="${popular.title}"/>"/>
 			<input type='hidden' name='id' value="<c:out value="${popular.id}"/>"/>
             <input type="submit"  class="btn btn-primary" name="tituloEnviar" value="<c:out value="${popular.title}"/>"/>
+            <p> ${popular.title} ${popular.id}</p>
             </form>
           </div>
         </div>
@@ -92,7 +93,7 @@
           <!--  <img class="card-img-top" src="https://image.tmdb.org/t/p/w185/${trend.posterPath}" alt="">-->
           <div class="card-body">
           <h4>Trending Movies:</h4>
-          	<c:forEach items="${requestScope.trending}" var="trend" begin="${param.first}"  end="${param.first + noOfRows2 -1}">
+          	<c:forEach items="${requestScope.trending}" var="trend" begin="0"  end="5">
             <form id="searchForm" method="post" class="listaForm" action="/SelectedMovieController">
             <input type='hidden' name='seachQuery' value="<c:out value="${trend.title}"/>"/>
 			<input type='hidden' name='id' value="<c:out value="${trend.id}"/>"/>
