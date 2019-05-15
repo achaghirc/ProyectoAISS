@@ -21,7 +21,7 @@ import org.sweble.wikitext.engine.utils.UrlEncoding;
 import org.sweble.wikitext.parser.nodes.WtUrl;
 import aiss.model.wiki.TextConverter;
 import aiss.model.wiki.Wiki;
-import aiss.model.resources.WikiaResources;
+import aiss.model.resources.WikiaResource;
 
 public class WikiaController extends HttpServlet {
 
@@ -40,7 +40,7 @@ public class WikiaController extends HttpServlet {
 		
 		// Search for info in WikiPedia
 		log.log(Level.FINE, "Buscando información del actor " + name);
-		WikiaResources wiki = new WikiaResources();
+		WikiaResource wiki = new WikiaResource();
 		Wiki wikiResults = wiki.getWiki(name);
 		String s = "";
 		

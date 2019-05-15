@@ -15,11 +15,11 @@ import org.sweble.wikitext.engine.utils.UrlEncoding;
 import org.sweble.wikitext.parser.nodes.WtUrl;
 import aiss.model.wiki.TextConverter;
 import aiss.model.wiki.Wiki;
-import aiss.model.resources.WikiaResources;
+import aiss.model.resources.WikiaResource;
 
 public class WikiaReosurceTest {
 	static Wiki wiki;
-	static WikiaResources sr = new WikiaResources();
+	static WikiaResource sr = new WikiaResource();
 	
 	@Test
 	public void testGetWiki() throws UnsupportedEncodingException {
