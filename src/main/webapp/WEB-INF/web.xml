@@ -99,7 +99,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>YouTubeOAuth2Callback</servlet-name>
-        <url-pattern>/oauth2callback/GoogleDrive</url-pattern> 
+        <url-pattern>/oauth2callback/YouTube</url-pattern> 
     </servlet-mapping>
   
   <!-- Inicio Controller -->
@@ -108,7 +108,6 @@
   	<display-name>InicioController</display-name>
   	<servlet-name>InicioController</servlet-name>
   	<servlet-class>aiss.controller.InicioController</servlet-class>
-  	<load-on-startup>0</load-on-startup> 
   </servlet>
   <servlet-mapping>
   	<servlet-name>InicioController</servlet-name>

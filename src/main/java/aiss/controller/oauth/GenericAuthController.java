@@ -58,7 +58,9 @@ public class GenericAuthController extends AbstractAuthorizationCodeServlet {
 
     @Override
     protected AuthorizationCodeFlow initializeFlow() throws IOException {
+    	
         return OAuthRegistry.initializeFlow(getInitParameter("provider"));
+        
     }
 
     @Override

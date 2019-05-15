@@ -54,7 +54,7 @@
 			
 		
 			<form  method="post" action="/ComentarioController">
-            <input type='hidden' name='seachQuery' value="<c:out value="${item.id.videoId}"/>"/>
+            <input type='hidden' name='videoId' value="<c:out value="${item.id.videoId}"/>"/>
 			<textarea name="comentarios" rows="10" cols="40">${content}</textarea>
             <button type="submit" class="button">Submit</button>
             </form>
