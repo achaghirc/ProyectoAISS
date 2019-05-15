@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import aiss.model.resources.YoutubeResource;
 import aiss.model.youtube.CommentResponse;
+import aiss.model.youtube.Snippet;
+import aiss.model.youtube.Snippet_;
+import aiss.model.youtube.TopLevelComment;
 
 
 
@@ -19,21 +22,35 @@ public class ComentarioController extends HttpServlet {
 	    @Override
 	    public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 	        String accessToken = (String) req.getSession().getAttribute("YouTube-token");
-	        String videoId = req.getParameter("id");
-	        String content = req.getParameter("content");
+	        String videoId = req.getParameter("videoId");
+	        String content = req.getParameter("comentarios");
 	        if (accessToken != null && !"".equals(accessToken)) {
 	            if (videoId != null && !"".equals(videoId)) {
 	                YoutubeResource ytResource = new YoutubeResource(accessToken);
+	                
 	                CommentResponse comment = new CommentResponse();
-	                comment.getSnippet().setVideoId(videoId);;
-	                comment.getSnippet().getTopLevelComment().getSnippet_().setTextOriginal(content);
+	                
+	                Snippet snp = new Snippet();
+	                TopLevelComment tlc = new TopLevelComment();
+	                Snippet_ snp_ = new Snippet_();
+	                
+	                snp.setVideoId(videoId);
+	                snp.setTopLevelComment(tlc);
+	                tlc.setSnippet_(snp_);
+	                snp_.setTextOriginal(content);
+	                
+	                comment.setSnippet(snp);
+	               
+	                /*Insertar el comentario en Youtube, con el contenido*/
 	                ytResource.insertComment(comment, content);
+	                
+	                /*Log de exito en el post del comentario*/
 	                req.setAttribute("message", "Comment '" + videoId + "' added to the video!");
-	                req.getRequestDispatcher("/SelectedMovieController").forward(req, resp);
+	             //   req.getRequestDispatcher("index2.jsp").forward(req, resp);
 	            } else {
-	                req.setAttribute("message", "You must provide a valid videoId for coment");
+	                req.setAttribute("message", "You must provide a valid comment for coment");
 	                req.setAttribute("content", content);
-	                req.getRequestDispatcher("movie.jsp").forward(req, resp);
+	                req.getRequestDispatcher("SelectedMovieController").forward(req, resp);
 	            }
 	        } else {
 	            log.info("Trying to access Youtube without an access token, redirecting to OAuth servlet");

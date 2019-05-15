@@ -65,9 +65,21 @@
 				<iframe id="ytplayer" type="text/html" width="420" height="205"
 					src="https://www.youtube.com/embed/${track.id.videoId}"
 						frameborder="0" allowfullscreen></iframe>
-			
-				</c:forEach>	
-		</div>
+						
+							
+			<form  method="post" action="/ComentarioController">
+            <input type='hidden' name='videoId' value="<c:out value="${item.id.videoId}"/>"/>
+			<textarea name="comentarios" rows="10" cols="40">${content}</textarea>
+            <button type="submit" class="button">Submit</button>
+            </form>
+			</c:forEach>	
+		<p>Banda Sonora de la pelicula <c:out value="${requestScope.movies.title}"/></p>
+		<c:forEach items="${requestScope.tracks}" var="track">
+			<iframe id="ytplayer" type="text/html" width="420" height="205"
+				src="https://www.youtube.com/embed/${track.id.videoId}"
+					frameborder="0" allowfullscreen></iframe>
+			</c:forEach>
+		</div>	
 	</div>
 <!-- Bootstrap core JavaScript -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

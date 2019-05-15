@@ -108,7 +108,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>YouTubeOAuth2Callback</servlet-name>
-        <url-pattern>/oauth2callback/GoogleDrive</url-pattern> 
+        <url-pattern>/oauth2callback/YouTube</url-pattern> 
     </servlet-mapping>
   
   <!-- Inicio Controller -->

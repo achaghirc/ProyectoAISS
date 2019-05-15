@@ -26,7 +26,7 @@ private static final long serialVersionUID = 1L;
 			RequestDispatcher rd = null;
 			
 			//Search for movie most Popular
-			log.log(Level.FINE, "Searching for TMDB movies most Popular");
+			log.log(Level.FINE, "Searching for TMDB movies most ");
 			
 			MovieResources tmdb = new MovieResources();
 			MovieSearch popularResults = tmdb.getPopular();

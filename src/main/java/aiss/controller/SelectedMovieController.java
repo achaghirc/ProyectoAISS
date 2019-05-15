@@ -29,11 +29,16 @@ public class SelectedMovieController extends HttpServlet{
 	
 		protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			String id = request.getParameter("id");
+			request.setAttribute("movieId", id);
 			RequestDispatcher rd = null;
 			
 			//Search for movie in TMDB
 			log.log(Level.FINE, "Searching for TMDB movies that contain"+id);
 			MovieResources tmdb = new MovieResources();
+			if( id == null) {
+				id = (String) request.getAttribute("movieId").toString();
+			}
+			log.log(Level.FINE, "Searching for TMDB movies that contain"+id);
 			Movie tmdbResults = tmdb.getMovie(id);
 			Credits creditsResults = tmdb.getCasting(id);
 			String param = tmdbResults.getTitle();
