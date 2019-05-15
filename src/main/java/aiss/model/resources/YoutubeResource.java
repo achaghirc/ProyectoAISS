@@ -5,11 +5,8 @@ import java.net.URLEncoder;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import org.restlet.resource.ClientResource;
 import org.restlet.resource.ResourceException;
-
-
 import aiss.model.youtube.CommentResponse;
 import aiss.model.youtube.VideoSearch;
 

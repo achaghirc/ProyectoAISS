@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.sun.xml.bind.v2.schemagen.xmlschema.TopLevelElement;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({ "channelId", "videoId", "topLevelComment", "canReply", "totalReplyCount", "isPublic" })
@@ -17,7 +18,7 @@ public class Snippet {
 	@JsonProperty("videoId")
 	private String videoId;
 	@JsonProperty("topLevelComment")
-	private TopLevelComment topLevelComment;
+	private TopLevelElement topLevelComment;
 	@JsonProperty("canReply")
 	private Boolean canReply;
 	@JsonProperty("totalReplyCount")
