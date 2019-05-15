@@ -8,14 +8,17 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.sweble.wikitext.engine.EngineException;
 import org.sweble.wikitext.engine.PageId;
 import org.sweble.wikitext.engine.PageTitle;
 import org.sweble.wikitext.engine.WtEngineImpl;
 import org.sweble.wikitext.engine.config.WikiConfig;
 import org.sweble.wikitext.engine.nodes.EngProcessedPage;
+import org.sweble.wikitext.engine.output.HtmlRenderer;
+import org.sweble.wikitext.engine.output.HtmlRendererCallback;
+import org.sweble.wikitext.engine.output.MediaInfo;
 import org.sweble.wikitext.engine.utils.DefaultConfigEnWp;
-import org.sweble.wikitext.parser.parser.LinkTargetException;
+import org.sweble.wikitext.engine.utils.UrlEncoding;
+import org.sweble.wikitext.parser.nodes.WtUrl;
 import aiss.model.wiki.TextConverter;
 import aiss.model.wiki.Wiki;
 import aiss.model.resources.WikiaResources;
@@ -42,11 +45,9 @@ public class WikiaController extends HttpServlet {
 		String s = "";
 		
 		try {
-			s = convertWikiText(wikiResults.getParse().getTitle(),wikiResults.getParse().getWikitext().getT(),185);
-		} catch (LinkTargetException e) {
-			e.printStackTrace();
-		} catch (EngineException e) {
-			e.printStackTrace();
+			s = run(wikiResults.getParse().getWikitext().getT(), wikiResults.getParse().getTitle(), true);
+		} catch (Exception e1) {
+			e1.printStackTrace();
 		}
 		
 		if (wikiResults.getParse()!=null){
@@ -70,19 +71,67 @@ public class WikiaController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
-
-	public String convertWikiText(String title, String wikiText, int maxLineLength) throws LinkTargetException, EngineException {
-	    // Set-up a simple wiki configuration
-	    WikiConfig config = DefaultConfigEnWp.generate();
-	    // Instantiate a compiler for wiki pages
-	    WtEngineImpl engine = new WtEngineImpl(config);
-	    // Retrieve a page
-	    PageTitle pageTitle = PageTitle.make(config, title);
-	    PageId pageId = new PageId(pageTitle, -1);
-	    // Compile the retrieved page
-	    EngProcessedPage cp = engine.postprocess(pageId, wikiText, null);
-	    TextConverter p = new TextConverter(config, maxLineLength);
-	    return (String)p.go(cp.getPage());
+	
+	static String run(String wikitext, String fileTitle, boolean renderHtml) throws Exception {
+		// Set-up a simple wiki configuration
+		WikiConfig config = DefaultConfigEnWp.generate();
+		
+		final int wrapCol = 80;
+		
+		// Instantiate a compiler for wiki pages
+		WtEngineImpl engine = new WtEngineImpl(config);
+		
+		// Retrieve a page
+		PageTitle pageTitle = PageTitle.make(config, fileTitle);
+		
+		PageId pageId = new PageId(pageTitle, -1);
+		
+		// Compile the retrieved page
+		EngProcessedPage cp = engine.postprocess(pageId, wikitext, null);
+		
+		if (renderHtml) {
+			return HtmlRenderer.print(new MyRendererCallback(), config, pageTitle, cp.getPage());
+		} else {
+			TextConverter p = new TextConverter(config, wrapCol);
+			return (String) p.go(cp.getPage());
+		}
+	}
+	
+	private static final class MyRendererCallback implements HtmlRendererCallback {
+		protected static final String LOCAL_URL = "";
+		
+		@Override
+		public boolean resourceExists(PageTitle target) {
+			return false;
+		}
+		
+		@Override
+		public MediaInfo getMediaInfo(String title, int width, int height) throws Exception {
+			return null;
+		}
+		
+		@Override
+		public String makeUrl(PageTitle target) {
+			String page = UrlEncoding.WIKI.encode(target.getNormalizedFullTitle());
+			String f = target.getFragment();
+			String url = page;
+			if (f != null && !f.isEmpty())
+				url = page + "#" + UrlEncoding.WIKI.encode(f);
+			return LOCAL_URL + "/" + url;
+		}
+		
+		@Override
+		public String makeUrl(WtUrl target) {
+			if (target.getProtocol() == "")
+				return target.getPath();
+			return target.getProtocol() + ":" + target.getPath();
+		}
+		
+		@Override
+		public String makeUrlMissingTarget(String path) {
+			return "https://es.wikipedia.org/wiki/" + path;
+			
+		}
 	}
 	
 }
