@@ -7,7 +7,7 @@
         "authorizationFormUrl": "https://accounts.spotify.com/authorize",
         "scopes": ["playlist-read-private","playlist-modify-private"]
 
-
+	},
   	"Youtube": { 
         "tokenUrl": "https://accounts.google.com/o/oauth2/auth",
         "clientId":  "84167400535-mqv5ikj8mnpfb24c3do0568so8njpi08.apps.googleusercontent.com",

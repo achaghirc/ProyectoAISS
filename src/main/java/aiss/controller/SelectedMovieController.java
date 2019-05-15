@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import aiss.Movie.Credits;
 import aiss.Movie.Movie;
-import aiss.model.aliexpress.AliExpress;
-import aiss.model.resources.AliExpressResource;
 import aiss.model.resources.MovieResources;
 import aiss.model.resources.YoutubeResource;
 import aiss.model.youtube.VideoSearch;
@@ -55,7 +53,6 @@ public class SelectedMovieController extends HttpServlet{
 				request.setAttribute("movies", tmdbResults);
 				request.setAttribute("credits", creditsResults);
 				request.setAttribute("items", youtubeResults.getItems());
-				request.setAttribute("products", aliResults.getResult().getProducts());
 				request.setAttribute("tracks", trackResults.getItems());
 
 				rd = request.getRequestDispatcher("/movie.jsp");
