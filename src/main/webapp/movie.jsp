@@ -14,30 +14,28 @@
 <!-- Bootstrap core CSS -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <!-- Custom styles for this template -->
-<link href="css/landing-page.min3.css" rel="stylesheet">
+<link href="css/landing-page.min2.css" rel="stylesheet">
 </head>
 <body>
-	<div class="masthead text-black">
-		<div class="text-center">
-			<div>
-				<h1><c:out value="${requestScope.movies.title}"/></h1>	
-			</div>
-			<div class="poster_pelicula">
-				<h3>Poster:</h3>
-				<img src="https://image.tmdb.org/t/p/w185/${requestScope.movies.posterPath}"/>
-			</div>
-			<div class="card-footer">
-				<form id="searchForm" method="post" class="listaForm" action="/AliController">
-				<input type='hidden' name='title' value="<c:out value="${requestScope.movies.title}"/>"/>
-				<p>&nbsp; <input type="submit" class="btn btn-primary" name="tituloEnviar" value="<c:out value="Productos"/>"/></p>
-				</form>
-			</div>
+	<div class="masthead text-black text-center">
+		<div>
+			<h1><c:out value="${requestScope.movies.title}"/></h1>	
+		</div>
+		<div>
+			<h3>Poster:</h3>
+			<img src="https://image.tmdb.org/t/p/w185/${requestScope.movies.posterPath}"/>
+		</div>
+		<div class="card-footer">
+			<form id="searchForm" method="post" class="listaForm" action="/AliController">
+			<input type='hidden' name='title' value="<c:out value="${requestScope.movies.title}"/>"/>
+			<p>&nbsp; <input type="submit" class="btn btn-primary" name="tituloEnviar" value="<c:out value="Productos"/>"/></p>
+			</form>
 		</div>
 		<div class="overview">
 			<h3>OVERVIEW:</h3>
 			<p><c:out value="${requestScope.movies.overview}"/></p>
 		</div>	
-		<div class="datos_pelicula">
+		<div>
 			<p>Adult:<c:out value="${requestScope.movies.adult}"/></p>
 			<p>Production Companies:</p> 
 			<c:forEach items="${requestScope.movies.productionCompanies}" var="prodcom">

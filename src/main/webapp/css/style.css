@@ -11,12 +11,9 @@ body{
     background-color: #f4f4f4;
 }
 .overview{
-	margin: 25px;
-}
-.datos_pelicula{
 	float: rigth;
-	width: 50%;
-	margin: 25px;
+	margin-left: 235px;
+	margin-right: 235px;
 }
 .wiki{
 	margin: 25px;
