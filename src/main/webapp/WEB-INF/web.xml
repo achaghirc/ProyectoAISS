@@ -94,7 +94,7 @@
         </init-param>
         <init-param>
             <param-name>onSuccess</param-name>
-            <param-value>redirect:/SelectedMovieController</param-value>
+            <param-value>redirect:/index1.jsp</param-value>
         </init-param>
     </servlet>
     <servlet-mapping>

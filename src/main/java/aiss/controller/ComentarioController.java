@@ -46,11 +46,11 @@ public class ComentarioController extends HttpServlet {
 	                
 	                /*Log de exito en el post del comentario*/
 	                req.setAttribute("message", "Comment '" + videoId + "' added to the video!");
-	             //   req.getRequestDispatcher("index2.jsp").forward(req, resp);
+	                req.getRequestDispatcher("index1.jsp").forward(req, resp);
 	            } else {
 	                req.setAttribute("message", "You must provide a valid comment for coment");
 	                req.setAttribute("content", content);
-	                req.getRequestDispatcher("SelectedMovieController").forward(req, resp);
+	                req.getRequestDispatcher("/index1.jsp").forward(req, resp);
 	            }
 	        } else {
 	            log.info("Trying to access Youtube without an access token, redirecting to OAuth servlet");

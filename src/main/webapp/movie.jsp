@@ -55,7 +55,7 @@
 		
 			<form  method="post" action="/ComentarioController">
             <input type='hidden' name='videoId' value="<c:out value="${item.id.videoId}"/>"/>
-			<textarea name="comentarios" rows="10" cols="40">${content}</textarea>
+			<textarea name="comentarios" rows="10" cols="40">Escribe tu comentario</textarea>
             <button type="submit" class="button">Submit</button>
             </form>
 			</c:forEach>	
