@@ -12,7 +12,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({ "channelId", "videoId", "topLevelComment", "canReply", "totalReplyCount", "isPublic" })
 public class Snippet {
-
 	@JsonProperty("channelId")
 	private String channelId;
 	@JsonProperty("videoId")

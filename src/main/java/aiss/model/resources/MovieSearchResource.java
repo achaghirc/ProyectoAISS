@@ -29,7 +29,7 @@ public class MovieSearchResource {
 	}
 	
 	public MovieSearch getMovieSearch(String movieId) throws UnsupportedEncodingException {
-		
+
 		MovieSearch mv =null;
 		ClientResource cr = null;
 		

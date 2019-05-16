@@ -5,5 +5,12 @@
         "clientSecret": "qIR3AT4FN7CFsd2_gdmcWBCo",
         "authorizationFormUrl": "https://accounts.google.com/o/oauth2/v2/auth",
         "scopes": ["https://www.googleapis.com/auth/youtube.force-ssl"]
+    },
+    "SoundCloud": {
+    	"tokenUrl": "https://api.soundcloud.com/oauth2/token",
+    	"clientId": "287adf40e30f73eb3cfe0af77f3a77d",
+    	"clientSecret":"80fc6746b2a92ea81b9d29455a5df35a",
+    	"authorizationFormUrl":"https://soundcloud.com/connect",
+    	"scopes": ["*"]
     }
 }		

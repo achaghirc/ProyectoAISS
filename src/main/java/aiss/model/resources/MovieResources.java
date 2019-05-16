@@ -1,13 +1,18 @@
 package aiss.model.resources;
 
 import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.util.Arrays;
 import java.util.Collection;
+import org.restlet.resource.ClientResource;
+import org.restlet.resource.ResourceException;
+
+
 
 
 import org.restlet.resource.ClientResource;
 import org.restlet.resource.ResourceException;
+
+
 
 
 
@@ -136,7 +141,7 @@ public class MovieResources {
 		MovieSearch v = null;
 		
 		try { 
-			cr = new ClientResource(URL_BASE+"/trending/movie/day?api_key="+api_Key+"&language=es-ES");
+			cr = new ClientResource(URL_BASE+"/trending/movie/day?api_key="+api_Key);
 			v = cr.get(MovieSearch.class);
 		}catch (ResourceException e) {
 			System.err.println("Error al obtener la pelicula mas vista: "+cr.getResponse().getStatus());

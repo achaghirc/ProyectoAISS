@@ -6,11 +6,11 @@
 <head>
 <meta charset="UTF-8">
 
-<title>Actor sin Informaci�n</title>
+<title>Actor sin Informacion</title>
 </head>
 <body>
 	<div>
-		<h3>No existe informaci�n de este actor en la Wikipedia.</h3>
+		<h3>No existe informacion de este actor en la Wikipedia.</h3>
 	</div>
 </body>
 </html>

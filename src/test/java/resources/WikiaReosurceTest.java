@@ -1,13 +1,7 @@
-package aiss.controller;
+package resources;
 
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import java.io.UnsupportedEncodingException;
+import org.junit.Test;
 import org.sweble.wikitext.engine.PageId;
 import org.sweble.wikitext.engine.PageTitle;
 import org.sweble.wikitext.engine.WtEngineImpl;
@@ -23,53 +17,25 @@ import aiss.model.wiki.TextConverter;
 import aiss.model.wiki.Wiki;
 import aiss.model.resources.WikiaResource;
 
-public class WikiaController extends HttpServlet {
-
-	private static final long serialVersionUID = 1L;
+public class WikiaReosurceTest {
+	static Wiki wiki;
+	static WikiaResource sr = new WikiaResource();
 	
-	private static final Logger log = Logger.getLogger(WikiaController.class.getName());
-	
-	public WikiaController() {
-		super();
-	}
-	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	@Test
+	public void testGetWiki() throws UnsupportedEncodingException {
 		
-		String name = request.getParameter("name");
-		RequestDispatcher rd = null;
+		wiki = sr.getWiki("Tobey Maguire");
 		
-		// Search for info in WikiPedia
-		log.log(Level.FINE, "Buscando información del actor " + name);
-		WikiaResource wiki = new WikiaResource();
-		Wiki wikiResults = wiki.getWiki(name);
+		//Show results
 		String s = "";
 		
 		try {
-			s = run(wikiResults.getParse().getWikitext().getT(), wikiResults.getParse().getTitle(), true);
+			s = run(wiki.getParse().getWikitext().getT(), wiki.getParse().getTitle(), true);
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
 		
-		if (wikiResults.getParse()!=null){
-	
-			rd = request.getRequestDispatcher("/wikiView.jsp");
-			request.setAttribute("s", s);
-			request.setAttribute("wiki", wikiResults);
-			
-		}else if(wikiResults.getParse()== null){
-			log.log(Level.SEVERE,"WikiTexto object: "+ s);
-			rd = request.getRequestDispatcher("/wikiViewError.jsp");
-		}else {
-			log.log(Level.SEVERE,"WikiTexto object: "+ s);
-			rd = request.getRequestDispatcher("/error.jsp");
-		}
-		
-		rd.forward(request, response);
-		
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+		System.out.println(s);
 	}
 	
 	static String run(String wikitext, String fileTitle, boolean renderHtml) throws Exception {
@@ -89,9 +55,9 @@ public class WikiaController extends HttpServlet {
 		// Compile the retrieved page
 		EngProcessedPage cp = engine.postprocess(pageId, wikitext, null);
 		
-		if (renderHtml) {
+		if (renderHtml){
 			return HtmlRenderer.print(new MyRendererCallback(), config, pageTitle, cp.getPage());
-		} else {
+		}else{
 			TextConverter p = new TextConverter(config, wrapCol);
 			return (String) p.go(cp.getPage());
 		}
