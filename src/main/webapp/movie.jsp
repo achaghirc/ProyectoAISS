@@ -74,12 +74,6 @@
 	            <button type="submit" class="button">Submit</button>
 	            </form>
 				</c:forEach>	
-			<p>Banda Sonora de la pelicula <c:out value="${requestScope.movies.title}"/></p>
-			<c:forEach items="${requestScope.tracks}" var="track">
-				<iframe id="ytplayer" type="text/html" width="420" height="205"
-					src="https://www.youtube.com/embed/${track.id.videoId}"
-						frameborder="0" allowfullscreen></iframe>
-				</c:forEach>
 			</div>	
 		</div>
 	</div>

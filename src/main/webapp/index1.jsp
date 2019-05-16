@@ -17,7 +17,8 @@
                     <a href=""><b>WikiFilm</b><img src="images/Logo3.png" width="100" height="100"></a>
                 </div>
             </div>
-        	<div>Comentario publicado correctamente</div>   
+        	<div><h2>Comentario publicado correctamente</h2></div>
+        	<div><a href="/InicioController">Vuelve al inicio</a></div>   
         </center>
        
     </div>

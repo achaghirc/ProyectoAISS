@@ -34,22 +34,19 @@ public class YoutubeResource {
 	 * @throws UnsupportedEncodingException
 	 */
 	
-	public String insertComment(CommentResponse comentario, String contenido) {
+	public CommentResponse insertComment(CommentResponse comentario, String contenido) {
 		ClientResource cr = null;
-		String newId = null;
+		CommentResponse comment = null;
 		
 		try {
 			cr = new ClientResource(URL_COMMENT+api_key);
-			CommentResponse newComment = cr.post(comentario,CommentResponse.class);
-			newId = newComment.getSnippet().getVideoId();
-			Map<String,Object> headers = cr.getRequestAttributes();
-			headers.put("Content-Type", "text/plain");
+			comment = cr.post(comentario,CommentResponse.class);
 			cr.put(contenido);
 		}catch (ResourceException e) {
 			log.warning("Error when inserting file: "+cr.getResponse().getStatus());
 			// TODO: handle exception
 		}
-		return newId;
+		return comment;
 	}
 	
 	
