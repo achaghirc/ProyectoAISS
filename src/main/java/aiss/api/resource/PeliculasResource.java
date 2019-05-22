@@ -10,6 +10,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 import aiss.model.tmdb.Pelicula;
@@ -42,14 +43,14 @@ public class PeliculasResource {
 	@GET
 	@Path("/{idPelicula}")
 	@Produces("application/json")
-	public Pelicula getPeliculaById(String id) {
+	public Pelicula getPeliculaById(@PathParam("idPelicula") String id) {
 		return peliculasMap.get(id);
 	}
 
 	@GET
-	@Path("/{title}")
+	@Path("/{titlePelicula}")
 	@Produces("application/json")
-	public Collection<Pelicula> getPeliculasByTitle(String title) {
+	public Collection<Pelicula> getPeliculasByTitle(@PathParam("title") String title) {
 		Collection<Pelicula> res = new HashSet<>();
 		for (Pelicula p : getAllPeliculas()) {
 			if (p.getTitle().equals(title)) {
@@ -80,7 +81,7 @@ public class PeliculasResource {
 
 	@DELETE
 	@Path("Peliculas/{idPelicula}")
-	public void deletePelicula(String id) {
+	public void deletePelicula(@PathParam("idPelicula") String id) {
 		peliculasMap.remove(id);
 	}
 
