@@ -18,9 +18,15 @@ import aiss.model.tmdb.Video;
 public class VideoResource extends PeliculasResource {
 
 	private int index = 0;
-	
-	
-	
+	public static VideoResource instance = null;
+
+	public static VideoResource getInstance() {
+		if (instance == null) {
+			instance = new VideoResource();
+		}
+		return instance;
+	}
+
 	// Video
 	@GET
 	@Produces("application/json")

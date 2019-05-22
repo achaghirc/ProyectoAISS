@@ -18,7 +18,15 @@ import aiss.model.tmdb.Pelicula;
 public class CancionesResource extends PeliculasResource {
 
 	private int index = 0;
-	
+	public static CancionesResource instance = null;
+
+	public static CancionesResource getInstance() {
+		if (instance == null) {
+			instance = new CancionesResource();
+		}
+		return instance;
+	}
+
 	// Cancion
 	@POST
 	@Produces("application/json")

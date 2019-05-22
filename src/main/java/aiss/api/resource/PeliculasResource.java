@@ -40,7 +40,7 @@ public class PeliculasResource {
 	}
 
 	@GET
-	@Path("/{id}")
+	@Path("/{idPelicula}")
 	@Produces("application/json")
 	public Pelicula getPeliculaById(String id) {
 		return peliculasMap.get(id);
@@ -79,7 +79,7 @@ public class PeliculasResource {
 	}
 
 	@DELETE
-	@Path("Peliculas/{id}")
+	@Path("Peliculas/{idPelicula}")
 	public void deletePelicula(String id) {
 		peliculasMap.remove(id);
 	}

@@ -18,6 +18,14 @@ import aiss.model.tmdb.Producto;
 public class ProductosResource extends PeliculasResource  {
 
 	private int index = 0;
+	public static ProductosResource instance = null;
+
+	public static ProductosResource getInstance() {
+		if (instance == null) {
+			instance = new ProductosResource();
+		}
+		return instance;
+	}
 	
 	// Producto
 	@POST
