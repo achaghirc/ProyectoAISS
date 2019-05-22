@@ -1,0 +1,87 @@
+package aiss.api.resource;
+
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Map;
+
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+
+import aiss.model.tmdb.Pelicula;
+
+@Path("/Peliculas")
+public class PeliculasResource {
+	
+	public static PeliculasResource instance = null;
+
+	
+	public static PeliculasResource getInstance() {
+		if(instance == null) {
+			instance = new PeliculasResource();
+		}
+		return instance;
+	}
+	
+	Map<String, Pelicula> peliculasMap;
+
+	
+	
+	
+	// Pelicula
+	@GET
+	@Produces("application/json")
+	public Collection<Pelicula> getAllPeliculas() {
+		return peliculasMap.values();
+	}
+
+	@GET
+	@Path("/{id}")
+	@Produces("application/json")
+	public Pelicula getPeliculaById(String id) {
+		return peliculasMap.get(id);
+	}
+
+	@GET
+	@Path("/{title}")
+	@Produces("application/json")
+	public Collection<Pelicula> getPeliculasByTitle(String title) {
+		Collection<Pelicula> res = new HashSet<>();
+		for (Pelicula p : getAllPeliculas()) {
+			if (p.getTitle().equals(title)) {
+				res.add(p);
+			}
+		}
+		return res;
+	}
+
+	@POST
+	@Produces("application/json")
+	@Consumes("application/json")
+	public void addPelicula(Pelicula pelicula) {
+		System.out.println(pelicula.getId());
+		System.out.println(pelicula.getTitle());
+		peliculasMap.put(pelicula.getId(), pelicula);
+		System.out.println(peliculasMap.get(pelicula.getId()));
+
+	}
+
+	@PUT
+	@Consumes("application/json")
+	public void updatePelicula(Pelicula pelicula) {
+		if (getAllPeliculas().contains(pelicula)) {
+			peliculasMap.put(pelicula.getId(), pelicula);
+		}
+	}
+
+	@DELETE
+	@Path("Peliculas/{id}")
+	public void deletePelicula(String id) {
+		peliculasMap.remove(id);
+	}
+
+}
