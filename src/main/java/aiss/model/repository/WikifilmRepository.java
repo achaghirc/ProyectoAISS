@@ -24,7 +24,7 @@ public interface WikifilmRepository {
 
 	public void updateVideoPelicula(String idPelicula, Video video);
 
-	public void deleteVideoAnime(String idPelicula, String idVideo);
+	public void deleteVideo(String idPelicula, String idVideo);
 
 	public void addProductoPelicula(String idPelicula, Producto producto);
 
