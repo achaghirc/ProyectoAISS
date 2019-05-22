@@ -12,6 +12,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
+import aiss.model.repository.WikifilmRepository;
+import aiss.model.repository.WikifilmRepositoryImpl;
 import aiss.model.tmdb.Pelicula;
 import aiss.model.tmdb.Producto;
 
@@ -20,7 +22,13 @@ public class ProductosResource extends PeliculasResource  {
 
 	private int index = 0;
 	public static ProductosResource instance = null;
-
+	
+	WikifilmRepository repository;
+	
+	public ProductosResource() {
+		repository = WikifilmRepositoryImpl.getInstance();
+	}
+	
 	public static ProductosResource getInstance() {
 		if (instance == null) {
 			instance = new ProductosResource();
