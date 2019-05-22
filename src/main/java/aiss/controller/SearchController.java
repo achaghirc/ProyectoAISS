@@ -28,7 +28,20 @@ public class SearchController extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 				
-				
+		 String sid = (String) request.getSession().getAttribute("movieId");
+	        String id = request.getParameter("id");
+	        String vid = "";
+	     	if(id!=null) {
+				vid = id;
+				request.getSession().setAttribute("movieId", id);
+				log.log(Level.FINE, "SearchController: ID con valor, en sesion hay: "+ (String) request.getSession().getAttribute("movieId"));
+			}else if(id == null && sid != null) {
+				vid = sid;
+				log.log(Level.FINE, "SearchController: ID sin valor, sid con valor, en sesion hay: "+ (String) request.getSession().getAttribute("movieId"));
+			}else {
+				log.log(Level.FINE, "SearchController: ID sin valor, sid sin valor, en sesion hay: "+ (String) request.getSession().getAttribute("movieId"));
+			}
+	        
 		
 		String query = request.getParameter("searchQuery");
 		String param = URLEncoder.encode(query, "UTF-8");

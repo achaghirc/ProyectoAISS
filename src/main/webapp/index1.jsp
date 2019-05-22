@@ -19,6 +19,7 @@
             </div>
         	<div><h2>Comentario publicado correctamente</h2></div>
         	<div><a href="/InicioController">Vuelve al inicio</a></div>   
+        	<div><p>${message}</p></div>
         </center>
        
     </div>

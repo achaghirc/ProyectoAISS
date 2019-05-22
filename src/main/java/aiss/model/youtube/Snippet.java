@@ -96,5 +96,8 @@ public class Snippet {
 	public void setAdditionalProperty(String name, Object value) {
 		this.additionalProperties.put(name, value);
 	}
-
+	public String toString() {
+		return "Snippet\n {\n ChannelId:"+getChannelId()+"\n{\n TopLevelComent: "+getTopLevelComment()+"\nVideoId: "+getVideoId()+"\n } \n}";
+							
+	}
 }
