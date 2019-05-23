@@ -2,7 +2,6 @@ package aiss.api.resource;
 
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.Map;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -10,6 +9,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 import aiss.model.repository.WikifilmRepository;
@@ -33,29 +33,25 @@ public class PeliculasResource {
 		return instance;
 	}
 	
-	Map<String, Pelicula> peliculasMap;
-
-	
-	
 	
 	// Pelicula
 	@GET
 	@Produces("application/json")
 	public Collection<Pelicula> getAllPeliculas() {
-		return peliculasMap.values();
+		return repository.getAllPeliculas();
 	}
 
 	@GET
-	@Path("/{idPelicula}")
+	@Path("/id/{idPelicula}")
 	@Produces("application/json")
-	public Pelicula getPeliculaById(String id) {
-		return peliculasMap.get(id);
+	public Pelicula getPeliculaById(@PathParam("idPelicula") String id) {
+		return repository.getPeliculaById(id);
 	}
 
 	@GET
-	@Path("/{title}")
+	@Path("/titulo/{titlePelicula}")
 	@Produces("application/json")
-	public Collection<Pelicula> getPeliculasByTitle(String title) {
+	public Collection<Pelicula> getPeliculasByTitle(@PathParam("title") String title) {
 		Collection<Pelicula> res = new HashSet<>();
 		for (Pelicula p : getAllPeliculas()) {
 			if (p.getTitle().equals(title)) {
@@ -71,8 +67,7 @@ public class PeliculasResource {
 	public void addPelicula(Pelicula pelicula) {
 		System.out.println(pelicula.getId());
 		System.out.println(pelicula.getTitle());
-		peliculasMap.put(pelicula.getId(), pelicula);
-		System.out.println(peliculasMap.get(pelicula.getId()));
+		repository.addPelicula(pelicula);
 
 	}
 
@@ -80,14 +75,14 @@ public class PeliculasResource {
 	@Consumes("application/json")
 	public void updatePelicula(Pelicula pelicula) {
 		if (getAllPeliculas().contains(pelicula)) {
-			peliculasMap.put(pelicula.getId(), pelicula);
+			repository.updatePelicula(pelicula);
 		}
 	}
 
 	@DELETE
 	@Path("Peliculas/{idPelicula}")
-	public void deletePelicula(String id) {
-		peliculasMap.remove(id);
+	public void deletePelicula(@PathParam("idPelicula") String id) {
+		repository.deletePelicula(id);
 	}
 
 }

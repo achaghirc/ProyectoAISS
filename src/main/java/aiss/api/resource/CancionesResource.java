@@ -9,6 +9,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 
@@ -38,7 +39,7 @@ public class CancionesResource extends PeliculasResource {
 	@POST
 	@Produces("application/json")
 	@Consumes("application/json")
-	public void addCancionPelicula(String idPelicula, Cancion cancion) {
+	public void addCancionPelicula(@PathParam("idPelicula")String idPelicula, Cancion cancion) {
 		String idCancion = "c" + index++;
 		cancion.setId(idCancion);
 		getPeliculaById(idPelicula).addCancion(cancion);
@@ -46,13 +47,13 @@ public class CancionesResource extends PeliculasResource {
 
 	@PUT
 	@Consumes("application/json")
-	public void updateCancionPelicula(String idPelicula, Cancion cancion) {
+	public void updateCancionPelicula(@PathParam("idPelicula")String idPelicula, Cancion cancion) {
 		getPeliculaById(idPelicula).updateCancion(cancion);
 	}
 
 	@DELETE
 	// ???
-	public void deleteCancionPelicula(String idPelicula, String idCancion) {
+	public void deleteCancionPelicula(@PathParam("idPelicula")String idPelicula, @PathParam("idCancion")String idCancion) {
 		getPeliculaById(idPelicula).deleteCancion(getCancionById(idCancion));
 	}
 
@@ -68,13 +69,13 @@ public class CancionesResource extends PeliculasResource {
 
 	@GET
 	@Produces("application/json")
-	public Collection<Cancion> getPeliculasCancionesById(String idPelicula) {
+	public Collection<Cancion> getPeliculasCancionesById(@PathParam("idPelicula")String idPelicula) {
 		return getPeliculaById(idPelicula).getCanciones();
 	}
 
 	@GET
 	@Produces("application/json")
-	public Collection<Cancion> getPeliculasCancionesByName(String title) {
+	public Collection<Cancion> getPeliculasCancionesByName(@PathParam("titlePelicula")String title) {
 		Collection<Cancion> res = new HashSet<>();
 		for (Pelicula p : getPeliculasByTitle(title)) {
 			res.addAll(p.getCanciones());
@@ -84,7 +85,7 @@ public class CancionesResource extends PeliculasResource {
 
 	@GET
 	@Produces("application/json")
-	public Cancion getCancionById(String id) {
+	public Cancion getCancionById(@PathParam("idCancion")String id) {
 		Cancion res = null;
 		for (Cancion c : getAllPeliculasCanciones()) {
 			if (c.getId().equals(id)) {
