@@ -2,11 +2,18 @@ package aiss.model.resources;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+
+import org.restlet.data.ChallengeResponse;
+import org.restlet.data.ChallengeScheme;
+import org.restlet.data.Header;
+import org.restlet.engine.header.HeaderConstants;
 import org.restlet.resource.ClientResource;
 import org.restlet.resource.ResourceException;
+import org.restlet.util.Series;
+
 import aiss.model.youtube.CommentResponse;
 import aiss.model.youtube.VideoSearch;
 
@@ -33,18 +40,31 @@ public class YoutubeResource {
 	 * @return comments
 	 * @throws UnsupportedEncodingException
 	 */
+
+
 	
-	public CommentResponse insertComment(CommentResponse comentario, String contenido) {
+	public CommentResponse insertComment(CommentResponse comentario) {
 		ClientResource cr = null;
 		CommentResponse comment = null;
 		
 		try {
-			cr = new ClientResource(URL_COMMENT+api_key);
+			
+			cr = new ClientResource(URL_COMMENT);
+			
+			ChallengeResponse challengeResponse = new ChallengeResponse(ChallengeScheme.HTTP_OAUTH_BEARER);
+			challengeResponse.setRawValue(access_token);
+			cr.setChallengeResponse(challengeResponse);
+			
+			
+			
 			comment = cr.post(comentario,CommentResponse.class);
-			cr.put(contenido);
+			
+			
+			
 		}catch (ResourceException e) {
 			log.warning("Error when inserting file: "+cr.getResponse().getStatus());
 			// TODO: handle exception
+			
 		}
 		return comment;
 	}

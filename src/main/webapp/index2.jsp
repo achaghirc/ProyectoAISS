@@ -41,7 +41,13 @@
               <div class="col-12 col-md-3">
                 <button type="submit" name="searchBtn" title="search" value="search" class="btn btn-block btn-lg btn-primary">Search</button>
               </div>
+             
             </div>
+          </form>
+          <form id="logForm" action="/ComentarioController" method="post">
+              <div class="col-12 col-md4">
+              <button type="submit" name="searchBoton" value="Search" class="btn btn-block btn-lg btn-primary">Logueate en Youtube</button>
+              </div> 
           </form>
         </div>
       </div>
@@ -62,7 +68,6 @@
             <input type='hidden' name='seachQuery' value="<c:out value="${popular.title}"/>"/>
 			<input type='hidden' name='id' value="<c:out value="${popular.id}"/>"/>
             <input type="submit"  class="btn btn-primary" name="tituloEnviar" value="<c:out value="${popular.title}"/>"/>
-            <p> ${popular.title} ${popular.id}</p>
             </form>
           </div>
         </div>

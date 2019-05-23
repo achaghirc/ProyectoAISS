@@ -28,20 +28,34 @@ public class SelectedMovieController extends HttpServlet{
 		}
 	
 		protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			
 			String id = request.getParameter("id");
+			///request.getSession().setAttribute("movieId", id);
 			request.getSession().setAttribute("movieId", id);
+			String sid = (String) request.getSession().getAttribute("movieId");
+			String vid = "";
+			if(id!=null) {
+				vid = id;
+				request.getSession().setAttribute("movieId", id);
+				log.log(Level.FINE, "SelectedMovieController: ID con valor, en sesion hay: "+ (String) request.getSession().getAttribute("movieId"));
+			}else if(id == null && sid != null) {
+				vid = sid;
+				log.log(Level.FINE, "SelectedMovieController: ID sin valor, sid con valor, en sesion hay: "+ (String) request.getSession().getAttribute("movieId"));
+			}else {
+				log.log(Level.FINE, "SelectedMovieController: ID sin valor, sid sin valor, en sesion hay: "+ (String) request.getSession().getAttribute("movieId"));
+			}
+			
 			
 			RequestDispatcher rd = null;
 			
+			
+			log.log(Level.FINE, "Searching for TMDB movies that contain"+vid);
+			
+			
 			//Search for movie in TMDB
-			log.log(Level.FINE, "Searching for TMDB movies that contain"+id);
 			MovieResources tmdb = new MovieResources();
-			if( id == null) {
-				id = (String) request.getSession().getAttribute("movieId");
-			}
-			log.log(Level.FINE, "Searching for TMDB movies that contain"+id);
-			Movie tmdbResults = tmdb.getMovie(id);
-			Credits creditsResults = tmdb.getCasting(id);
+			Movie tmdbResults = tmdb.getMovie(vid);
+			Credits creditsResults = tmdb.getCasting(vid);
 			String param = tmdbResults.getTitle();
 				
 			//Searching Trailer Youtube

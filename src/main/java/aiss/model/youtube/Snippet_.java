@@ -195,5 +195,8 @@ public class Snippet_ {
 	public void setAdditionalProperty(String name, Object value) {
 		this.additionalProperties.put(name, value);
 	}
-
+	
+	public String toString() {
+		return "\n\t\t{\n\t\t\tTexto original: "+getTextOriginal()+"\n\t\t}";
+	}
 }
