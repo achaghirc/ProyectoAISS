@@ -12,13 +12,19 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 
+import aiss.model.repository.WikifilmRepository;
+import aiss.model.repository.WikifilmRepositoryImpl;
 import aiss.model.tmdb.Pelicula;
 
 @Path("/Peliculas")
 public class PeliculasResource {
 	
 	public static PeliculasResource instance = null;
-
+	WikifilmRepository repository;
+	
+	public PeliculasResource() {
+		repository = WikifilmRepositoryImpl.getInstance();
+	}
 	
 	public static PeliculasResource getInstance() {
 		if(instance == null) {
@@ -40,7 +46,7 @@ public class PeliculasResource {
 	}
 
 	@GET
-	@Path("/{id}")
+	@Path("/{idPelicula}")
 	@Produces("application/json")
 	public Pelicula getPeliculaById(String id) {
 		return peliculasMap.get(id);
@@ -79,7 +85,7 @@ public class PeliculasResource {
 	}
 
 	@DELETE
-	@Path("Peliculas/{id}")
+	@Path("Peliculas/{idPelicula}")
 	public void deletePelicula(String id) {
 		peliculasMap.remove(id);
 	}

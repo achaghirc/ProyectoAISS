@@ -11,6 +11,8 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 
+import aiss.model.repository.WikifilmRepository;
+import aiss.model.repository.WikifilmRepositoryImpl;
 import aiss.model.tmdb.Pelicula;
 import aiss.model.tmdb.Video;
 
@@ -18,9 +20,21 @@ import aiss.model.tmdb.Video;
 public class VideoResource extends PeliculasResource {
 
 	private int index = 0;
+	public static VideoResource instance = null;
 	
+	WikifilmRepository repository;
 	
+	public VideoResource() {
+		repository = WikifilmRepositoryImpl.getInstance();
+	}
 	
+	public static VideoResource getInstance() {
+		if (instance == null) {
+			instance = new VideoResource();
+		}
+		return instance;
+	}
+
 	// Video
 	@GET
 	@Produces("application/json")
