@@ -3,22 +3,18 @@ package aiss.model.resources;
 import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 import java.util.Collection;
-import org.restlet.resource.ClientResource;
-import org.restlet.resource.ResourceException;
-
-
-
+import java.util.logging.Level;
 
 import org.restlet.resource.ClientResource;
 import org.restlet.resource.ResourceException;
 
-
-
-
+import com.sun.tools.sjavac.Log;
 
 import aiss.Movie.Credits;
+import aiss.Movie.GuessID;
 import aiss.Movie.Movie;
 import aiss.Movie.MovieSearch;
+import aiss.Movie.Rate;
 import aiss.Movie.Videos;
 import aiss.model.tmdb.Session;
 
@@ -28,6 +24,8 @@ public class MovieResources {
 	private static final String api_Key = "1cb3b67dfeb8452b822808e663f7b97c";
 	private static final String URL_BASE = "https://api.themoviedb.org/3";
 	private static final String URL_MOVIE = URL_BASE+"/movie/";
+	private static final String URL_SESSION = "https://api.themoviedb.org/3/authentication/guest_session/new?api_key=";
+	
 	
 	public Collection<Movie> getAll(){
 		ClientResource cr = null;
@@ -47,7 +45,7 @@ public class MovieResources {
 		ClientResource cr = null;
 		Movie m = null;
 		try {
-			cr = new ClientResource(URL_MOVIE+movieId+"?api_key="+api_Key+"&language=es-ES");
+			cr = new ClientResource(URL_MOVIE+movieId+"?api_key="+api_Key+"&language=en-US");
 			m = cr.get(Movie.class);
 		}catch (ResourceException e) {
 			System.err.println("Error al querer obtener la pelicula: "+cr.getResponse().getStatus());
@@ -76,7 +74,7 @@ public class MovieResources {
 			cr = new ClientResource(URL_MOVIE+movieId+"/videos?api_key="+api_Key);
 			v = cr.get(Videos.class);
 		}catch (ResourceException e) {
-			System.err.println("Error al obtener el Cast de la pelicula: "+ cr.getResponse().getStatus());
+			System.err.println("Error al obtener el video de la pelicula: "+ cr.getResponse().getStatus());
 		}
 		return v;
 	}
@@ -113,7 +111,7 @@ public class MovieResources {
 		MovieSearch v = null;
 		
 		try { 
-			cr = new ClientResource(URL_MOVIE+"popular?api_key="+api_Key+"&language=es-ES");
+			cr = new ClientResource(URL_MOVIE+"popular?api_key="+api_Key+"&language=en-US");
 			v = cr.get(MovieSearch.class);
 		}catch (ResourceException e) {
 			System.err.println("Error al obtener la pelicula mas vista: "+cr.getResponse().getStatus());
@@ -127,7 +125,7 @@ public class MovieResources {
 		MovieSearch v = null;
 		
 		try { 
-			cr = new ClientResource(URL_MOVIE+"upcoming?api_key="+api_Key+"&language=es-ES");
+			cr = new ClientResource(URL_MOVIE+"upcoming?api_key="+api_Key+"&language=en-US");
 			v = cr.get(MovieSearch.class);
 		}catch (ResourceException e) {
 			System.err.println("Error al obtener la pelicula mas a estrenar: "+cr.getResponse().getStatus());
@@ -148,5 +146,34 @@ public class MovieResources {
 			throw e;
 		}
 		return v;
+	}
+	public GuessID getGuessId() {
+		GuessID res = null;
+		ClientResource cr = null;
+		
+		try {
+			cr = new ClientResource(URL_SESSION+api_Key);
+			res = cr.get(GuessID.class);
+		}catch(ResourceException e) {
+			System.err.println("La sesion Id no se ha obtenido correctamente");
+		}
+		return res;
+	}
+	public Rate postRate(Rate rate,String movieId) throws UnsupportedEncodingException {
+		Rate res = null;
+		GuessID guess = getGuessId();
+		String sessionId = guess.getGuestSessionId();
+		System.out.println( "El session id es "+sessionId);
+		ClientResource cr = null;
+		try {
+			cr = new ClientResource("https://api.themoviedb.org/3/movie/"+movieId+"/rating?api_key="+api_Key+"&guest_session_id="+sessionId);
+			res = cr.post(rate,Rate.class);
+		}catch (ResourceException e){
+			System.err.println("Error al hacer post de la valoracion "+cr.getResponse().getStatus());
+			throw e;
+		}
+		
+		
+		return res;
 	}
 }

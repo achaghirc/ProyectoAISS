@@ -34,10 +34,21 @@
 			</div>
 			<div class="card-footer">
 				<form id="searchForm" method="post" class="listaForm"action="/AliController">
-					<input type='hidden' name='title' value="<c:out value="${requestScope.movies.title}"/>" />
+					<input type='hidden' name='title' value="<c:out value="${requestScope.movies.originalTitle}"/>" />
 					<p>
 						&nbsp; <input type="submit" class="btn btn-primary"
 							name="tituloEnviar" value="<c:out value="Productos"/>" />
+					</p>
+				</form>
+			</div>
+			<div class="card-footer">
+				<form id="searchForm" method="post" class="listaForm"action="/ValoracionController">
+					<input type='hidden' name='idpelicula' value="<c:out value="${requestScope.movies.id}"/>" />
+					<input type='hidden' name='titlePeli' value="<c:out value="${requestScope.movies.title}"/>" />
+					<input type='number' name='rate'/>
+					<p>
+						&nbsp; <input type="submit" class="btn btn-primary"
+							name="tituloEnviar" value="<c:out value="Valorar"/>" />
 					</p>
 				</form>
 			</div>
@@ -74,7 +85,7 @@
 					<c:out value="${requestScope.movies.status}" />
 				</p>
 				<p>Actores:</p>
-				<c:set var="noOfRows" value="10" />
+				<c:set var="noOfRows" value="9" />
 				<c:forEach items="${requestScope.credits.cast}" var="casting"
 					begin="${param.first}" end="${param.first + noOfRows -1}">
 					<img src="https://image.tmdb.org/t/p/w185/${casting.profilePath}" />
@@ -87,7 +98,7 @@
 						</p>
 					</form>
 				</c:forEach>
-				<p>Trailer</p>
+ 				<p>Trailer</p>
 				<c:forEach items="${requestScope.items}" var="item">
 					<iframe id="ytplayer" type="text/html" width="420" height="205"
 						src="https://www.youtube.com/embed/${item.id.videoId}"
@@ -125,6 +136,7 @@
 					</form>
 				</c:forEach>
 			</div>
+		</div>
 		</div>
 	</div>
 	<!-- Bootstrap core JavaScript -->

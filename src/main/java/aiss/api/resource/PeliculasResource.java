@@ -51,7 +51,7 @@ public class PeliculasResource {
 	@GET
 	@Path("/titulo/{titlePelicula}")
 	@Produces("application/json")
-	public Collection<Pelicula> getPeliculasByTitle(@PathParam("title") String title) {
+	public Collection<Pelicula> getPeliculasByTitle(@PathParam("titlePelicula") String title) {
 		Collection<Pelicula> res = new HashSet<>();
 		for (Pelicula p : getAllPeliculas()) {
 			if (p.getTitle().equals(title)) {
@@ -61,6 +61,7 @@ public class PeliculasResource {
 		return res;
 	}
 
+	
 	@POST
 	@Produces("application/json")
 	@Consumes("application/json")
@@ -80,7 +81,7 @@ public class PeliculasResource {
 	}
 
 	@DELETE
-	@Path("Peliculas/{idPelicula}")
+	@Path("/id/{idPelicula}")
 	public void deletePelicula(@PathParam("idPelicula") String id) {
 		repository.deletePelicula(id);
 	}

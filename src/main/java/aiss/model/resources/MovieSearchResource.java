@@ -34,8 +34,8 @@ public class MovieSearchResource {
 		ClientResource cr = null;
 		
 		try {
-			String param = URLEncoder.encode(movieId, "UTF-8");
-			cr = new ClientResource(URL_MOVIE_SEARCH+"?api_key="+api_Key+"&query="+movieId);
+			
+			cr = new ClientResource(URL_MOVIE_SEARCH+"?api_key="+api_Key+"&query="+movieId+"&language=en-US");
 			mv = cr.get(MovieSearch.class);
 		}catch (ResourceException e) {
 			System.err.println("Error when retrieving the movie: " + cr.getResponse().getStatus());
