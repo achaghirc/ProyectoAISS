@@ -79,6 +79,18 @@
   	<servlet-name>ComentarioController</servlet-name>
   	<url-pattern>/ComentarioController</url-pattern>
   </servlet-mapping> 
+  <!-- Servlet para la valoracion -->
+   <servlet>
+  	<description></description>
+  	<display-name>ValoracionController</display-name>
+  	<servlet-name>ValoracionController</servlet-name>
+  	<servlet-class>aiss.controller.ValoracionController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ValoracionController</servlet-name>
+  	<url-pattern>/ValoracionController</url-pattern>
+  </servlet-mapping>
+  
    <!--   Youtube oAuth2 servlets    -->
     <!-- YoutubeAuthController-->
     <servlet>
@@ -124,6 +136,7 @@
   	<servlet-name>InicioController</servlet-name>
   	<url-pattern>/InicioController</url-pattern>
   </servlet-mapping>
+
   <!-- Ruta mas famosa -->
   <welcome-file-list>
   	<welcome-file>InicioController</welcome-file>

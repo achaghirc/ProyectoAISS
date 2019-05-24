@@ -1,0 +1,41 @@
+@import url(http://fonts.googleapis.com/css?family=Cabin:400);
+
+head{
+    float: left;
+    width: 100%;
+    margin: 0px;
+}
+body{
+    float: left;
+    width: 100%;
+    margin: 0px;
+    background-image:url("http://www.fondox.net/wallpapers/resoluciones/13/textura-de-papel-antiguo_1280x800_1552.jpg");
+    background-size: 100%;
+}
+.main{
+    float: left;
+    width: 100%;
+    margin: 0px;
+}
+.header{
+    float: left;
+    width: 100%;
+}
+
+button.read_more{
+    width: 50px;
+    padding: 15px 0px;
+    margin: 20px 5px;
+    background: #2196f3;
+    border: none;
+    border-radius: 5px;
+    color: #000000;
+    cursor: pointer;
+    
+}
+button.read_more:hover{
+    color: #fff;
+    background: #80ffff;
+}
+
+

@@ -24,12 +24,13 @@ public class AliController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String title = request.getParameter("title");
+		String query = (String) request.getSession().getAttribute("queryBusqueda");
 		RequestDispatcher rd = null;
-		
+		log.log(Level.FINE,"EL QUERY DE BUSQUEDA ES " + query);
 		// Search for products in Aliexpress
-		log.log(Level.FINE,"Buscado productos de AliExpress que contengan " + title);
+		log.log(Level.FINE,"Buscado productos de AliExpress que contengan " + query);
 		AliExpressResource ali = new AliExpressResource();
-		AliExpress aliResults = ali.getProducts(title);
+		AliExpress aliResults = ali.getProducts(query);
 		
 		if (aliResults!=null) {
 			rd = request.getRequestDispatcher("/AliExpressView.jsp");
