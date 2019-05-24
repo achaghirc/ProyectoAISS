@@ -6,11 +6,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Wikifilm</title>
-<link rel="stylesheet" type="text/css" href="css/header.css">
+<link rel="stylesheet" type="text/css" href="css/valoracion.css">
 </head>
 <body>
-    <div class = "main">
-        <center>
+	<div class="masthead text-black text-center">
+    	<div class = "main">
         <div class="header">
             <div class="header_box">
                 <div class="title">
@@ -18,9 +18,12 @@
                 </div>
             </div>
         	<div><h2>Comentario publicado correctamente</h2></div>
-        	<div><a href="/InicioController">Vuelve al inicio</a></div>   
-        	<div><p>${message}</p></div>
-        </center>
+        	<div>
+        	<a class="button" href="/InicioController"><button type="button" class="read_more"> Vuelve al inicio</button></a>
+        	</div> 
+        	<h4>El comentario es: <c:out value="${message}"/></h4> 
+		</div>
+	</div>     
        
     </div>
 </body>

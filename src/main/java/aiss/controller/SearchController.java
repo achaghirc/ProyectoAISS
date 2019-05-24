@@ -44,6 +44,7 @@ public class SearchController extends HttpServlet {
 	        
 		
 		String query = request.getParameter("searchQuery");
+		request.getSession().setAttribute("queryBusqueda", query);
 		String param = URLEncoder.encode(query, "UTF-8");
 		RequestDispatcher rd = null;
 		
