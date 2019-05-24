@@ -19,7 +19,7 @@ public class TMDBResourceTest {
 	static Credits credits;
 	
 	@Test
-	public void testGetWiki() throws UnsupportedEncodingException {
+	public void testGetMovie() throws UnsupportedEncodingException {
 		
 		search = sr.getMovieSearch("spiderman");
 		
