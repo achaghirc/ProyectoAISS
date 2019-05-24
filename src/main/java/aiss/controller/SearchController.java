@@ -11,8 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-import aiss.Movie.MovieSearch;
+import aiss.model.movie.MovieSearch;
 import aiss.model.resources.MovieSearchResource;
 
 
@@ -35,7 +34,7 @@ public class SearchController extends HttpServlet {
 				vid = id;
 				request.getSession().setAttribute("movieId", id);
 				log.log(Level.FINE, "SearchController: ID con valor, en sesion hay: "+ (String) request.getSession().getAttribute("movieId"));
-			}else if(id == null && sid != null) {
+			}else if(id == null && sid != null && vid=="") {
 				vid = sid;
 				log.log(Level.FINE, "SearchController: ID sin valor, sid con valor, en sesion hay: "+ (String) request.getSession().getAttribute("movieId"));
 			}else {

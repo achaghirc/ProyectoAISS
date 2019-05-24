@@ -1,14 +1,13 @@
 package aiss.model.resources;
 
 import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.util.Arrays;
 import java.util.Collection;
 
 import org.restlet.resource.ClientResource;
 import org.restlet.resource.ResourceException;
 
-import aiss.Movie.MovieSearch;
+import aiss.model.movie.MovieSearch;
 
 public class MovieSearchResource {
 	private static final String api_Key = "1cb3b67dfeb8452b822808e663f7b97c";

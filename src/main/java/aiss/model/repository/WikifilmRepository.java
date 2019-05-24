@@ -2,10 +2,10 @@ package aiss.model.repository;
 
 import java.util.Collection;
 
-import aiss.model.tmdb.Cancion;
-import aiss.model.tmdb.Pelicula;
-import aiss.model.tmdb.Producto;
-import aiss.model.tmdb.Video;
+import aiss.api.classes.Cancion;
+import aiss.api.classes.Pelicula;
+import aiss.api.classes.Producto;
+import aiss.api.classes.Video;
 
 public interface WikifilmRepository {
 	public Collection<Pelicula> getAllPeliculas();

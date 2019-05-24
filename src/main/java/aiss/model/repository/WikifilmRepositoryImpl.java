@@ -15,10 +15,10 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 
-import aiss.model.tmdb.Cancion;
-import aiss.model.tmdb.Pelicula;
-import aiss.model.tmdb.Producto;
-import aiss.model.tmdb.Video;
+import aiss.api.classes.Cancion;
+import aiss.api.classes.Pelicula;
+import aiss.api.classes.Producto;
+import aiss.api.classes.Video;
 
 @Path("/Peliculas")
 public class WikifilmRepositoryImpl implements WikifilmRepository {

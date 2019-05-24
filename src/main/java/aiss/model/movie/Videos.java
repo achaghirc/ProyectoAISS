@@ -1,4 +1,4 @@
-package aiss.Movie;
+package aiss.model.movie;
 
 import java.util.HashMap;
 import java.util.List;
@@ -12,62 +12,36 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-"page",
-"results",
-"total_results",
-"total_pages"
+"id",
+"results"
 })
-public class MovieSearch {
+public class Videos {
 
-@JsonProperty("page")
-private Integer page;
+@JsonProperty("id")
+private Integer id;
 @JsonProperty("results")
-private List<Movie> results = null;
-@JsonProperty("total_results")
-private Integer totalResults;
-@JsonProperty("total_pages")
-private Integer totalPages;
+private List<Result> results = null;
 @JsonIgnore
 private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-@JsonProperty("page")
-public Integer getPage() {
-return page;
+@JsonProperty("id")
+public Integer getId() {
+return id;
 }
 
-@JsonProperty("page")
-public void setPage(Integer page) {
-this.page = page;
+@JsonProperty("id")
+public void setId(Integer id) {
+this.id = id;
 }
 
 @JsonProperty("results")
-public List<Movie> getResults() {
+public List<Result> getResults() {
 return results;
 }
 
 @JsonProperty("results")
-public void setResults(List<Movie> results) {
+public void setResults(List<Result> results) {
 this.results = results;
-}
-
-@JsonProperty("total_results")
-public Integer getTotalResults() {
-return totalResults;
-}
-
-@JsonProperty("total_results")
-public void setTotalResults(Integer totalResults) {
-this.totalResults = totalResults;
-}
-
-@JsonProperty("total_pages")
-public Integer getTotalPages() {
-return totalPages;
-}
-
-@JsonProperty("total_pages")
-public void setTotalPages(Integer totalPages) {
-this.totalPages = totalPages;
 }
 
 @JsonAnyGetter

@@ -1,4 +1,4 @@
-package aiss.Movie;
+package aiss.model.movie;
 
 import java.util.HashMap;
 import java.util.List;

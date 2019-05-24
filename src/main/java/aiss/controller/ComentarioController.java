@@ -8,11 +8,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.fasterxml.jackson.core.JsonEncoding;
-import com.fasterxml.jackson.core.io.JsonStringEncoder;
-import com.google.appengine.repackaged.com.google.gson.Gson;
-
 import aiss.model.resources.YoutubeResource;
 import aiss.model.youtube.CommentResponse;
 import aiss.model.youtube.Snippet;
@@ -34,11 +29,11 @@ public class ComentarioController extends HttpServlet {
 	        String sid = (String) req.getSession().getAttribute("movieId");
 	        String id = req.getParameter("id");
 	        String vid = "";
-	    	if(id!=null) {
+	    	if(id!=null ) {
 				vid = id;
 				req.getSession().setAttribute("movieId", id);
 				log.log(Level.FINE, "ComentarioController: ID con valor, en sesion hay: "+ (String) req.getSession().getAttribute("movieId"));
-			}else if(id == null && sid != null) {
+			}else if(id == null && sid != null && vid=="") {
 				vid = sid;
 				log.log(Level.FINE, "ComentarioController: ID sin valor, sid con valor, en sesion hay: "+ (String) req.getSession().getAttribute("movieId"));
 			}else {

@@ -1,4 +1,4 @@
-package aiss.model.tmdb;
+package aiss.api.classes;
 
 import java.util.ArrayList;
 import java.util.List;

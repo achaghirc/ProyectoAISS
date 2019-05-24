@@ -12,9 +12,9 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
+import aiss.api.classes.Pelicula;
 import aiss.model.repository.WikifilmRepository;
 import aiss.model.repository.WikifilmRepositoryImpl;
-import aiss.model.tmdb.Pelicula;
 
 @Path("/Peliculas")
 public class PeliculasResource {

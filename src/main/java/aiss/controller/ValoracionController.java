@@ -9,9 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import aiss.Movie.MovieSearch;
-import aiss.Movie.Rate;
+import aiss.model.movie.Rate;
 import aiss.model.resources.MovieResources;
 
 public class ValoracionController extends HttpServlet {
@@ -30,6 +28,7 @@ public class ValoracionController extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@SuppressWarnings("unused")
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher rd = null;
 
@@ -59,9 +58,15 @@ public class ValoracionController extends HttpServlet {
 			rd = request.getRequestDispatcher("/ValoracionCorrecta.jsp");
 			
 		}else {
-			rd=request.getRequestDispatcher("/error.jsp");
-			log.log(Level.INFO, "No se ha podido valorar");
+			if(idmovie == null) {
+				rd=request.getRequestDispatcher("/error.jsp");
+				log.log(Level.INFO, "No se ha podido valorar, idmovie es "+idmovie);
+			}else if(rate != null){
+				rd=request.getRequestDispatcher("/error.jsp");
+				log.log(Level.INFO, "No se ha podido valorar, rate es "+rate);
+			}	
 		}
+		
 		
 		log.log(Level.INFO, "Se han mandado los datos de" + idmovie);
 		rd.forward(request, response);
