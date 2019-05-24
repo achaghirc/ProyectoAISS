@@ -3,10 +3,10 @@ package resources;
 import java.io.UnsupportedEncodingException;
 import org.junit.Test;
 
-import aiss.model.movie.Cast;
-import aiss.model.movie.Credits;
-import aiss.model.movie.Movie;
-import aiss.model.movie.MovieSearch;
+import aiss.Movie.Cast;
+import aiss.Movie.Credits;
+import aiss.Movie.Movie;
+import aiss.Movie.MovieSearch;
 import aiss.model.resources.MovieResources;
 import aiss.model.resources.MovieSearchResource;
 
@@ -19,7 +19,7 @@ public class TMDBResourceTest {
 	static Credits credits;
 	
 	@Test
-	public void testGetMovie() throws UnsupportedEncodingException {
+	public void testGetWiki() throws UnsupportedEncodingException {
 		
 		search = sr.getMovieSearch("spiderman");
 		
@@ -35,5 +35,6 @@ public class TMDBResourceTest {
 		for(Cast c: credits.getCast()) {
 			System.out.println("Nombre del Actor: " + c.getName());
 		}
+		
 	}
 }

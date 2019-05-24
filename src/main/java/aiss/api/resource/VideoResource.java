@@ -63,6 +63,7 @@ public class VideoResource extends PeliculasResource {
 	//No
 	@PUT
 	@Consumes("application/json")
+	@Path("/idPelicula/{idPelicula}")
 	public void updateVideoPelicula(@PathParam("idPelicula") String idPelicula, Video video) {
 		getPeliculaById(idPelicula).updateVideo(video);
 
