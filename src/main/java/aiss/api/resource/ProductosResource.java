@@ -44,22 +44,22 @@ public class ProductosResource extends PeliculasResource  {
 		String idProducto = "p" + index++;
 		producto.setId(idProducto);
 		getPeliculaById(idPelicula).addProducto(producto);
-
 	}
 
-	@PUT
-	@Consumes("application/json")
-	public void updateProductoPelicula(@PathParam("idPelicula")String idPelicula, Producto producto) {
-		getPeliculaById(idPelicula).updateProducto(producto);
-	}
+//	@PUT
+//	@Consumes("application/json")
+//	public void updateProductoPelicula(@PathParam("idPelicula")String idPelicula, Producto producto) {
+//		getPeliculaById(idPelicula).updateProducto(producto);
+//	}
 
 	@DELETE
-	// ???
+	@Path("/idPelicula/{idPelicula}/idProducto/{idProducto}")
 	public void deleteProductoPelicula(@PathParam("idPelicula")String idPelicula,@PathParam("idProducto") String idProducto) {
 		getPeliculaById(idPelicula).deleteProducto(getProductoById(idProducto));
 
 	}
-
+	
+	//No llamar a Swagger
 	@GET
 	@Produces("application/json")
 	public Collection<Producto> getAllPeliculasProductos() {
@@ -70,14 +70,15 @@ public class ProductosResource extends PeliculasResource  {
 		return productos;
 	}
 
-	@GET
-	@Produces("application/json")
-	public Collection<Producto> getPeliculaProductosById(@PathParam("idPelicula")String idPelicula) {
-		return getPeliculaById(idPelicula).getProductos();
-	}
+//	@GET
+//	@Produces("application/json")
+//	public Collection<Producto> getPeliculaProductosById(@PathParam("idPelicula")String idPelicula) {
+//		return getPeliculaById(idPelicula).getProductos();
+//	}
 
 	@GET
 	@Produces("application/json")
+	@Path("/tituloPelicula/{titlePelicula}")
 	public Collection<Producto> getPeliculaProductosByName(@PathParam("titlePelicula")String title) {
 		Collection<Producto> res = new HashSet<>();
 		for (Pelicula p : getPeliculasByTitle(title)) {
@@ -88,6 +89,7 @@ public class ProductosResource extends PeliculasResource  {
 
 	@GET
 	@Produces("application/json")
+	@Path("/idProducto/{idProducto}")
 	public Producto getProductoById(@PathParam("idProducto")String id) {
 		Producto res = null;
 		for (Producto p : getAllPeliculasProductos()) {
