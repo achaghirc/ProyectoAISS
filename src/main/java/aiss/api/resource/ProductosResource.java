@@ -9,6 +9,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 import aiss.model.repository.WikifilmRepository;
@@ -39,7 +40,7 @@ public class ProductosResource extends PeliculasResource  {
 	@POST
 	@Produces("application/json")
 	@Consumes("application/json")
-	public void addProductoPelicula(String idPelicula, Producto producto) {
+	public void addProductoPelicula(@PathParam("idPelicula")String idPelicula, Producto producto) {
 		String idProducto = "p" + index++;
 		producto.setId(idProducto);
 		getPeliculaById(idPelicula).addProducto(producto);
@@ -48,13 +49,13 @@ public class ProductosResource extends PeliculasResource  {
 
 	@PUT
 	@Consumes("application/json")
-	public void updateProductoPelicula(String idPelicula, Producto producto) {
+	public void updateProductoPelicula(@PathParam("idPelicula")String idPelicula, Producto producto) {
 		getPeliculaById(idPelicula).updateProducto(producto);
 	}
 
 	@DELETE
 	// ???
-	public void deleteProductoPelicula(String idPelicula, String idProducto) {
+	public void deleteProductoPelicula(@PathParam("idPelicula")String idPelicula,@PathParam("idProducto") String idProducto) {
 		getPeliculaById(idPelicula).deleteProducto(getProductoById(idProducto));
 
 	}
@@ -71,13 +72,13 @@ public class ProductosResource extends PeliculasResource  {
 
 	@GET
 	@Produces("application/json")
-	public Collection<Producto> getPeliculaProductosById(String idPelicula) {
+	public Collection<Producto> getPeliculaProductosById(@PathParam("idPelicula")String idPelicula) {
 		return getPeliculaById(idPelicula).getProductos();
 	}
 
 	@GET
 	@Produces("application/json")
-	public Collection<Producto> getPeliculaProductosByName(String title) {
+	public Collection<Producto> getPeliculaProductosByName(@PathParam("titlePelicula")String title) {
 		Collection<Producto> res = new HashSet<>();
 		for (Pelicula p : getPeliculasByTitle(title)) {
 			res.addAll(p.getProductos());
@@ -87,7 +88,7 @@ public class ProductosResource extends PeliculasResource  {
 
 	@GET
 	@Produces("application/json")
-	public Producto getProductoById(String id) {
+	public Producto getProductoById(@PathParam("idProducto")String id) {
 		Producto res = null;
 		for (Producto p : getAllPeliculasProductos()) {
 			if (p.getId().equals(id)) {

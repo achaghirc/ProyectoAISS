@@ -21,11 +21,11 @@
       <div class="row">
  <div class="col-xl-9 mx-auto">
 			<div style="text-align: center;">
-			<h1>Productos de <c:out value="${requestScope.title}" /></h1>
+			<h2 class="mb-3">Productos de <c:out value="${requestScope.title}" /></h2>
 			</div>
 		<c:forEach items="${requestScope.products}" var="producto" begin="1" end="5">
 			<h6><a>${producto.productTitle}</a></h6>
-			<a href="<c:out value="${producto.productUrl}"/>">
+			<a href="<c:out value="${producto.productUrl}"/>" target="_blank">
 			<img style="width:450px; height:250px;" src="<c:out value = "${producto.imageUrl}"/>"></a>
 			<br><br>
 			<div style="text-align: center;">

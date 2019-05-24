@@ -9,6 +9,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 import aiss.model.repository.WikifilmRepository;
@@ -49,7 +50,7 @@ public class VideoResource extends PeliculasResource {
 	@POST
 	@Produces("application/json")
 	@Consumes("application/json")
-	public void addVideoPelicula(String idPelicula, Video video) {
+	public void addVideoPelicula(@PathParam("idPelicula") String idPelicula, Video video) {
 		String idVideo = "v" + index++;
 		video.setId(idVideo);
 		getPeliculaById(idPelicula).addVideo(video);
@@ -57,27 +58,27 @@ public class VideoResource extends PeliculasResource {
 
 	@PUT
 	@Consumes("application/json")
-	public void updateVideoPelicula(String idPelicula, Video video) {
+	public void updateVideoPelicula(@PathParam("idPelicula") String idPelicula, Video video) {
 		getPeliculaById(idPelicula).updateVideo(video);
 
 	}
 
 	@DELETE
 	// ??????
-	public void deleteVideo(String idPelicula, String idVideo) {
+	public void deleteVideo(@PathParam("idPelicula")String idPelicula,@PathParam("idVideo") String idVideo) {
 		getPeliculaById(idPelicula).deleteVideo(getVideoById(idVideo));
 
 	}
 
 	@GET
 	@Produces("application/json")
-	public Collection<Video> getPeliculaVideosById(String idPelicula) {
+	public Collection<Video> getPeliculaVideosById(@PathParam("idPelicula") String idPelicula) {
 		return getPeliculaById(idPelicula).getVideos();
 	}
 
 	@GET
 	@Produces("application/json")
-	public Collection<Video> getPeliculaVideosByName(String title) {
+	public Collection<Video> getPeliculaVideosByName(@PathParam("titleVideo")String title) {
 		Collection<Video> res = new HashSet<>();
 		for (Pelicula p : getPeliculasByTitle(title)) {
 			res.addAll(p.getVideos());
@@ -87,7 +88,7 @@ public class VideoResource extends PeliculasResource {
 
 	@GET
 	@Produces("application/json")
-	public Video getVideoById(String id) {
+	public Video getVideoById(@PathParam("idVideo")String id) {
 		Video res = null;
 		for (Video i : getAllPeliculaVideos()) {
 			if (i.getId().equals(id)) {
