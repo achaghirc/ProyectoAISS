@@ -1,4 +1,4 @@
-package aiss.model.tmdb;
+package aiss.api.classes;
 
 public class Producto {
 	private String id;

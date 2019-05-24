@@ -12,10 +12,10 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
+import aiss.api.classes.Pelicula;
+import aiss.api.classes.Video;
 import aiss.model.repository.WikifilmRepository;
 import aiss.model.repository.WikifilmRepositoryImpl;
-import aiss.model.tmdb.Pelicula;
-import aiss.model.tmdb.Video;
 
 @Path("/Videos")
 public class VideoResource extends PeliculasResource {

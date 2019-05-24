@@ -1,5 +1,5 @@
-<%@page import="aiss.Movie.ProductionCompany"%>
-<%@page import="aiss.Movie.Movie"%>
+<%@page import="aiss.model.movie.ProductionCompany"%>
+<%@page import="aiss.model.movie.Movie"%>
 <%@page import="aiss.model.resources.MovieResources"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>

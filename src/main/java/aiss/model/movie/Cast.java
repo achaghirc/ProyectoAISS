@@ -1,4 +1,4 @@
-package aiss.Movie;
+package aiss.model.movie;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,25 +10,47 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({ "credit_id", "department", "gender", "id", "job", "name", "profile_path" })
-public class Crew {
+@JsonPropertyOrder({ "cast_id", "character", "credit_id", "gender", "id", "name", "order", "profile_path" })
+public class Cast {
 
+	@JsonProperty("cast_id")
+	private Integer castId;
+	@JsonProperty("character")
+	private String character;
 	@JsonProperty("credit_id")
 	private String creditId;
-	@JsonProperty("department")
-	private String department;
 	@JsonProperty("gender")
 	private Integer gender;
 	@JsonProperty("id")
 	private Integer id;
-	@JsonProperty("job")
-	private String job;
 	@JsonProperty("name")
 	private String name;
+	@JsonProperty("order")
+	private Integer order;
 	@JsonProperty("profile_path")
 	private String profilePath;
 	@JsonIgnore
 	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+	@JsonProperty("cast_id")
+	public Integer getCastId() {
+		return castId;
+	}
+
+	@JsonProperty("cast_id")
+	public void setCastId(Integer castId) {
+		this.castId = castId;
+	}
+
+	@JsonProperty("character")
+	public String getCharacter() {
+		return character;
+	}
+
+	@JsonProperty("character")
+	public void setCharacter(String character) {
+		this.character = character;
+	}
 
 	@JsonProperty("credit_id")
 	public String getCreditId() {
@@ -38,16 +60,6 @@ public class Crew {
 	@JsonProperty("credit_id")
 	public void setCreditId(String creditId) {
 		this.creditId = creditId;
-	}
-
-	@JsonProperty("department")
-	public String getDepartment() {
-		return department;
-	}
-
-	@JsonProperty("department")
-	public void setDepartment(String department) {
-		this.department = department;
 	}
 
 	@JsonProperty("gender")
@@ -70,16 +82,6 @@ public class Crew {
 		this.id = id;
 	}
 
-	@JsonProperty("job")
-	public String getJob() {
-		return job;
-	}
-
-	@JsonProperty("job")
-	public void setJob(String job) {
-		this.job = job;
-	}
-
 	@JsonProperty("name")
 	public String getName() {
 		return name;
@@ -88,6 +90,16 @@ public class Crew {
 	@JsonProperty("name")
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	@JsonProperty("order")
+	public Integer getOrder() {
+		return order;
+	}
+
+	@JsonProperty("order")
+	public void setOrder(Integer order) {
+		this.order = order;
 	}
 
 	@JsonProperty("profile_path")

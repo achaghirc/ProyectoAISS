@@ -7,16 +7,14 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
-
+import aiss.api.classes.Cancion;
+import aiss.api.classes.Pelicula;
 import aiss.model.repository.WikifilmRepository;
 import aiss.model.repository.WikifilmRepositoryImpl;
-import aiss.model.tmdb.Cancion;
-import aiss.model.tmdb.Pelicula;
 
 @Path("/Canciones")
 public class CancionesResource extends PeliculasResource {
