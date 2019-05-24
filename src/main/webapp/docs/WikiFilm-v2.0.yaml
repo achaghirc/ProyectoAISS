@@ -1,0 +1,573 @@
+swagger: '2.0'
+info:
+  description: This is a simple API
+  version: 1.0.0
+  title: WikiFilm API
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+
+paths:
+  /Peliculas:
+    get:
+      tags:
+        - peliculas
+      summary:  Método que devuelve todas las películas guardadas en nuestra API 
+   
+      operationId: collectAllPeliculas
+      produces:
+      - application/json
+      responses:
+        '200':
+          description: busqueda con éxito
+          schema:
+            $ref: '#/definitions/Peliculas'
+        '400':
+          description: error
+    post:
+      tags:
+      - peliculas
+      summary: Método que añade una película
+      
+      operationId: addPelicula
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body  
+        name: pelicula
+        schema:
+          $ref: '#/definitions/Peliculas'
+      responses:
+        '201':
+          description: pelicula añadida
+        '204':
+          description: completado con éxito pero no devuelve nada
+        '400':
+          description: 'entrada erronea, pelicula erronea'
+        '409':
+          description: ya existe una película igual
+    put:
+      tags:
+      - peliculas
+      summary: Método que actualiza una película
+      
+      operationId: updatePelicula
+      consumes:
+      - application/json
+      parameters:
+        - in: body
+          name: pelicula
+          required: true
+          schema:
+            $ref: '#/definitions/Peliculas'
+      responses:
+        '204':
+          description: completado con éxito pero no devuelve nada
+        '400':
+          description: Pelicula erronea
+        '404':
+          description: Pelicula no encontrada
+  /Peliculas/id/{idPelicula}:
+    get:
+      tags:
+      - peliculas
+      summary: Método que devuelve una pélicula dando cómo parámetro de búsqueda su id
+     
+      operationId: getPeliculaById
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: idPelicula
+        required: true
+        type: string
+      responses:
+        '200':
+          description: busqueda con éxito
+          schema:
+            $ref: '#/definitions/Peliculas'
+        '400':
+          description: Invalid Id
+        '404':
+          description: Pelicula not found
+    delete:
+      tags:
+      - peliculas
+      summary: Método que elimina una película dando cómo parámetro de búsqueda su id
+     
+      operationId: deletePelicula
+      parameters:
+        - in: path
+          name: idPelicula
+          required: true
+          type: string
+      responses:
+        '400':
+          description: Error id
+        '404':
+          description: Pelicula no encontrada
+  /Peliculas/titulo/{titlePelicula}:
+    get:
+      tags:
+      - peliculas
+      summary: Método que devuelve una pélicula dado cómo parámetro de búsqueda el título de dicha película
+      
+      operationId: getPeliculasByTitle
+      produces:
+      - application/json
+      parameters:
+        - in: path
+          name: titlePelicula
+          required: true
+          type: string
+            
+      responses:
+        '200':
+          description: busqueda con éxito
+          schema:
+            $ref: '#/definitions/Peliculas'
+        '400':
+          description: Invalid Title
+        '404':
+          description: Pelicula not found
+    
+  /Canciones/tituloPelicula/{titlePelicula}:
+    get:
+      tags:
+      - canciones
+      summary: Método que busca todas las canciones de una película
+      
+      operationId: getPeliculasCancionesByName
+      produces:
+      - application/json
+      parameters:
+        - in: path
+          name: titlePelicula
+          required: true
+          type: string
+      responses:
+        '200':
+          description: busqueda con éxito
+          schema:
+            $ref: '#/definitions/Canciones'
+        '400':
+          description: Invalid Title
+        '403':
+          description: Prohibido
+        '404':
+          description: Cancion no encontrada
+  /Canciones/idCancion/{idCancion}:
+    get:
+      tags:
+      - cancion
+      summary: Método que busca una canción por su Id
+    
+      operationId: getCancionById
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: idCancion
+        required: true
+        type: string
+      responses:
+        '200':
+          description: busqueda con éxito
+          schema:
+            $ref: '#/definitions/Canciones'
+        '400':
+          description: Invalid Id
+        '404':
+          description: Canción no encontrada
+  /Canciones/idPelicula/{idPelicula}/idCancion/{idCancion}:
+    delete:
+      tags:
+      - peliculas
+      summary: Método que borra una canción de una película. Los parámetros de búsqueda son el id de Canción y el id de Película 
+    
+      operationId: deleteCancionPelicula
+      parameters:
+        - in: path
+          name: idPelicula
+          required: true
+          type: string
+        - in: path
+          name: idCancion
+          required: true
+          type: string
+      responses:
+        '204':
+          description: item eliminado 
+        '400':
+          description: Error id
+        '404':
+          description: Pelicula o Canción no encontrada
+  /Canciones/idPelicula/{idPelicula}:
+    post:
+      tags:
+      - video
+      summary: Método que añade una canción a una película
+     
+      operationId: addCancionPelicula
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: idPelicula
+        type: string
+        required: true
+        
+      - in: body  
+        name: cancion
+        schema:
+          $ref: '#/definitions/Cancion'
+      responses:
+        '201':
+          description: canción añadida
+        '204':
+          description: completado con éxito pero no devuelve nada
+        '400':
+          description: entrada erronea, canción erronea
+        '409':
+          description: ya existe un canción igual
+  
+  /Productos/idProducto/{idProducto}:
+    get:
+      tags:
+      - cancion
+      summary:  Método que busca un producto por su id
+      
+      operationId: getProductoById
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: idProducto
+        required: true
+        type: string
+      responses:
+        '200':
+          description: busqueda con éxito
+          schema:
+            $ref: '#/definitions/Productos'
+        '400':
+          description: Invalid Id
+        '404':
+          description: Producto not found
+  /Productos/tituloPelicula/{titlePelicula}:
+    get:
+      tags:
+      - productos
+      summary: Método que devuelve todos los productos de una película cuyo método de búsqueda de ella es su título 
+     
+      operationId: getPeliculasProductosByName
+      produces:
+      - application/json
+      parameters:
+        - in: path
+          name: titlePelicula
+          required: true
+          type: string
+      responses:
+        '200':
+          description: busqueda con éxito
+          schema:
+            $ref: '#/definitions/Productos'
+        '400':
+          description: Invalid Title
+        '404':
+          description: Cancion not found
+  /Productos/idPelicula/{idPelicula}/idProducto/{idProducto}:
+    delete:
+      tags:
+      - peliculas
+      summary: Método que borra un producto de una película. Los parámetros de búsqueda son tanto el id de película como el id de producto
+     
+      operationId: deleteProductoPelicula
+      parameters:
+        - in: path
+          name: idPelicula
+          required: true
+          type: string
+        - in: path
+          name: idProducto
+          required: true
+          type: string
+      responses:
+        '204':
+          description: item eliminado 
+        '400':
+          description: Error id
+        '404':
+          description: Producto o Película no encontrada
+
+  
+  /Videos/tituloPelicula/{titlePelicula}:
+    get:
+      tags:
+      - videos
+      summary: Método que devuelve todos los videos de una película. El parámetro de búsqueda es el título de la película 
+     
+      operationId: getPeliculasVideosByName
+      produces:
+      - application/json
+      parameters:
+        - in: path
+          name: titlePelicula
+          required: true
+          type: string
+      responses:
+        '200':
+          description: busqueda con éxito
+          schema:
+            $ref: '#/definitions/Videos'
+        '400':
+          description: Título inválido
+        '403':
+          description: Prohibido
+        '404':
+          description: Video no encontrado
+  /Videos/idVideo/{idVideo}:
+    get:
+      tags:
+      - videos
+      summary: Método que devuelve un video dado como parámetro de búsqueda su id
+     
+      operationId: getVideoById
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: idVideo
+        required: true
+        type: string
+      responses:
+        '200':
+          description: busqueda con éxito
+          schema:
+            $ref: '#/definitions/Videos'
+        '400':
+          description: Id no válido
+        '404':
+          description: Video no encontrado
+  /Videos/idPelicula/{idPelicula}/idVideo/{idVideo}:
+    delete:
+      tags:
+      - peliculas
+      summary: Método que borra una canción de una película. Los parámetros de búsqueda son el id de Canción y el id de Película
+    
+      operationId: deleteVideo
+      parameters:
+        - in: path
+          name: idPelicula
+          required: true
+          type: string
+        - in: path
+          name: idVideo
+          required: true
+          type: string
+      responses:
+        '204':
+          description: item eliminado 
+        '400':
+          description: Error id
+        '404':
+          description: Pelicula o video no encontrado
+  /Videos/idPelicula/{idPelicula}:
+    post:
+      tags:
+      - video
+      summary: Método que añade un video a una película. El parámetro de búsqueda es el id de la película
+    
+      operationId: addVideoPelicula
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: idPelicula
+        type: string
+        required: true
+        
+      - in: body  
+        name: video
+        schema:
+          $ref: '#/definitions/Video'
+      responses:
+        '201':
+          description: video añadido
+        '204':
+          description: completado con éxito pero no devuelve nada
+        '400':
+          description: 'entrada erronea, video erroneo'
+        '409':
+          description: ya existe un video igual
+    
+  
+definitions:
+  Peliculas:
+    type: object
+    required:
+      - id
+      - title
+      - director
+      - actores
+      - synopsis
+      - fechaEstreno
+      - videos
+      - productos
+      - canciones
+    properties:
+      id:
+        type: string
+        example: pelicula1
+      title:
+        type: string
+        example: Spiderman
+      director:
+        type: string
+        example: Steven Spielberg
+      actores:
+        type: string
+        example: Will Smith
+      synopsis:
+        type: string
+        example: película de acción
+      fechaEstreno:
+        type: string
+        example: 25 de Noviembre
+      videos:
+        type: array
+        items:
+          $ref: '#/definitions/Video'
+      productos:
+        type: array
+        items:
+          $ref: '#/definitions/Producto'
+      canciones:
+        type: array
+        items:
+          $ref: '#/definitions/Cancion'
+  Canciones:
+    type: object
+    required:
+      - titlePelicula
+      - idCancion
+      - idPelicula
+    properties:
+      titlePelicula:
+        type: string
+        example: Spiderman
+      idCancion:
+        type: string
+        example: c1
+      idPelicula:
+        type: string
+        example: p1
+  Productos:
+    type: object
+    required:
+      - idProducto
+      - titlePelicula
+      - idPelicula
+    properties:
+      idProducto:
+        type: string
+        example: Producto1
+      titlePelicula:
+        type: string
+        example: Spiderman
+      idPelicula:
+        type: string
+        example: p1
+  Videos:
+    type: object
+    required:
+      - titlePelicula
+      - idVideo
+      - idPelicula
+    properties:
+      titlePelicula:
+        type: string
+        example: El señor de los anillos - Las dos torres
+      idVideo:
+        type: string
+        example: v1
+      idPelicula:
+        type: string
+        example: p1
+  Video:
+    type: object
+    required:
+      - id
+      - title
+      - url
+    properties:
+      id:
+        type: string
+        example: v1
+      title:
+        type: string
+        example: Trailer GoT
+      url:
+        type: string
+        example: www.youtube.com/nosequeponer
+  Producto:
+    type: object
+    required:
+      - id
+      - name
+      - prize
+      - url
+      - description
+    properties:
+      id:
+        type: string
+        example: p1
+      name:
+        type: string
+        example: Figura Harry Potter
+      prize:
+        type: string
+        example: 100 euros
+      url:
+        type: string
+        example: www.aliexpress.com/nosequeponer
+      description:
+        type: string
+        example: Figura tamaño real
+  Cancion:
+    type: object
+    required:
+      - uri
+      - name
+      - id
+      - duration
+      - popularity
+    properties:
+      uri:
+        type: string
+        example: https://open.spotify.com/album/7JOCOjZTcLysDMkZGWlcIj
+      name:
+        type: string
+        example: Hall of Fame
+      id:
+        type: string
+        example: c1
+      duration:
+        type: integer
+        example: 180 
+      popularity:
+        type: integer
+        example: 100
+      
+schemes:
+- https
+
+host: appwikifilm.appspot.com
+basePath: /api
