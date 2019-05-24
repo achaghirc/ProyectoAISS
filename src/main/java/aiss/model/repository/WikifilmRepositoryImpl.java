@@ -163,7 +163,7 @@ public class WikifilmRepositoryImpl implements WikifilmRepository {
 	}
 
 	@DELETE
-	@Path("Peliculas/{id}")
+	//^??
 	public void deletePelicula(String id) {
 		peliculasMap.remove(id);
 	}

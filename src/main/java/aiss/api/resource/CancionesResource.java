@@ -39,24 +39,27 @@ public class CancionesResource extends PeliculasResource {
 	@POST
 	@Produces("application/json")
 	@Consumes("application/json")
+	@Path("/idPelicula({idPelicula}")
 	public void addCancionPelicula(@PathParam("idPelicula")String idPelicula, Cancion cancion) {
 		String idCancion = "c" + index++;
 		cancion.setId(idCancion);
 		getPeliculaById(idPelicula).addCancion(cancion);
 	}
 
-	@PUT
-	@Consumes("application/json")
-	public void updateCancionPelicula(@PathParam("idPelicula")String idPelicula, Cancion cancion) {
-		getPeliculaById(idPelicula).updateCancion(cancion);
-	}
+//	@PUT
+//	@Consumes("application/json")
+//	public void updateCancionPelicula(@PathParam("idPelicula")String idPelicula, Cancion cancion) {
+//		getPeliculaById(idPelicula).updateCancion(cancion);
+//	}
 
 	@DELETE
-	// ???
+	@Path("/idPelicula/{idPelicula}/idCancion/{idCancion}")
 	public void deleteCancionPelicula(@PathParam("idPelicula")String idPelicula, @PathParam("idCancion")String idCancion) {
 		getPeliculaById(idPelicula).deleteCancion(getCancionById(idCancion));
 	}
-
+	
+	
+	//No llamar en Swagger
 	@GET
 	@Produces("application/json")
 	public Collection<Cancion> getAllPeliculasCanciones() {
@@ -67,14 +70,15 @@ public class CancionesResource extends PeliculasResource {
 		return canciones;
 	}
 
-	@GET
-	@Produces("application/json")
-	public Collection<Cancion> getPeliculasCancionesById(@PathParam("idPelicula")String idPelicula) {
-		return getPeliculaById(idPelicula).getCanciones();
-	}
+//	@GET
+//	@Produces("application/json")
+//	public Collection<Cancion> getPeliculasCancionesById(@PathParam("idPelicula")String idPelicula) {
+//		return getPeliculaById(idPelicula).getCanciones();
+//	}
 
 	@GET
 	@Produces("application/json")
+	@Path("/tituloPelicula/{titlePelicula}")
 	public Collection<Cancion> getPeliculasCancionesByName(@PathParam("titlePelicula")String title) {
 		Collection<Cancion> res = new HashSet<>();
 		for (Pelicula p : getPeliculasByTitle(title)) {
@@ -85,6 +89,7 @@ public class CancionesResource extends PeliculasResource {
 
 	@GET
 	@Produces("application/json")
+	@Path("/idCancion/{idCancion}")
 	public Cancion getCancionById(@PathParam("idCancion")String id) {
 		Cancion res = null;
 		for (Cancion c : getAllPeliculasCanciones()) {

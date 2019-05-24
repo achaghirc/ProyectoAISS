@@ -17,7 +17,7 @@ import aiss.model.repository.WikifilmRepositoryImpl;
 import aiss.model.tmdb.Pelicula;
 import aiss.model.tmdb.Video;
 
-@Path("/Video")
+@Path("/Videos")
 public class VideoResource extends PeliculasResource {
 
 	private int index = 0;
@@ -37,6 +37,8 @@ public class VideoResource extends PeliculasResource {
 	}
 
 	// Video
+	
+	//No usar en swagger
 	@GET
 	@Produces("application/json")
 	public Collection<Video> getAllPeliculaVideos() {
@@ -50,6 +52,7 @@ public class VideoResource extends PeliculasResource {
 	@POST
 	@Produces("application/json")
 	@Consumes("application/json")
+	@Path("/idPelicula/{idPelicula}")
 	public void addVideoPelicula(@PathParam("idPelicula") String idPelicula, Video video) {
 		String idVideo = "v" + index++;
 		video.setId(idVideo);
@@ -64,7 +67,7 @@ public class VideoResource extends PeliculasResource {
 	}
 
 	@DELETE
-	// ??????
+	@Path("/idPelicula/{idPelicula}/idVideo/{idVideo}")
 	public void deleteVideo(@PathParam("idPelicula")String idPelicula,@PathParam("idVideo") String idVideo) {
 		getPeliculaById(idPelicula).deleteVideo(getVideoById(idVideo));
 
@@ -78,7 +81,8 @@ public class VideoResource extends PeliculasResource {
 
 	@GET
 	@Produces("application/json")
-	public Collection<Video> getPeliculaVideosByName(@PathParam("titleVideo")String title) {
+	@Path("/tituloPelicula/{titlePelicula}")
+	public Collection<Video> getPeliculaVideosByName(@PathParam("titlePelicula")String title) {
 		Collection<Video> res = new HashSet<>();
 		for (Pelicula p : getPeliculasByTitle(title)) {
 			res.addAll(p.getVideos());
@@ -88,6 +92,7 @@ public class VideoResource extends PeliculasResource {
 
 	@GET
 	@Produces("application/json")
+	@Path("/idVideo/{idVideo}")
 	public Video getVideoById(@PathParam("idVideo")String id) {
 		Video res = null;
 		for (Video i : getAllPeliculaVideos()) {
