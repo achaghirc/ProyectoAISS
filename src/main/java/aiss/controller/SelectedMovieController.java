@@ -80,8 +80,8 @@ public class SelectedMovieController extends HttpServlet{
 				
 				request.setAttribute("movies", tmdbResults);
 				request.setAttribute("credits", creditsResults);
-//				request.setAttribute("items", youtubeResults.getItems());
-//				request.setAttribute("tracks", trackResults.getItems());
+				request.setAttribute("items", youtubeResults.getItems());
+				request.setAttribute("tracks", trackResults.getItems());
 
 				rd = request.getRequestDispatcher("/movie.jsp");
 			
