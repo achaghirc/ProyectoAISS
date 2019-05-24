@@ -61,7 +61,7 @@ public class PeliculasResource {
 		return res;
 	}
 
-	//No hacer en swagger
+	
 	@POST
 	@Produces("application/json")
 	@Consumes("application/json")

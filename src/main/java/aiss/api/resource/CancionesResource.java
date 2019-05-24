@@ -39,7 +39,7 @@ public class CancionesResource extends PeliculasResource {
 	@POST
 	@Produces("application/json")
 	@Consumes("application/json")
-	@Path("/idPelicula({idPelicula}")
+	@Path("/idPelicula/{idPelicula}")
 	public void addCancionPelicula(@PathParam("idPelicula")String idPelicula, Cancion cancion) {
 		String idCancion = "c" + index++;
 		cancion.setId(idCancion);

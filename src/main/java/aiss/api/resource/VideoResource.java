@@ -59,6 +59,8 @@ public class VideoResource extends PeliculasResource {
 		getPeliculaById(idPelicula).addVideo(video);
 	}
 
+	
+	//No
 	@PUT
 	@Consumes("application/json")
 	public void updateVideoPelicula(@PathParam("idPelicula") String idPelicula, Video video) {
@@ -73,11 +75,11 @@ public class VideoResource extends PeliculasResource {
 
 	}
 
-	@GET
-	@Produces("application/json")
-	public Collection<Video> getPeliculaVideosById(@PathParam("idPelicula") String idPelicula) {
-		return getPeliculaById(idPelicula).getVideos();
-	}
+//	@GET
+//	@Produces("application/json")
+//	public Collection<Video> getPeliculaVideosById(@PathParam("idPelicula") String idPelicula) {
+//		return getPeliculaById(idPelicula).getVideos();
+//	}
 
 	@GET
 	@Produces("application/json")
