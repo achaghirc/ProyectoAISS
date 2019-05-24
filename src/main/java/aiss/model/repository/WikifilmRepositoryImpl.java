@@ -20,7 +20,7 @@ import aiss.model.tmdb.Pelicula;
 import aiss.model.tmdb.Producto;
 import aiss.model.tmdb.Video;
 
-@Path("/Peliculas")
+
 public class WikifilmRepositoryImpl implements WikifilmRepository {
 	Map<String, Pelicula> peliculasMap;
 
