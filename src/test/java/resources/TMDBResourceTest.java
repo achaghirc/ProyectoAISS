@@ -19,7 +19,7 @@ public class TMDBResourceTest {
 	static Credits credits;
 	
 	@Test
-	public void testGetWiki() throws UnsupportedEncodingException {
+	public void testGetMovie() throws UnsupportedEncodingException {
 		
 		search = sr.getMovieSearch("spiderman");
 		
@@ -35,6 +35,5 @@ public class TMDBResourceTest {
 		for(Cast c: credits.getCast()) {
 			System.out.println("Nombre del Actor: " + c.getName());
 		}
-		
 	}
 }
