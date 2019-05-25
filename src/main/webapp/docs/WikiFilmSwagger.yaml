@@ -11,23 +11,23 @@ paths:
   /Peliculas:
     get:
       tags:
-        - peliculas
-      summary:  Método que devuelve todas las películas guardadas en nuestra API 
+        - Peliculas
+      summary:  Método que devuelve todas las películas guardadas en nuestra API.
    
       operationId: collectAllPeliculas
       produces:
       - application/json
       responses:
         '200':
-          description: busqueda con éxito
+          description: Busqueda con éxito
           schema:
             $ref: '#/definitions/Peliculas'
         '400':
-          description: error
+          description: Petición errónea
     post:
       tags:
-      - peliculas
-      summary: Método que añade una película
+      - Peliculas
+      summary: Método que añade una película al conjunto de peliculas de nuestra API, los datos de esta se añaden en el cuerpo de la peticion, en formato JSON.
       
       operationId: addPelicula
       consumes:
@@ -40,40 +40,15 @@ paths:
         schema:
           $ref: '#/definitions/Peliculas'
       responses:
-        '201':
-          description: pelicula añadida
         '204':
-          description: completado con éxito pero no devuelve nada
+          description: Completado con éxito pero no devuelve nada
         '400':
-          description: 'entrada erronea, pelicula erronea'
-        '409':
-          description: ya existe una película igual
-    put:
-      tags:
-      - peliculas
-      summary: Método que actualiza una película
-      
-      operationId: updatePelicula
-      consumes:
-      - application/json
-      parameters:
-        - in: body
-          name: pelicula
-          required: true
-          schema:
-            $ref: '#/definitions/Peliculas'
-      responses:
-        '204':
-          description: completado con éxito pero no devuelve nada
-        '400':
-          description: Pelicula erronea
-        '404':
-          description: Pelicula no encontrada
+          description: Petición errónea
   /Peliculas/id/{idPelicula}:
     get:
       tags:
-      - peliculas
-      summary: Método que devuelve una pélicula dando cómo parámetro de búsqueda su id
+      - Peliculas
+      summary: Método que devuelve una pélicula dando cómo parámetro de búsqueda su id.
      
       operationId: getPeliculaById
       produces:
@@ -88,13 +63,14 @@ paths:
           description: busqueda con éxito
           schema:
             $ref: '#/definitions/Peliculas'
-        '400':
-          description: Invalid Id
+        
+        '204':
+          description: Id no válido y no devuelve nada
         '404':
-          description: Pelicula not found
+          description: No existe la pelicula solicitada
     delete:
       tags:
-      - peliculas
+      - Peliculas
       summary: Método que elimina una película dando cómo parámetro de búsqueda su id
      
       operationId: deletePelicula
@@ -104,14 +80,14 @@ paths:
           required: true
           type: string
       responses:
-        '400':
-          description: Error id
+        '204':
+          description: Película borrada
         '404':
           description: Pelicula no encontrada
   /Peliculas/titulo/{titlePelicula}:
     get:
       tags:
-      - peliculas
+      - Peliculas
       summary: Método que devuelve una pélicula dado cómo parámetro de búsqueda el título de dicha película
       
       operationId: getPeliculasByTitle
@@ -125,18 +101,17 @@ paths:
             
       responses:
         '200':
-          description: busqueda con éxito
+          description: busqueda realizada con éxito
           schema:
             $ref: '#/definitions/Peliculas'
-        '400':
-          description: Invalid Title
+        '204':
+          description: Título no válido y no devuelve nada
         '404':
-          description: Pelicula not found
-    
+          description: No existe la pelicula solicitada
   /Canciones/tituloPelicula/{titlePelicula}:
     get:
       tags:
-      - canciones
+      - Canciones
       summary: Método que busca todas las canciones de una película
       
       operationId: getPeliculasCancionesByName
@@ -149,19 +124,17 @@ paths:
           type: string
       responses:
         '200':
-          description: busqueda con éxito
+          description: Busqueda realizada con existo.
           schema:
             $ref: '#/definitions/Canciones'
-        '400':
-          description: Invalid Title
-        '403':
-          description: Prohibido
+        '204':
+          description: Título no válido y no devuelve nada
         '404':
           description: Cancion no encontrada
   /Canciones/idCancion/{idCancion}:
     get:
       tags:
-      - cancion
+      - Canciones
       summary: Método que busca una canción por su Id
     
       operationId: getCancionById
@@ -174,17 +147,17 @@ paths:
         type: string
       responses:
         '200':
-          description: busqueda con éxito
+          description: Busqueda realizada con éxito
           schema:
             $ref: '#/definitions/Canciones'
-        '400':
-          description: Invalid Id
+        '204':
+          description: Id no válida y no devuelve nada
         '404':
           description: Canción no encontrada
   /Canciones/idPelicula/{idPelicula}/idCancion/{idCancion}:
     delete:
       tags:
-      - peliculas
+      - Canciones
       summary: Método que borra una canción de una película. Los parámetros de búsqueda son el id de Canción y el id de Película 
     
       operationId: deleteCancionPelicula
@@ -199,16 +172,14 @@ paths:
           type: string
       responses:
         '204':
-          description: item eliminado 
-        '400':
-          description: Error id
+          description: Canción eliminado 
         '404':
           description: Pelicula o Canción no encontrada
   /Canciones/idPelicula/{idPelicula}:
     post:
       tags:
-      - video
-      summary: Método que añade una canción a una película
+      - Canciones
+      summary: Método que añade una canción a una película, se le pasan como parametro el id de la pelicula en la que queremos añadir la canción, y los datos de la canción en el cuerpo en formato JSON.
      
       operationId: addCancionPelicula
       consumes:
@@ -226,19 +197,15 @@ paths:
         schema:
           $ref: '#/definitions/Cancion'
       responses:
-        '201':
-          description: canción añadida
         '204':
-          description: completado con éxito pero no devuelve nada
+          description: Completado con éxito pero no devuelve nada
         '400':
-          description: entrada erronea, canción erronea
-        '409':
-          description: ya existe un canción igual
-  
+          description: Entrada erronea, canción erronea
+        
   /Productos/idProducto/{idProducto}:
     get:
       tags:
-      - cancion
+      - Productos
       summary:  Método que busca un producto por su id
       
       operationId: getProductoById
@@ -251,40 +218,17 @@ paths:
         type: string
       responses:
         '200':
-          description: busqueda con éxito
+          description: Busqueda con éxito
           schema:
             $ref: '#/definitions/Productos'
-        '400':
+        '204':
           description: Invalid Id
         '404':
-          description: Producto not found
-  /Productos/tituloPelicula/{titlePelicula}:
-    get:
-      tags:
-      - productos
-      summary: Método que devuelve todos los productos de una película cuyo método de búsqueda de ella es su título 
-     
-      operationId: getPeliculasProductosByName
-      produces:
-      - application/json
-      parameters:
-        - in: path
-          name: titlePelicula
-          required: true
-          type: string
-      responses:
-        '200':
-          description: busqueda con éxito
-          schema:
-            $ref: '#/definitions/Productos'
-        '400':
-          description: Invalid Title
-        '404':
-          description: Cancion not found
+          description: Producto no encontrado, url erronea
   /Productos/idPelicula/{idPelicula}/idProducto/{idProducto}:
     delete:
       tags:
-      - peliculas
+      - Productos
       summary: Método que borra un producto de una película. Los parámetros de búsqueda son tanto el id de película como el id de producto
      
       operationId: deleteProductoPelicula
@@ -300,16 +244,13 @@ paths:
       responses:
         '204':
           description: item eliminado 
-        '400':
-          description: Error id
         '404':
           description: Producto o Película no encontrada
-
-  
+          
   /Videos/tituloPelicula/{titlePelicula}:
     get:
       tags:
-      - videos
+      - Videos
       summary: Método que devuelve todos los videos de una película. El parámetro de búsqueda es el título de la película 
      
       operationId: getPeliculasVideosByName
@@ -327,14 +268,12 @@ paths:
             $ref: '#/definitions/Videos'
         '400':
           description: Título inválido
-        '403':
-          description: Prohibido
         '404':
           description: Video no encontrado
   /Videos/idVideo/{idVideo}:
     get:
       tags:
-      - videos
+      - Videos
       summary: Método que devuelve un video dado como parámetro de búsqueda su id
      
       operationId: getVideoById
@@ -357,8 +296,8 @@ paths:
   /Videos/idPelicula/{idPelicula}/idVideo/{idVideo}:
     delete:
       tags:
-      - peliculas
-      summary: Método que borra una canción de una película. Los parámetros de búsqueda son el id de Canción y el id de Película
+      - Videos
+      summary: Método que borra un video de una película. Los parámetros de búsqueda son el id de Video y el id de Película
     
       operationId: deleteVideo
       parameters:
@@ -372,15 +311,39 @@ paths:
           type: string
       responses:
         '204':
-          description: item eliminado 
+          description: Video eliminado correctamente
         '400':
           description: Error id
         '404':
           description: Pelicula o video no encontrado
   /Videos/idPelicula/{idPelicula}:
+    put:
+      tags:
+      - Videos
+      summary: Método que actualiza un video de una película
+      operationId: updateVideoPelicula
+      consumes:
+      - application/json
+      parameters:
+        - in: path
+          name: idPelicula
+          required: true
+          type: string
+        - in: body
+          name: video
+          required: true
+          schema:
+            $ref: '#/definitions/Video'
+      responses:
+        '204':
+          description: Completado con éxito pero no devuelve nada
+        '400':
+          description: Video erroneo
+        '404':
+          description: Video no encontrada
     post:
       tags:
-      - video
+      - Videos
       summary: Método que añade un video a una película. El parámetro de búsqueda es el id de la película
     
       operationId: addVideoPelicula
@@ -399,15 +362,10 @@ paths:
         schema:
           $ref: '#/definitions/Video'
       responses:
-        '201':
-          description: video añadido
         '204':
           description: completado con éxito pero no devuelve nada
         '400':
           description: 'entrada erronea, video erroneo'
-        '409':
-          description: ya existe un video igual
-    
   
 definitions:
   Peliculas:
