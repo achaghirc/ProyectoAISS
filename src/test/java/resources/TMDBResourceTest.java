@@ -3,10 +3,10 @@ package resources;
 import java.io.UnsupportedEncodingException;
 import org.junit.Test;
 
-import aiss.Movie.Cast;
-import aiss.Movie.Credits;
-import aiss.Movie.Movie;
-import aiss.Movie.MovieSearch;
+import aiss.model.movie.Cast;
+import aiss.model.movie.Credits;
+import aiss.model.movie.Movie;
+import aiss.model.movie.MovieSearch;
 import aiss.model.resources.MovieResources;
 import aiss.model.resources.MovieSearchResource;
 
