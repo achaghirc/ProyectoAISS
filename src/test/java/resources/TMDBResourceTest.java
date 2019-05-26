@@ -21,7 +21,7 @@ public class TMDBResourceTest {
 	@Test
 	public void testGetMovie() throws UnsupportedEncodingException {
 		
-		search = sr.getMovieSearch("spiderman");
+		search = sr.getMovieSearch("Avengers");
 		
 		System.out.println(search.getResults());
 		

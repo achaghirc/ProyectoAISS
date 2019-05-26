@@ -1,29 +1,53 @@
-@import url(http://fonts.googleapis.com/css?family=Cabin:400);
+/*!
+ * Start Bootstrap - Landing Page v5.0.4 (https://startbootstrap.com/template-overviews/landing-page)
+ * Copyright 2013-2019 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-landing-page/blob/master/LICENSE)
+ */
+ body{
+     font-family:Lato,'Helvetica Neue',Helvetica,Arial,sans-serif;
+     background:url("http://www.fondox.net/wallpapers/resoluciones/13/textura-de-papel-antiguo_1280x800_1552.jpg");
+     
+    }
+ h1,h2,h3,h4,h5,h6{
+     font-family:Lato,'Helvetica Neue',Helvetica,Arial,sans-serif;
+     font-weight:700
+    }
 
-head{
-    float: left;
-    width: 100%;
-    margin: 0px;
+.container .row h1{
+    font-size: 100px
 }
-body{
-    float: left;
-    width: 100%;
-    margin: 0px;
-    background-image:url("http://www.fondox.net/wallpapers/resoluciones/13/textura-de-papel-antiguo_1280x800_1552.jpg");
-    background-size: 100%;
+.masthead{
+	position:relative;
+    background:url("http://www.fondox.net/wallpapers/resoluciones/13/textura-de-papel-antiguo_1280x800_1552.jpg");
+    background-size:cover;
+    padding-top:10rem;
+    padding-bottom:10rem
 }
-.main{
-    float: left;
-    width: 100%;
-    margin: 0px;
-}
-.header{
-    float: left;
-    width: 100%;
-}
+.masthead .overlay{
+     position:absolute;
+     height:100%;
+     width:100%;
+     top:0;
+     left:0;
+     opacity:.3
+    }
+.masthead h1{
+        font-size:2rem
+    }
+@media (min-width:768px){
+    .masthead{
+        padding-top:1rem;
+      
+    }
+    .masthead h1{
+        font-size:3rem
+    }}
 
+.container{
+    margin-top: 50px
+}
 button.read_more{
-    width: 50px;
+    width: 130px;
     padding: 15px 0px;
     margin: 20px 5px;
     background: #2196f3;
@@ -37,5 +61,3 @@ button.read_more:hover{
     color: #fff;
     background: #80ffff;
 }
-
-

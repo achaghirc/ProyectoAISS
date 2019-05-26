@@ -20,7 +20,7 @@ import aiss.api.classes.Pelicula;
 import aiss.api.classes.Producto;
 import aiss.api.classes.Video;
 
-@Path("/Peliculas")
+
 public class WikifilmRepositoryImpl implements WikifilmRepository {
 	Map<String, Pelicula> peliculasMap;
 
