@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="./css/style.css">
-<title><c:out value="${requestScope.movies.title}" /></title>
+<title>Valoracion</title>
 <!-- Bootstrap core CSS -->
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -17,23 +17,28 @@
 <link href="css/valoracion.css" rel="stylesheet">
 </head>
 <body>
-	<centre>
-		<div class="masthead text-black text-center">
-			<div class = "main">
-       
-      		  <div class="header">
-            	<div class="header_box">
-                	<div class="title">
-                    	<a href=""><b>WikiFilm</b><img src="images/Logo3.png" width="100" height="100"></a>
-                	</div>
-            	</div>
-        		<div><h2>Valoracion Introducida correctamente</h2></div>
+	<div class="masthead text-black text-center">
+		<div class="container">
+			<div class="row">
+				<div class="col-xl-9 mx-auto">
+					<h1 class="mb-4">
+						WikiFilm<img src="images/Logo4.png" width="100" height="100">
+					</h1>
+				</div>
+            </div>
+        	<div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+        	<h2>Valoracion Introducida correctamente</h2>
+        	</div>
         	 
-        		<div><p><b>La Pelicula <c:out value="${title}"/> con id <c:out value="${idmovie}"/> ha sido valorada con <c:out value="${rate}"/> puntos.</b></p></div>
-        		<div>
-        		<a class="button" href="/InicioController"><button type="button" class="read_more"> Vuelve al inicio</button></a>
-        		</div>  
+        	<div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+        		<p>
+        			<b>La Pelicula <c:out value="${title}"/> con id <c:out value="${idmovie}"/> ha sido valorada con <c:out value="${rate}"/> puntos.</b>
+        		</p>
         	
+        	</div>
+        	<div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+        	<a class="button" href="/InicioController"><button type="button" class="read_more"> Vuelve al inicio</button></a>
+        	</div>       	
         </div>
      </div>
     </div>

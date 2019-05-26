@@ -40,6 +40,9 @@
 					</h1>
 				</div>
 				<div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+				<b>Recuerda que para poder poner un comentario en Youtube debes loguearte</b>
+				</div>
+				<div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
 					<form id="searchForm" action="SearchController" method="post">
 						<div class="form-row">
 							<div class="col-12 col-md-9 mb-2 mb-md-0">
@@ -48,7 +51,7 @@
 									placeholder="Introduce el nombre de la película...">
 							</div>
 							<div class="col-12 col-md-3">
-								<button type="submit" name="searchBtn" title="search"
+								<button type="submit" name="searchBtn" title="Search"
 									value="search" class="btn btn-block btn-lg btn-primary">Search</button>
 							</div>
 

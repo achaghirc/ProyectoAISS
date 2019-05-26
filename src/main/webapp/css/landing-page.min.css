@@ -43,3 +43,18 @@
 .container{
     margin-top: 50px
 }
+button.read_more{
+    width: 50px;
+    padding: 15px 0px;
+    margin: 20px 5px;
+    background: #2196f3;
+    border: none;
+    border-radius: 5px;
+    color: #000000;
+    cursor: pointer;
+    
+}
+button.read_more:hover{
+    color: #fff;
+    background: #80ffff;
+}
